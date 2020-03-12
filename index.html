@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>AR.js Documentation</title>
+        <link href="css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href=".">AR.js Documentation</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href=".">Home</a>
+                            </li>
+                            <li >
+                                <a href="image-tracking/">Image Tracking</a>
+                            </li>
+                            <li >
+                                <a href="location-based/">Location Based</a>
+                            </li>
+                            <li >
+                                <a href="marker-based/">Marker Based</a>
+                            </li>
+                            <li >
+                                <a href="tools/">Tools</a>
+                            </li>
+                            <li >
+                                <a href="about/">About</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="disabled">
+                                <a rel="next" >
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="image-tracking/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#arjs-augmented-reality-on-the-web">AR.js - Augmented Reality on the Web</a></li>
+            <li><a href="#why-arjs">Why AR.js</a></li>
+            <li><a href="#import-the-library">Import the library</a></li>
+            <li><a href="#before-you-start">Before you start...</a></li>
+            <li><a href="#getting-started">Getting started</a></li>
+            <li><a href="#image-tracking-documentation">Image Tracking Documentation</a></li>
+            <li><a href="#location-based-documentation">Location Based Documentation</a></li>
+            <li><a href="#marker-based-documentation">Marker Based Documentation</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="arjs-augmented-reality-on-the-web">AR.js - Augmented Reality on the Web</h1>
+<p><img src="./logo.png" height="200" /></p>
+<hr />
+<p>AR.js is a lightweight library for Augmented Reality on the Web, coming with features like Image Tracking, Location based AR and Marker tracking.</p>
+<p>Welcome to the official repository!</p>
+<h2 id="why-arjs">Why AR.js</h2>
+<p>We believe in the Web, a collaborative and accessible place. We also believe in the Augmented Reality technology, as a new communication medium, that can help people to see the reality in new, exciting ways. We see Augmented Reality (AR) used everyday for a lot of useful applications, from art, to education, also for fun.</p>
+<p>We strongly believe that such a powerful technology, that can help people and leverage their creativity, should be free in some way. Also collaborative, if possible. And so, we continue the work started by Jerome Etienne, in bringing AR on the Web, as a free and Open Source technology.</p>
+<p>Thank you for being interested in this, if you'd like to collaborate in any way, contact us (<a href="https://twitter.com/nicolocarp">https://twitter.com/nicolocarp</a>).</p>
+<p>The project is now under a Github organization, that you can find at <a href="https://github.com/ar-js-org">https://github.com/ar-js-org</a>.</p>
+<h3 id="ar-types">AR types</h3>
+<p>It features the following types of Augmented Reality, on the Web:</p>
+<ul>
+<li>Image Tracking</li>
+<li>Location Based AR</li>
+<li>Marker Tracking.</li>
+</ul>
+<h3 id="key-points">Key points</h3>
+<ul>
+<li><strong>Very Fast</strong> : It runs efficiently even on phones</li>
+<li><strong>Web-based</strong> : It is a pure web solution, so no installation required. Full javascript based on three.js + A-Frame + jsartoolkit5</li>
+<li><strong>Open Source</strong> : It is completely open source and free of charge!</li>
+<li><strong>Standards</strong> : It works on any phone with <a href="http://caniuse.com/#feat=webgl">webgl</a> and <a href="http://caniuse.com/#feat=stream">webrtc</a></li>
+</ul>
+<h2 id="import-the-library">Import the library</h2>
+<h3 id="import-using-html-script">Import using HTML script</h3>
+<h2 id="before-you-start">Before you start...</h2>
+<h3 id="requirements">Requirements</h3>
+<h3 id="deploy-under-https">Deploy under https</h3>
+<h2 id="getting-started">Getting started</h2>
+<h3 id="image-tracking">Image Tracking</h3>
+<h2 id="image-tracking-documentation">Image Tracking Documentation</h2>
+<h3 id="location-based">Location Based</h3>
+<h2 id="location-based-documentation">Location Based Documentation</h2>
+<h3 id="marker-based">Marker Based</h3>
+<h2 id="marker-based-documentation">Marker Based Documentation</h2></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2020-03-12 22:02:26
+-->
