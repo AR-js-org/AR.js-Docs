@@ -1,0 +1,9 @@
+site_name: AR.js Documentation
+nav:
+    - Home: index.md
+    - Image Tracking: image-tracking.md
+    - Location Based: location-based.md
+    - Marker Based: marker-based.md
+    - Tools: tools.md
+    - About: about.md
+theme: yeti
