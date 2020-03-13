@@ -4,10 +4,7 @@
 
 ---
 
-
 AR.js is a lightweight library for Augmented Reality on the Web, coming with features like Image Tracking, Location based AR and Marker tracking.
-
-Welcome to the official repository!
 
 ## Why AR.js
 
@@ -17,11 +14,11 @@ We strongly believe that such a powerful technology, that can help people and le
 
 Thank you for being interested in this, if you'd like to collaborate in any way, contact us ([https://twitter.com/nicolocarp](https://twitter.com/nicolocarp)).
 
-The project is now under a Github organization, that you can find at [https://github.com/ar-js-org](https://github.com/ar-js-org).
+The project is now under a Github organization, that you can find at [https://github.com/ar-js-org](https://github.com/ar-js-org) and you can ask to be part of it, for free.
 
 ### AR types
 
-It features the following types of Augmented Reality, on the Web:
+Ar.js features the following types of Augmented Reality, on the Web:
 
 - Image Tracking
 - Location Based AR
@@ -34,29 +31,179 @@ It features the following types of Augmented Reality, on the Web:
 - **Open Source** : It is completely open source and free of charge!
 - **Standards** : It works on any phone with [webgl](http://caniuse.com/#feat=webgl) and [webrtc](http://caniuse.com/#feat=stream)
 
+AR.js has reached version 3. This is the official repository: [https://github.com/AR-js-org/AR.js](https://github.com/jeromeetienne/AR.js/issues).
+If you want to visit the old AR.js repository, here it is: [https://github.com/jeromeetienne/AR.js](https://github.com/jeromeetienne/AR.js).
+
 ## Import the library
 
-### Import using HTML script
+AR.js from version 3 has a new structure.
 
-## Before you start...
+**AR.js is coming in two, different build. They are both maintained. They are exclusive.**
 
-### Requirements
+The file you want to import depends on what feature you want to have, and also which render library you want to use.
 
-### Deploy under https
+AR.js uses [jsartoolkit5](https://github.com/artoolkitx/jsartoolkit5) for tracking, but can display augmented content with either [three.js](https://threejs.org/) or [A-Frame](https://aframe.io/).
+
+You can import AR.js in one version of your choice, using the `<script>` tag on your HTML.
+
+---
+
+**AR.js with Image Tracking + Location Based AR**
+
+Import AFRAME version:
+
+```html
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js">
+```
+
+Import three.js version:
+
+```html
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-nft.js">
+```
+
+---
+
+**AR.js with Marker Tracking + Location Based AR:**
+
+Import AFRAME version:
+
+```html
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js">
+```
+
+Import three.js version:
+
+```html
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar.js">
+```
+
+## Requirements
+
+Some requirements and known restrictions are listed below:
+
+- It works on any phone with [webgl](http://caniuse.com/#feat=webgl) and [webrtc](http://caniuse.com/#feat=stream).
+- Marker based is very lightweight, while Image Tracking is more CPU consuming.
+- You cannot use Chrome on iOS, as Chrome on iOS did not support, at the moment, camera access
+- On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.
+- To work with Location Based feature, your phone needs to have GPS sensors. Please, read carefully all suggestions that AR.js pops up for Location Based on iOS, as iOS requires user actions to activate geoposition.
+- Location Based feature is only available on A-Frame
+- Location Based can work with A-Frame up to version 0.9.2. Compatibility with A-Frame v1.0.0 is work in progress.
+
+## Always deploy under https
+
+Accessing to the phone camera or to camera GPS sensors, due to major browsers restrictions, can be done only under https websites. Please, always run your examples on secure connections or localhost. [Github Pages](https://pages.github.com/) is a great way to have free and live websites under https.
 
 ## Getting started
 
-### Image Tracking
+Here we present three, basic examples, one for each AR feature. For specific documentation, on the top menu you can find every section, or you can click on the following links:
 
-## Image Tracking Documentation
+- [Image Tracking Documentation](./image-tracking.md)
+- [Location Based Documentation](./location-based.md)
+- [Marker Based Documentation](./marker-based.md)
 
-### Location Based
+### Image Tracking Example
 
-## Location Based Documentation
+Please follow this simple steps:
 
-### Marker Based
+- Create a new project with the code below (or [**try this codepen**](https://codepen.io/nicolocarpignoli/pen/vYOeYKd))
+- Run it on your phone.
+- Scan [this picture](https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex-image.jpg) to see content through the camera.
 
-## Marker Based Documentation
+```html
+<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
+<style>
+  .arjs-loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
+  .arjs-loader div {
+    text-align: center;
+    font-size: 1.25em;
+    color: white;
+  }
+</style>
 
+<body style="margin : 0px; overflow: hidden;">
+  <!-- minimal loader shown until image descriptors are loaded -->
+  <div class="arjs-loader">
+    <div>Loading, please wait...</div>
+  </div>
+  <a-scene
+    vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+  >
+    <!-- we use cors-anywhere proxy to avoid cross-origin problems -->
+    <a-nft
+      type="nft"
+      url="https://cors-anywhere.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance=".01"
+      smoothThreshold="5"
+    >
+      <a-entity
+        gltf-model="https://cors-anywhere.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
+        scale="5 5 5"
+        position="50 150 0"
+      >
+      </a-entity>
+    </a-nft>
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+```
+
+### Location Based Example
+
+Please follow this simple steps:
+
+- Try the following snippet, and change `add-your-latitude` and `add-your-longitude` with your latitude and longitude, without the `<>`.
+- Activate GPS on your phone and run the example.
+- Look around. You should see the text looking at you, appearing in the requested position, even if you look around and move.
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>GeoAR.js demo</title>
+    <!-- with location based, use aframe v0.9.2 -->
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+  </head>
+
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene
+      vr-mode-ui="enabled: false"
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+    >
+      <a-text
+        value="This content will always face you."
+        look-at="[gps-camera]"
+        scale="120 120 120"
+        gps-entity-place="latitude: <add-your-latitude>; longitude: <add-your-longitude>;"
+      ></a-text>
+      <a-camera gps-camera rotation-reader> </a-camera>
+    </a-scene>
+  </body>
+</html>
+```
+
+### Marker Based Example
