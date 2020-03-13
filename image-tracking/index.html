@@ -92,6 +92,7 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#image-tracking">Image Tracking</a></li>
             <li><a href="#getting-started-with-image-tracking">Getting started with Image Tracking</a></li>
+            <li><a href="#choose-good-images">Choose good images</a></li>
             <li><a href="#create-image-descriptors">Create Image Descriptors</a></li>
             <li><a href="#render-the-content">Render the content</a></li>
     </ul>
@@ -103,8 +104,23 @@
 <p>All the following examples are with A-Frame, for semplicity. You can use three.js if you want. See on the official repository the <a href="https://github.com/AR-js-org/AR.js/tree/master/three.js/examples">three.js examples</a>, search for 'nft' example.</p>
 <p>All A-Frame examples for Image Tracking can be found <a href="https://github.com/AR-js-org/AR.js/tree/master/aframe/examples/image-tracking/">here</a>.</p>
 <h2 id="getting-started-with-image-tracking">Getting started with Image Tracking</h2>
+<p>Thanks to <a href="https://twitter.com/DanielCarnaux">Daniel Fernandes</a> for contribution on this docs section.</p>
+<p>Natural Feature Tracking or NFT is a technology that enables the use of images instead of markers like QR Codes or the Hiro.</p>
+<p><strong>Now you can use any image you want!</strong></p>
+<p>The software tracks interesting points in the image and from that it estimates the position of the camera. These interesting points (aka "Image Descriptors") are created using the <code>NFT Marker Creator</code>, a tool available to you for creating NFT markers, it has two versions the <a href="https://carnaux.github.io/NFT-Marker-Creator/">WEB APP</a>(recommended), and the <a href="https://github.com/Carnaux/NFT-Marker-Creator">NODE APP</a>. There is also a fork on the AR.js Github organisation, but as for now, <a href="https://twitter.com/DanielCarnaux">Daniel Fernandes</a> version works perfectly.</p>
+<h2 id="choose-good-images">Choose good images</h2>
+<p>If you want to understand the creation of markers in more depth, check out the  NFT Marker Creator <a href="https://github.com/Carnaux/NFT-Marker-Creator/wiki/Creating-good-markers">wiki</a>.</p>
 <h2 id="create-image-descriptors">Create Image Descriptors</h2>
-<h2 id="render-the-content">Render the content</h2></div>
+<p>Once you have chosen your image, you can either use the <a href="https://carnaux.github.io/NFT-Marker-Creator/">web version</a> or the node version.</p>
+<p>If you're using the node version, this is the basic command to run:</p>
+<pre><code class="bash">node app.js -i &lt;path-to-the-img/image-name.jpg/png&gt;
+</code></pre>
+
+<p>And you will find the Image Descriptors files on the <code>output</code> folder. In the web version, the generator will automatically download the files from your browser.</p>
+<p>In either cases, you will end up with three files as Image Descriptors, with <code>.fset</code>, <code>.fset3</code>, <code>.iset</code>.
+Each of them will have the same prefix before the file extension. That one will be the Image Descriptor name that you will use on the AR.js web app.</p>
+<h2 id="render-the-content">Render the content</h2>
+<p>Now it's time to create the actual Web app.</p></div>
         </div>
 
         <footer class="col-md-12">
