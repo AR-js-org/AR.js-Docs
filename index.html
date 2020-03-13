@@ -94,7 +94,6 @@
             <li><a href="#why-arjs">Why AR.js</a></li>
             <li><a href="#import-the-library">Import the library</a></li>
             <li><a href="#requirements">Requirements</a></li>
-            <li><a href="#always-deploy-under-https">Always deploy under https</a></li>
             <li><a href="#getting-started">Getting started</a></li>
     </ul>
 </div></div>
@@ -162,8 +161,10 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <li>Location Based feature is only available on A-Frame</li>
 <li>Location Based can work with A-Frame up to version 0.9.2. Compatibility with A-Frame v1.0.0 is work in progress.</li>
 </ul>
-<h2 id="always-deploy-under-https">Always deploy under https</h2>
-<p>Accessing to the phone camera or to camera GPS sensors, due to major browsers restrictions, can be done only under https websites. Please, always run your examples on secure connections or localhost. <a href="https://pages.github.com/">Github Pages</a> is a great way to have free and live websites under https.</p>
+<h3 id="always-deploy-under-https">Always deploy under https</h3>
+<p>Accessing to the phone camera or to camera GPS sensors, due to major browsers restrictions, can be done only under https websites.</p>
+<p>All the examples you will see, and all AR.js web apps in general, have to be run on a server. You can use local server or deploy the static web app on the web.</p>
+<p>Please, always run your examples on secure connections servers or localhost. <a href="https://pages.github.com/">Github Pages</a> is a great way to have free and live websites under https.</p>
 <h2 id="getting-started">Getting started</h2>
 <p>Here we present three, basic examples, one for each AR feature. For specific documentation, on the top menu you can find every section, or you can click on the following links:</p>
 <ul>
@@ -174,8 +175,9 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <h3 id="image-tracking-example">Image Tracking Example</h3>
 <p>Please follow this simple steps:</p>
 <ul>
-<li>Create a new project with the code below (or <a href="https://codepen.io/nicolocarpignoli/pen/vYOeYKd"><strong>try this codepen</strong></a>)</li>
-<li>Run it on your phone.</li>
+<li>Create a new project with the code below (or <a href="https://codepen.io/nicolocarpignoli/pen/vYOeYKd"><strong>try this codepen</strong></a> and go directly to the last step)</li>
+<li>Run it on a server</li>
+<li>Open the website on your phone</li>
 <li>Scan <a href="https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex-image.jpg">this picture</a> to see content through the camera.</li>
 </ul>
 <pre><code class="html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js&quot;&gt;&lt;/script&gt;
@@ -237,8 +239,9 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <h3 id="location-based-example">Location Based Example</h3>
 <p>Please follow this simple steps:</p>
 <ul>
-<li>Try the following snippet, and change <code>add-your-latitude</code> and <code>add-your-longitude</code> with your latitude and longitude, without the <code>&lt;&gt;</code>.</li>
-<li>Activate GPS on your phone and run the example.</li>
+<li>Create a new project with the following snippet, and change <code>add-your-latitude</code> and <code>add-your-longitude</code> with your latitude and longitude, without the <code>&lt;&gt;</code>.</li>
+<li>Run it on a server</li>
+<li>Activate GPS on your phone and navigate to the example URL</li>
 <li>Look around. You should see the text looking at you, appearing in the requested position, even if you look around and move.</li>
 </ul>
 <pre><code class="html">&lt;!DOCTYPE html&gt;
@@ -271,7 +274,32 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 &lt;/html&gt;
 </code></pre>
 
-<h3 id="marker-based-example">Marker Based Example</h3></div>
+<h3 id="marker-based-example">Marker Based Example</h3>
+<p>Please follow this simple steps:</p>
+<ul>
+<li>Create a new project with the code below (or <a href="https://codepen.io/nicolocarpignoli/pen/vMBgob"><strong>try this codepen</strong></a> and go directly to the last step)</li>
+<li>Run it on a server</li>
+<li>Open the website on your phone</li>
+<li>Scan <a href="https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex-image.jpg">this picture</a> to see content through the camera.</li>
+</ul>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;script src=&quot;https://aframe.io/releases/1.0.0/aframe.min.js&quot;&gt;&lt;/script&gt;
+    &lt;!-- we import arjs version without NFT but with marker + location based support --&gt;
+    &lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js&quot;&gt;&lt;/script&gt;
+    &lt;body style=&quot;margin : 0px; overflow: hidden;&quot;&gt;
+        &lt;a-scene embedded arjs&gt;
+        &lt;a-marker preset=&quot;hiro&quot;&gt;
+            &lt;a-entity
+            position=&quot;0 0.5 0&quot;
+            gltf-model=&quot;https://cors-anywhere.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf&quot;
+            &gt;&lt;/a-entity&gt;
+        &lt;/a-marker&gt;
+        &lt;a-entity camera&gt;&lt;/a-entity&gt;
+        &lt;/a-scene&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
@@ -354,5 +382,5 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-03-13 14:44:17
+Build Date UTC : 2020-03-13 15:29:14
 -->
