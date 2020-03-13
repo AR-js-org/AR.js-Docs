@@ -240,3 +240,11 @@ Please follow this simple steps:
     </body>
 </html>
 ```
+
+### Advanced stuff
+
+AR.js offers two ways, with A-Frame, to interact with the web page: clicks/touches events and Overlayed DOM interaction.
+
+Also, there are several Custom Events triggered during the life cycle of an AR.js web app.
+
+You can learn more about these aspects on the [UI and Events section](./ui-events.md).
