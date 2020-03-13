@@ -90,9 +90,13 @@ Some requirements and known restrictions are listed below:
 - Location Based feature is only available on A-Frame
 - Location Based can work with A-Frame up to version 0.9.2. Compatibility with A-Frame v1.0.0 is work in progress.
 
-## Always deploy under https
+### Always deploy under https
 
-Accessing to the phone camera or to camera GPS sensors, due to major browsers restrictions, can be done only under https websites. Please, always run your examples on secure connections or localhost. [Github Pages](https://pages.github.com/) is a great way to have free and live websites under https.
+Accessing to the phone camera or to camera GPS sensors, due to major browsers restrictions, can be done only under https websites.
+
+All the examples you will see, and all AR.js web apps in general, have to be run on a server. You can use local server or deploy the static web app on the web.
+
+Please, always run your examples on secure connections servers or localhost. [Github Pages](https://pages.github.com/) is a great way to have free and live websites under https.
 
 ## Getting started
 
@@ -106,8 +110,9 @@ Here we present three, basic examples, one for each AR feature. For specific doc
 
 Please follow this simple steps:
 
-- Create a new project with the code below (or [**try this codepen**](https://codepen.io/nicolocarpignoli/pen/vYOeYKd))
-- Run it on your phone.
+- Create a new project with the code below (or [**try this codepen**](https://codepen.io/nicolocarpignoli/pen/vYOeYKd) and go directly to the last step)
+- Run it on a server
+- Open the website on your phone
 - Scan [this picture](https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex-image.jpg) to see content through the camera.
 
 ```html
@@ -171,8 +176,9 @@ Please follow this simple steps:
 
 Please follow this simple steps:
 
-- Try the following snippet, and change `add-your-latitude` and `add-your-longitude` with your latitude and longitude, without the `<>`.
-- Activate GPS on your phone and run the example.
+- Create a new project with the following snippet, and change `add-your-latitude` and `add-your-longitude` with your latitude and longitude, without the `<>`.
+- Run it on a server
+- Activate GPS on your phone and navigate to the example URL
 - Look around. You should see the text looking at you, appearing in the requested position, even if you look around and move.
 
 ```html
@@ -207,3 +213,30 @@ Please follow this simple steps:
 ```
 
 ### Marker Based Example
+
+Please follow this simple steps:
+
+- Create a new project with the code below (or [**try this codepen**](https://codepen.io/nicolocarpignoli/pen/vMBgob) and go directly to the last step)
+- Run it on a server
+- Open the website on your phone
+- Scan [this picture](https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex-image.jpg) to see content through the camera.
+
+```html
+<!DOCTYPE html>
+<html>
+    <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+    <!-- we import arjs version without NFT but with marker + location based support -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <body style="margin : 0px; overflow: hidden;">
+        <a-scene embedded arjs>
+        <a-marker preset="hiro">
+            <a-entity
+            position="0 0.5 0"
+            gltf-model="https://cors-anywhere.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
+            ></a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
+        </a-scene>
+    </body>
+</html>
+```
