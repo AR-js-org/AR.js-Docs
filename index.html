@@ -93,11 +93,9 @@
         <li class="main active"><a href="#arjs-augmented-reality-on-the-web">AR.js - Augmented Reality on the Web</a></li>
             <li><a href="#why-arjs">Why AR.js</a></li>
             <li><a href="#import-the-library">Import the library</a></li>
-            <li><a href="#before-you-start">Before you start...</a></li>
+            <li><a href="#requirements">Requirements</a></li>
+            <li><a href="#always-deploy-under-https">Always deploy under https</a></li>
             <li><a href="#getting-started">Getting started</a></li>
-            <li><a href="#image-tracking-documentation">Image Tracking Documentation</a></li>
-            <li><a href="#location-based-documentation">Location Based Documentation</a></li>
-            <li><a href="#marker-based-documentation">Marker Based Documentation</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -106,14 +104,13 @@
 <p><img src="./logo.png" height="200" /></p>
 <hr />
 <p>AR.js is a lightweight library for Augmented Reality on the Web, coming with features like Image Tracking, Location based AR and Marker tracking.</p>
-<p>Welcome to the official repository!</p>
 <h2 id="why-arjs">Why AR.js</h2>
 <p>We believe in the Web, a collaborative and accessible place. We also believe in the Augmented Reality technology, as a new communication medium, that can help people to see the reality in new, exciting ways. We see Augmented Reality (AR) used everyday for a lot of useful applications, from art, to education, also for fun.</p>
 <p>We strongly believe that such a powerful technology, that can help people and leverage their creativity, should be free in some way. Also collaborative, if possible. And so, we continue the work started by Jerome Etienne, in bringing AR on the Web, as a free and Open Source technology.</p>
 <p>Thank you for being interested in this, if you'd like to collaborate in any way, contact us (<a href="https://twitter.com/nicolocarp">https://twitter.com/nicolocarp</a>).</p>
-<p>The project is now under a Github organization, that you can find at <a href="https://github.com/ar-js-org">https://github.com/ar-js-org</a>.</p>
+<p>The project is now under a Github organization, that you can find at <a href="https://github.com/ar-js-org">https://github.com/ar-js-org</a> and you can ask to be part of it, for free.</p>
 <h3 id="ar-types">AR types</h3>
-<p>It features the following types of Augmented Reality, on the Web:</p>
+<p>Ar.js features the following types of Augmented Reality, on the Web:</p>
 <ul>
 <li>Image Tracking</li>
 <li>Location Based AR</li>
@@ -126,18 +123,155 @@
 <li><strong>Open Source</strong> : It is completely open source and free of charge!</li>
 <li><strong>Standards</strong> : It works on any phone with <a href="http://caniuse.com/#feat=webgl">webgl</a> and <a href="http://caniuse.com/#feat=stream">webrtc</a></li>
 </ul>
+<p>AR.js has reached version 3. This is the official repository: <a href="https://github.com/jeromeetienne/AR.js/issues">https://github.com/AR-js-org/AR.js</a>.
+If you want to visit the old AR.js repository, here it is: <a href="https://github.com/jeromeetienne/AR.js">https://github.com/jeromeetienne/AR.js</a>.</p>
 <h2 id="import-the-library">Import the library</h2>
-<h3 id="import-using-html-script">Import using HTML script</h3>
-<h2 id="before-you-start">Before you start...</h2>
-<h3 id="requirements">Requirements</h3>
-<h3 id="deploy-under-https">Deploy under https</h3>
+<p>AR.js from version 3 has a new structure.</p>
+<p><strong>AR.js is coming in two, different build. They are both maintained. They are exclusive.</strong></p>
+<p>The file you want to import depends on what feature you want to have, and also which render library you want to use.</p>
+<p>AR.js uses <a href="https://github.com/artoolkitx/jsartoolkit5">jsartoolkit5</a> for tracking, but can display augmented content with either <a href="https://threejs.org/">three.js</a> or <a href="https://aframe.io/">A-Frame</a>.</p>
+<p>You can import AR.js in one version of your choice, using the <code>&lt;script&gt;</code> tag on your HTML.</p>
+<hr />
+<p><strong>AR.js with Image Tracking + Location Based AR</strong></p>
+<p>Import AFRAME version:</p>
+<pre><code class="html">&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js&quot;&gt;
+</code></pre>
+
+<p>Import three.js version:</p>
+<pre><code class="html">&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-nft.js&quot;&gt;
+</code></pre>
+
+<hr />
+<p><strong>AR.js with Marker Tracking + Location Based AR:</strong></p>
+<p>Import AFRAME version:</p>
+<pre><code class="html">&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js&quot;&gt;
+</code></pre>
+
+<p>Import three.js version:</p>
+<pre><code class="html">&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar.js&quot;&gt;
+</code></pre>
+
+<h2 id="requirements">Requirements</h2>
+<p>Some requirements and known restrictions are listed below:</p>
+<ul>
+<li>It works on any phone with <a href="http://caniuse.com/#feat=webgl">webgl</a> and <a href="http://caniuse.com/#feat=stream">webrtc</a>.</li>
+<li>Marker based is very lightweight, while Image Tracking is more CPU consuming.</li>
+<li>You cannot use Chrome on iOS, as Chrome on iOS did not support, at the moment, camera access</li>
+<li>On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.</li>
+<li>To work with Location Based feature, your phone needs to have GPS sensors. Please, read carefully all suggestions that AR.js pops up for Location Based on iOS, as iOS requires user actions to activate geoposition.</li>
+<li>Location Based feature is only available on A-Frame</li>
+<li>Location Based can work with A-Frame up to version 0.9.2. Compatibility with A-Frame v1.0.0 is work in progress.</li>
+</ul>
+<h2 id="always-deploy-under-https">Always deploy under https</h2>
+<p>Accessing to the phone camera or to camera GPS sensors, due to major browsers restrictions, can be done only under https websites. Please, always run your examples on secure connections or localhost. <a href="https://pages.github.com/">Github Pages</a> is a great way to have free and live websites under https.</p>
 <h2 id="getting-started">Getting started</h2>
-<h3 id="image-tracking">Image Tracking</h3>
-<h2 id="image-tracking-documentation">Image Tracking Documentation</h2>
-<h3 id="location-based">Location Based</h3>
-<h2 id="location-based-documentation">Location Based Documentation</h2>
-<h3 id="marker-based">Marker Based</h3>
-<h2 id="marker-based-documentation">Marker Based Documentation</h2></div>
+<p>Here we present three, basic examples, one for each AR feature. For specific documentation, on the top menu you can find every section, or you can click on the following links:</p>
+<ul>
+<li><a href="image-tracking/">Image Tracking Documentation</a></li>
+<li><a href="location-based/">Location Based Documentation</a></li>
+<li><a href="marker-based/">Marker Based Documentation</a></li>
+</ul>
+<h3 id="image-tracking-example">Image Tracking Example</h3>
+<p>Please follow this simple steps:</p>
+<ul>
+<li>Create a new project with the code below (or <a href="https://codepen.io/nicolocarpignoli/pen/vYOeYKd"><strong>try this codepen</strong></a>)</li>
+<li>Run it on your phone.</li>
+<li>Scan <a href="https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex-image.jpg">this picture</a> to see content through the camera.</li>
+</ul>
+<pre><code class="html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js&quot;&gt;&lt;/script&gt;
+
+&lt;style&gt;
+  .arjs-loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .arjs-loader div {
+    text-align: center;
+    font-size: 1.25em;
+    color: white;
+  }
+&lt;/style&gt;
+
+&lt;body style=&quot;margin : 0px; overflow: hidden;&quot;&gt;
+  &lt;!-- minimal loader shown until image descriptors are loaded --&gt;
+  &lt;div class=&quot;arjs-loader&quot;&gt;
+    &lt;div&gt;Loading, please wait...&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;a-scene
+    vr-mode-ui=&quot;enabled: false;&quot;
+    renderer=&quot;logarithmicDepthBuffer: true;&quot;
+    embedded
+    arjs=&quot;trackingMethod: best; sourceType: webcam;debugUIEnabled: false;&quot;
+  &gt;
+    &lt;!-- we use cors-anywhere proxy to avoid cross-origin problems --&gt;
+    &lt;a-nft
+      type=&quot;nft&quot;
+      url=&quot;https://cors-anywhere.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex&quot;
+      smooth=&quot;true&quot;
+      smoothCount=&quot;10&quot;
+      smoothTolerance=&quot;.01&quot;
+      smoothThreshold=&quot;5&quot;
+    &gt;
+      &lt;a-entity
+        gltf-model=&quot;https://cors-anywhere.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf&quot;
+        scale=&quot;5 5 5&quot;
+        position=&quot;50 150 0&quot;
+      &gt;
+      &lt;/a-entity&gt;
+    &lt;/a-nft&gt;
+    &lt;a-entity camera&gt;&lt;/a-entity&gt;
+  &lt;/a-scene&gt;
+&lt;/body&gt;
+</code></pre>
+
+<h3 id="location-based-example">Location Based Example</h3>
+<p>Please follow this simple steps:</p>
+<ul>
+<li>Try the following snippet, and change <code>add-your-latitude</code> and <code>add-your-longitude</code> with your latitude and longitude, without the <code>&lt;&gt;</code>.</li>
+<li>Activate GPS on your phone and run the example.</li>
+<li>Look around. You should see the text looking at you, appearing in the requested position, even if you look around and move.</li>
+</ul>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;
+    &lt;title&gt;GeoAR.js demo&lt;/title&gt;
+    &lt;!-- with location based, use aframe v0.9.2 --&gt;
+    &lt;script src=&quot;https://aframe.io/releases/0.9.2/aframe.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+
+  &lt;body style=&quot;margin: 0; overflow: hidden;&quot;&gt;
+    &lt;a-scene
+      vr-mode-ui=&quot;enabled: false&quot;
+      embedded
+      arjs=&quot;sourceType: webcam; debugUIEnabled: false;&quot;
+    &gt;
+      &lt;a-text
+        value=&quot;This content will always face you.&quot;
+        look-at=&quot;[gps-camera]&quot;
+        scale=&quot;120 120 120&quot;
+        gps-entity-place=&quot;latitude: &lt;add-your-latitude&gt;; longitude: &lt;add-your-longitude&gt;;&quot;
+      &gt;&lt;/a-text&gt;
+      &lt;a-camera gps-camera rotation-reader&gt; &lt;/a-camera&gt;
+    &lt;/a-scene&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h3 id="marker-based-example">Marker Based Example</h3></div>
         </div>
 
         <footer class="col-md-12">
@@ -220,5 +354,5 @@
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-03-12 22:02:26
+Build Date UTC : 2020-03-13 14:44:17
 -->
