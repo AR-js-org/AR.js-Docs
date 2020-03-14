@@ -1,7 +1,5 @@
 # Marker Based
 
-## Markers type
-
 Markers are of three, different types:
 
 - Hiro
@@ -13,17 +11,25 @@ To learn more about markers, please read this articles:
 - [AR.js basic Marker Based tutorial and Markers explanation](https://medium.com/chialab-open-source/ar-js-the-simpliest-way-to-get-cross-browser-ar-on-the-web-8f670dd45462)
 - [Deliver AR.js experiences using only QRCodes (Markers inside QRCodes)](https://medium.com/chialab-open-source/how-to-deliver-ar-on-the-web-only-with-a-qr-code-e24b7b61f8cb).
 
-## How to choose good markers
+**TL:DR**
+
+- Hiro Marker is the default one, not very useful.
+- Barcode markers are auto-generated markers, from matrix computations. Learn more on the above articles on how to use them. If you need the full list of barcode markers, [here it is](https://github.com/nicolocarpignoli/artoolkit-barcode-markers-collection)
+- Pattern markers are custom ones, created starting from an image (very simple, hight contrast), loaded by the user.
+
+⚡️ You can create your Pattern Markers with this [tool](https://github.com/nicolocarpignoli/artoolkit-barcode-markers-collection).
+
+### How to choose good images for Pattern Markers
 
 Markers have a black border and high contrast shapes. Lately, we have added also white border markers with black background, altough the classic ones, with black border, behave better.
 
 Here's an article explaining all good practice on how to choose good markers, and also images to be used to generate custom markers: [10 tips to enhance your AR.js app](https://medium.com/chialab-open-source/10-tips-to-enhance-your-ar-js-app-8b44c6faffca).
 
-## API Reference for Marker Based
+### API Reference for Marker Based
 
-### A-Frame
+## A-Frame
 
-#### `<a-marker/>`
+### `<a-marker/>`
 
 Here are the attributes for this entity
 
@@ -41,14 +47,14 @@ Here are the attributes for this entity
 | smoothThreshold | threshold for smoothing, will keep still unless enough matrices are over tolerance - default: 2 | - |
 
 
-### three.js
+## three.js
 
-#### threex-artoolkit
+### threex-artoolkit
 
 threex.artookit is the three.js extension to easily handle [artoolkit](https://github.com/artoolkit/jsartoolkit5).
 It is the main part of my [AR.js effort](http://github.com/jeromeetienne/AR.js)
 
-#### Architecture
+### Architecture
 
 threex.artoolkit is composed of 3 classes
 
