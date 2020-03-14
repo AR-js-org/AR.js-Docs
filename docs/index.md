@@ -40,7 +40,7 @@ AR.js from version 3 has a new structure.
 
 **AR.js is coming in two, different build. They are both maintained. They are exclusive.**
 
-The file you want to import depends on what feature you want to have, and also which render library you want to use.
+The file you want to import depends on what features you want, and also which render library you want to use (A-Frame or three.js).
 
 AR.js uses [jsartoolkit5](https://github.com/artoolkitx/jsartoolkit5) for tracking, but can display augmented content with either [three.js](https://threejs.org/) or [A-Frame](https://aframe.io/).
 
@@ -82,10 +82,11 @@ Import three.js version:
 
 Some requirements and known restrictions are listed below:
 
-- It works on any phone with [webgl](http://caniuse.com/#feat=webgl) and [webrtc](http://caniuse.com/#feat=stream).
+- It works on every phone with [webgl](http://caniuse.com/#feat=webgl) and [webrtc](http://caniuse.com/#feat=stream).
 - Marker based is very lightweight, while Image Tracking is more CPU consuming.
 - You cannot use Chrome on iOS, as Chrome on iOS did not support, at the moment, camera access
 - On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.
+- Image Tracking, as for now, works only on mobile devices (due to aspect ratio issues)
 - To work with Location Based feature, your phone needs to have GPS sensors. Please, read carefully all suggestions that AR.js pops up for Location Based on iOS, as iOS requires user actions to activate geoposition.
 - Location Based feature is only available on A-Frame
 - Location Based can work with A-Frame up to version 0.9.2. Compatibility with A-Frame v1.0.0 is work in progress.
