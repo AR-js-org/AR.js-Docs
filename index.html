@@ -219,14 +219,14 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
     &lt;!-- we use cors-anywhere proxy to avoid cross-origin problems --&gt;
     &lt;a-nft
       type=&quot;nft&quot;
-      url=&quot;https://cors-anywhere.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex&quot;
+      url=&quot;https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex&quot;
       smooth=&quot;true&quot;
       smoothCount=&quot;10&quot;
       smoothTolerance=&quot;.01&quot;
       smoothThreshold=&quot;5&quot;
     &gt;
       &lt;a-entity
-        gltf-model=&quot;https://cors-anywhere.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf&quot;
+        gltf-model=&quot;https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf&quot;
         scale=&quot;5 5 5&quot;
         position=&quot;50 150 0&quot;
       &gt;
@@ -292,8 +292,9 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
         &lt;a-scene embedded arjs&gt;
         &lt;a-marker preset=&quot;hiro&quot;&gt;
             &lt;a-entity
-            position=&quot;0 0.5 0&quot;
-            gltf-model=&quot;https://cors-anywhere.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf&quot;
+            position=&quot;0 0 0&quot;
+            scale=&quot;0.05 0.05 0.05&quot;
+            gltf-model=&quot;https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf&quot;
             &gt;&lt;/a-entity&gt;
         &lt;/a-marker&gt;
         &lt;a-entity camera&gt;&lt;/a-entity&gt;
@@ -305,7 +306,26 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <h3 id="advanced-stuff">Advanced stuff</h3>
 <p>AR.js offers two ways, with A-Frame, to interact with the web page: clicks/touches events and Overlayed DOM interaction.</p>
 <p>Also, there are several Custom Events triggered during the life cycle of an AR.js web app.</p>
-<p>You can learn more about these aspects on the <a href="ui-events/">UI and Events section</a>.</p></div>
+<p>You can learn more about these aspects on the <a href="ui-events/">UI and Events section</a>.</p>
+<h3 id="arjs-architecture">AR.js architecture</h3>
+<p>AR.js uses <a href="https://github.com/artoolkitx/jsartoolkit5">jsartoolkit5</a> for tracking, but can display augmented content with either <a href="https://threejs.org/">three.js</a> or <a href="https://aframe.io/">A-Frame</a>.</p>
+<p><code>three.js</code> folder contains</p>
+<ul>
+<li>source code for AR.js core, Marker based and Image Tracking</li>
+<li>examples for AR.js three.js based</li>
+<li>build for three.js AR.js based</li>
+<li>vendor stuff (jsartoolkit5)</li>
+<li>workers (used for Image Tracking).</li>
+</ul>
+<p>When you find files that ends with <code>-nft</code> suffix, they're boundled only with the Image Tracking version.</p>
+<p>A-Frame version of AR.js uses three.js parts as its core. A-Frame here is it simply a wrapper to write AR with Custom Components in HTML.</p>
+<p><code>aframe</code> folder contains</p>
+<ul>
+<li>source code for AR.js A-Frame (aka wrappers for Marker Based, Image Tracking components)</li>
+<li>source code for Location Based</li>
+<li>build for A-Frame AR.js based</li>
+<li>examples for A-Frame AR.js.</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
@@ -388,5 +408,5 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-03-14 09:31:20
+Build Date UTC : 2020-03-14 17:49:25
 -->

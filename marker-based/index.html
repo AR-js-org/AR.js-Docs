@@ -90,11 +90,177 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#marker-based">Marker Based</a></li>
+            <li><a href="#markers-type">Markers type</a></li>
+            <li><a href="#how-to-choose-good-markers">How to choose good markers</a></li>
+            <li><a href="#api-reference-for-marker-based">API Reference for Marker Based</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-</div>
+<h1 id="marker-based">Marker Based</h1>
+<h2 id="markers-type">Markers type</h2>
+<p>Markers are of three, different types:</p>
+<ul>
+<li>Hiro</li>
+<li>Barcode</li>
+<li>Pattern.</li>
+</ul>
+<p>To learn more about markers, please read this articles:</p>
+<ul>
+<li><a href="https://medium.com/chialab-open-source/ar-js-the-simpliest-way-to-get-cross-browser-ar-on-the-web-8f670dd45462">AR.js basic Marker Based tutorial and Markers explanation</a></li>
+<li><a href="https://medium.com/chialab-open-source/how-to-deliver-ar-on-the-web-only-with-a-qr-code-e24b7b61f8cb">Deliver AR.js experiences using only QRCodes (Markers inside QRCodes)</a>.</li>
+</ul>
+<h2 id="how-to-choose-good-markers">How to choose good markers</h2>
+<p>Markers have a black border and high contrast shapes. Lately, we have added also white border markers with black background, altough the classic ones, with black border, behave better.</p>
+<p>Here's an article explaining all good practice on how to choose good markers, and also images to be used to generate custom markers: <a href="https://medium.com/chialab-open-source/10-tips-to-enhance-your-ar-js-app-8b44c6faffca">10 tips to enhance your AR.js app</a>.</p>
+<h2 id="api-reference-for-marker-based">API Reference for Marker Based</h2>
+<h3 id="a-frame">A-Frame</h3>
+<h4 id="lta-markergt"><code>&lt;a-marker/&gt;</code></h4>
+<p>Here are the attributes for this entity</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Component Mapping</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>type of marker - ['pattern', 'barcode', 'unknown' ]</td>
+<td>artoolkitmarker.type</td>
+</tr>
+<tr>
+<td>size</td>
+<td>size of the marker in meter</td>
+<td>artoolkitmarker.size</td>
+</tr>
+<tr>
+<td>url</td>
+<td>url of the pattern - IIF type='pattern'</td>
+<td>artoolkitmarker.patternUrl</td>
+</tr>
+<tr>
+<td>value</td>
+<td>value of the barcode - IIF type='barcode'</td>
+<td>artoolkitmarker.barcodeValue</td>
+</tr>
+<tr>
+<td>preset</td>
+<td>parameters preset - ['hiro', 'kanji']</td>
+<td>artoolkitmarker.preset</td>
+</tr>
+<tr>
+<td>emitevents</td>
+<td>emits 'markerFound' and 'markerLost' events - ['true', 'false']</td>
+<td>-</td>
+</tr>
+<tr>
+<td>smooth</td>
+<td>turn on/off camera smoothing - ['true', 'false'] - default: false</td>
+<td>-</td>
+</tr>
+<tr>
+<td>smoothCount</td>
+<td>number of matrices to smooth tracking over, more = smoother but slower follow - default: 5</td>
+<td>-</td>
+</tr>
+<tr>
+<td>smoothTolerance</td>
+<td>distance tolerance for smoothing, if smoothThreshold # of matrices are under tolerance, tracking will stay still - default: 0.01</td>
+<td>-</td>
+</tr>
+<tr>
+<td>smoothThreshold</td>
+<td>threshold for smoothing, will keep still unless enough matrices are over tolerance - default: 2</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="threejs">three.js</h3>
+<h4 id="threex-artoolkit">threex-artoolkit</h4>
+<p>threex.artookit is the three.js extension to easily handle <a href="https://github.com/artoolkit/jsartoolkit5">artoolkit</a>.
+It is the main part of my <a href="http://github.com/jeromeetienne/AR.js">AR.js effort</a></p>
+<h4 id="architecture">Architecture</h4>
+<p>threex.artoolkit is composed of 3 classes</p>
+<ul>
+<li><code>THREEx.ArToolkitSource</code> : It is the image which is analyzed to do the position tracking.
+  It can be the webcam, a video or even an image</li>
+<li><code>THREEx.ArToolkitContext</code>: It is the main engine. It will actually find the marker position
+  in the image source.</li>
+<li><code>THREEx.ArMarkerControls</code>: it controls the position of the marker
+  It use the classical <a href="https://github.com/mrdoob/three.js/tree/master/examples/js/controls">three.js controls API</a>.
+  It will make sure to position your content right on top of the marker.</li>
+</ul>
+<h4 id="threexarmarkercontrols">THREEx.ArMarkerControls</h4>
+<pre><code class="javascript">var parameters = {
+    // size of the marker in meter
+    size : 1,
+    // type of marker - ['pattern', 'barcode', 'unknown' ]
+    type : 'unknown',
+    // url of the pattern - IIF type='pattern'
+    patternUrl : null,
+    // value of the barcode - IIF type='barcode'
+    barcodeValue : null,
+    // change matrix mode - [modelViewMatrix, cameraTransformMatrix]
+    changeMatrixMode : 'modelViewMatrix',
+    // turn on/off camera smoothing
+    smooth: true,
+    // number of matrices to smooth tracking over, more = smoother but slower follow
+    smoothCount: 5,
+    // distance tolerance for smoothing, if smoothThreshold # of matrices are under tolerance, tracking will stay still
+    smoothTolerance: 0.01,
+    // threshold for smoothing, will keep still unless enough matrices are over tolerance
+    smoothThreshold: 2,
+}
+</code></pre>
+
+<h4 id="threexartoolkitcontext">THREEx.ArToolkitContext</h4>
+<pre><code class="javascript">var parameters = {
+    // debug - true if one should display artoolkit debug canvas, false otherwise
+    debug: false,
+    // the mode of detection - ['color', 'color_and_matrix', 'mono', 'mono_and_matrix']
+    detectionMode: 'color_and_matrix',
+    // type of matrix code - valid iif detectionMode end with 'matrix' - [3x3, 3x3_HAMMING63, 3x3_PARITY65, 4x4, 4x4_BCH_13_9_3, 4x4_BCH_13_5_5]
+    matrixCodeType: '3x3',
+    // Pattern ratio for custom markers
+    patternRatio: 0.5
+    // Labeling mode for markers - ['black_region', 'white_region']
+    // black_region: Black bordered markers on a white background, white_region: White bordered markers on a black background
+    labelingMode: 'black_region',
+
+    // url of the camera parameters
+    cameraParametersUrl: 'parameters/camera_para.dat',
+
+    // tune the maximum rate of pose detection in the source image
+    maxDetectionRate: 60,
+    // resolution of at which we detect pose in the source image
+    canvasWidth: 640,
+    canvasHeight: 480,
+
+    // enable image smoothing or not for canvas copy - default to true
+    // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/imageSmoothingEnabled
+    imageSmoothingEnabled : true,
+}
+</code></pre>
+
+<h4 id="threexartoolkitsource">THREEx.ArToolkitSource</h4>
+<pre><code class="javascript">var parameters = {
+    // type of source - ['webcam', 'image', 'video']
+    sourceType : 'webcam',
+    // url of the source - valid if sourceType = image|video
+    sourceUrl : null,
+
+    // resolution of at which we initialize the source image
+    sourceWidth: 640,
+    sourceHeight: 480,
+    // resolution displayed for the source
+    displayWidth: 640,
+    displayHeight: 480,
+}
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
