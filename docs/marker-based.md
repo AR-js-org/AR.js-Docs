@@ -17,7 +17,7 @@ To learn more about markers, please read this articles:
 - Barcode markers are auto-generated markers, from matrix computations. Learn more on the above articles on how to use them. If you need the full list of barcode markers, [here it is](https://github.com/nicolocarpignoli/artoolkit-barcode-markers-collection)
 - Pattern markers are custom ones, created starting from an image (very simple, hight contrast), loaded by the user.
 
-⚡️ You can create your Pattern Markers with this [tool](https://github.com/nicolocarpignoli/artoolkit-barcode-markers-collection).
+⚡️ You can create your Pattern Markers with this [tool](https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html).
 
 ### How to choose good images for Pattern Markers
 
