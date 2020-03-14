@@ -12,7 +12,7 @@
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/docco.min.css">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -91,15 +91,15 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#marker-based">Marker Based</a></li>
-            <li><a href="#markers-type">Markers type</a></li>
-            <li><a href="#how-to-choose-good-markers">How to choose good markers</a></li>
+            <li><a href="#how-to-choose-good-images-for-pattern-markers">How to choose good images for Pattern Markers</a></li>
             <li><a href="#api-reference-for-marker-based">API Reference for Marker Based</a></li>
+            <li><a href="#a-frame">A-Frame</a></li>
+            <li><a href="#threejs">three.js</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h1 id="marker-based">Marker Based</h1>
-<h2 id="markers-type">Markers type</h2>
 <p>Markers are of three, different types:</p>
 <ul>
 <li>Hiro</li>
@@ -111,12 +111,19 @@
 <li><a href="https://medium.com/chialab-open-source/ar-js-the-simpliest-way-to-get-cross-browser-ar-on-the-web-8f670dd45462">AR.js basic Marker Based tutorial and Markers explanation</a></li>
 <li><a href="https://medium.com/chialab-open-source/how-to-deliver-ar-on-the-web-only-with-a-qr-code-e24b7b61f8cb">Deliver AR.js experiences using only QRCodes (Markers inside QRCodes)</a>.</li>
 </ul>
-<h2 id="how-to-choose-good-markers">How to choose good markers</h2>
+<p><strong>TL:DR</strong></p>
+<ul>
+<li>Hiro Marker is the default one, not very useful.</li>
+<li>Barcode markers are auto-generated markers, from matrix computations. Learn more on the above articles on how to use them. If you need the full list of barcode markers, <a href="https://github.com/nicolocarpignoli/artoolkit-barcode-markers-collection">here it is</a></li>
+<li>Pattern markers are custom ones, created starting from an image (very simple, hight contrast), loaded by the user.</li>
+</ul>
+<p>⚡️ You can create your Pattern Markers with this <a href="https://github.com/nicolocarpignoli/artoolkit-barcode-markers-collection">tool</a>.</p>
+<h3 id="how-to-choose-good-images-for-pattern-markers">How to choose good images for Pattern Markers</h3>
 <p>Markers have a black border and high contrast shapes. Lately, we have added also white border markers with black background, altough the classic ones, with black border, behave better.</p>
 <p>Here's an article explaining all good practice on how to choose good markers, and also images to be used to generate custom markers: <a href="https://medium.com/chialab-open-source/10-tips-to-enhance-your-ar-js-app-8b44c6faffca">10 tips to enhance your AR.js app</a>.</p>
-<h2 id="api-reference-for-marker-based">API Reference for Marker Based</h2>
-<h3 id="a-frame">A-Frame</h3>
-<h4 id="lta-markergt"><code>&lt;a-marker/&gt;</code></h4>
+<h3 id="api-reference-for-marker-based">API Reference for Marker Based</h3>
+<h2 id="a-frame">A-Frame</h2>
+<h3 id="lta-markergt"><code>&lt;a-marker/&gt;</code></h3>
 <p>Here are the attributes for this entity</p>
 <table>
 <thead>
@@ -179,11 +186,11 @@
 </tr>
 </tbody>
 </table>
-<h3 id="threejs">three.js</h3>
-<h4 id="threex-artoolkit">threex-artoolkit</h4>
+<h2 id="threejs">three.js</h2>
+<h3 id="threex-artoolkit">threex-artoolkit</h3>
 <p>threex.artookit is the three.js extension to easily handle <a href="https://github.com/artoolkit/jsartoolkit5">artoolkit</a>.
 It is the main part of my <a href="http://github.com/jeromeetienne/AR.js">AR.js effort</a></p>
-<h4 id="architecture">Architecture</h4>
+<h3 id="architecture">Architecture</h3>
 <p>threex.artoolkit is composed of 3 classes</p>
 <ul>
 <li><code>THREEx.ArToolkitSource</code> : It is the image which is analyzed to do the position tracking.
