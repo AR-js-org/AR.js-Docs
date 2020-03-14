@@ -232,7 +232,8 @@ Please follow this simple steps:
         <a-scene embedded arjs>
         <a-marker preset="hiro">
             <a-entity
-            position="0 0.5 0"
+            position="0 0 0"
+            scale="0.05 0.05 0.05"
             gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
             ></a-entity>
         </a-marker>
@@ -249,3 +250,26 @@ AR.js offers two ways, with A-Frame, to interact with the web page: clicks/touch
 Also, there are several Custom Events triggered during the life cycle of an AR.js web app.
 
 You can learn more about these aspects on the [UI and Events section](./ui-events.md).
+
+### AR.js architecture
+
+AR.js uses [jsartoolkit5](https://github.com/artoolkitx/jsartoolkit5) for tracking, but can display augmented content with either [three.js](https://threejs.org/) or [A-Frame](https://aframe.io/).
+
+`three.js` folder contains
+
+- source code for AR.js core, Marker based and Image Tracking
+- examples for AR.js three.js based
+- build for three.js AR.js based
+- vendor stuff (jsartoolkit5)
+- workers (used for Image Tracking).
+
+When you find files that ends with `-nft` suffix, they're boundled only with the Image Tracking version.
+
+A-Frame version of AR.js uses three.js parts as its core. A-Frame here is it simply a wrapper to write AR with Custom Components in HTML.
+
+`aframe` folder contains
+
+- source code for AR.js A-Frame (aka wrappers for Marker Based, Image Tracking components)
+- source code for Location Based
+- build for A-Frame AR.js based
+- examples for A-Frame AR.js.
