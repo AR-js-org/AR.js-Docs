@@ -59,7 +59,7 @@
                                 <a href="../marker-based/">Marker Based</a>
                             </li>
                             <li >
-                                <a href="../tools/">Tools</a>
+                                <a href="../ui-events/">UI and Events</a>
                             </li>
                             <li >
                                 <a href="../about/">About</a>
@@ -105,9 +105,8 @@
 <p>All A-Frame examples for Image Tracking can be found <a href="https://github.com/AR-js-org/AR.js/tree/master/aframe/examples/image-tracking/">here</a>.</p>
 <h2 id="getting-started-with-image-tracking">Getting started with Image Tracking</h2>
 <p>Thanks to <a href="https://twitter.com/DanielCarnaux">Daniel Fernandes</a> for contribution on this docs section.</p>
-<p>Natural Feature Tracking or NFT is a technology that enables the use of images instead of markers like QR Codes or the Hiro.</p>
-<p><strong>Now you can use any image you want!</strong></p>
-<p>The software tracks interesting points in the image and from that it estimates the position of the camera. These interesting points (aka "Image Descriptors") are created using the <code>NFT Marker Creator</code>, a tool available to you for creating NFT markers, it has two versions the <a href="https://carnaux.github.io/NFT-Marker-Creator/">WEB APP</a>(recommended), and the <a href="https://github.com/Carnaux/NFT-Marker-Creator">NODE APP</a>. There is also a fork on the AR.js Github organisation, but as for now, <a href="https://twitter.com/DanielCarnaux">Daniel Fernandes</a> version works perfectly.</p>
+<p>Natural Feature Tracking or NFT is a technology that enables the use of images instead of markers like QR Codes or the Hiro marker.</p>
+<p>The software tracks interesting points in the image and from that it estimates the position of the camera. These interesting points (aka "Image Descriptors") are created using the <code>NFT Marker Creator</code>, a tool available to you for creating NFT markers, it has two versions: the <a href="https://carnaux.github.io/NFT-Marker-Creator/">Web version</a>(recommended), and the <a href="https://github.com/Carnaux/NFT-Marker-Creator">node.js version</a>. There is also a fork of this project on the AR.js Github organisation, but as for now, <a href="https://twitter.com/DanielCarnaux">Daniel Fernandes</a> version works perfectly.</p>
 <h2 id="choose-good-images">Choose good images</h2>
 <p>If you want to understand the creation of markers in more depth, check out the  NFT Marker Creator <a href="https://github.com/Carnaux/NFT-Marker-Creator/wiki/Creating-good-markers">wiki</a>.</p>
 <h2 id="create-image-descriptors">Create Image Descriptors</h2>
@@ -120,7 +119,130 @@
 <p>In either cases, you will end up with three files as Image Descriptors, with <code>.fset</code>, <code>.fset3</code>, <code>.iset</code>.
 Each of them will have the same prefix before the file extension. That one will be the Image Descriptor name that you will use on the AR.js web app.</p>
 <h2 id="render-the-content">Render the content</h2>
-<p>Now it's time to create the actual Web app.</p></div>
+<p>Now it's time to create the actual Web app.</p>
+<pre><code class="html">&lt;!-- import aframe and then ar.js with image tracking / location based features --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- style for the loader --&gt;
+&lt;style&gt;
+  .arjs-loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .arjs-loader div {
+    text-align: center;
+    font-size: 1.25em;
+    color: white;
+  }
+&lt;/style&gt;
+
+&lt;body style=&quot;margin : 0px; overflow: hidden;&quot;&gt;
+  &lt;!-- minimal loader shown until image descriptors are loaded. this may take a while according to the device computational power --&gt;
+  &lt;div class=&quot;arjs-loader&quot;&gt;
+    &lt;div&gt;Loading, please wait...&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- a-frame scene --&gt;
+  &lt;a-scene
+    vr-mode-ui=&quot;enabled: false;&quot;
+    renderer=&quot;logarithmicDepthBuffer: true;&quot;
+    embedded
+    arjs=&quot;trackingMethod: best; sourceType: webcam;debugUIEnabled: false;&quot;
+  &gt;
+    &lt;!-- we use cors-anywhere proxy to avoid cross-origin problems --&gt;
+    &lt;!-- a-nft is the anchor that defines an Image Tracking entity --&gt;
+    &lt;!-- on 'url' use the path to the Image Descriptors created before. --&gt;
+    &lt;!-- the path should end with the name without the extension e.g. if file is 'pinball.fset' the path should end with 'pinball' --&gt;
+    &lt;a-nft
+      type=&quot;nft&quot;
+      url=&quot;&lt;path-to-your-image-descriptors&gt;&quot;
+      smooth=&quot;true&quot;
+      smoothCount=&quot;10&quot;
+      smoothTolerance=&quot;.01&quot;
+      smoothThreshold=&quot;5&quot;
+    &gt;
+        &lt;!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity --&gt;
+        &lt;a-entity
+            gltf-model=&quot;&lt;path-to-your-model&gt;&quot;
+            scale=&quot;5 5 5&quot;
+            position=&quot;50 150 0&quot;
+        &gt;
+        &lt;/a-entity&gt;
+    &lt;/a-nft&gt;
+    &lt;!-- static camera that moves according to the device movemenents. it always points towards center of the screen --&gt;
+    &lt;a-entity camera&gt;&lt;/a-entity&gt;
+  &lt;/a-scene&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p>See on the comments above, inline on the code, for explanations.</p>
+<p>You can refer to <a href="https://aframe.io/docs/1.0.0/introduction/">A-Frame docs</a> to know everything about content and customization. You can add geometries, 3D models, videos, images.
+And you can customize their position, scale, rotation and so on.</p>
+<p>The only custom component here is the <code>a-nft</code>, the Image Tracking HTML anchor.</p>
+<h3 id="lta-nftgt"><code>&lt;a-nft\&gt;</code></h3>
+<p>Here are the attributes for this entity</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Component Mapping</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>type of marker - ['nft' only valid value]</td>
+<td>artoolkitmarker.type</td>
+</tr>
+<tr>
+<td>url</td>
+<td>url of the Image Descriptors, without extension</td>
+<td>artoolkitmarker.descriptorsUrl</td>
+</tr>
+<tr>
+<td>emitevents</td>
+<td>emits 'markerFound' and 'markerLost' events - ['true', 'false']</td>
+<td>-</td>
+</tr>
+<tr>
+<td>smooth</td>
+<td>turn on/off camera smoothing - ['true', 'false'] - default: false</td>
+<td>-</td>
+</tr>
+<tr>
+<td>smoothCount</td>
+<td>number of matrices to smooth tracking over, more = smoother but slower follow - default: 5</td>
+<td>-</td>
+</tr>
+<tr>
+<td>smoothTolerance</td>
+<td>distance tolerance for smoothing, if smoothThreshold # of matrices are under tolerance, tracking will stay still - default: 0.01</td>
+<td>-</td>
+</tr>
+<tr>
+<td>smoothThreshold</td>
+<td>threshold for smoothing, will keep still unless enough matrices are over tolerance - default: 2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>size</td>
+<td>size of the marker in meter</td>
+<td>artoolkitmarker.size</td>
+</tr>
+</tbody>
+</table>
+<p>⚡️ It is suggested to use <code>smooth</code>, <code>smoothCount</code> and <code>smoothTolerance</code> because of weak stabilization of content in Image Tracking. Thanks to smoothing, content is way more stable, from 3D models to 2D videos.</p></div>
         </div>
 
         <footer class="col-md-12">
