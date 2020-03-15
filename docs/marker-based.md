@@ -17,7 +17,7 @@ To learn more about markers, please read this articles:
 - Barcode markers are auto-generated markers, from matrix computations. Learn more on the above articles on how to use them. If you need the full list of barcode markers, [here it is](https://github.com/nicolocarpignoli/artoolkit-barcode-markers-collection)
 - Pattern markers are custom ones, created starting from an image (very simple, hight contrast), loaded by the user.
 
-⚡️ You can create your Pattern Markers with this [tool](https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html).
+⚡️ You can create your Pattern Markers with this [tool](https://ar-js-org.github.io/AR.js/three.js/examples/marker-training/examples/generator.html).
 
 ### How to choose good images for Pattern Markers
 
@@ -50,7 +50,7 @@ Here are the attributes for this entity
 
 ### threex-artoolkit
 
-threex.artookit is the three.js extension to easily handle [artoolkit](https://github.com/artoolkit/jsartoolkit5).
+threex.artoolkit is the three.js extension to easily handle [artoolkit](https://github.com/artoolkitx/jsartoolkit5).
 It is the main part of my [AR.js effort](http://github.com/jeromeetienne/AR.js)
 
 ### Architecture
@@ -106,7 +106,7 @@ var parameters = {
 	// black_region: Black bordered markers on a white background, white_region: White bordered markers on a black background
 	labelingMode: 'black_region',
 
-	// url of the camera parameters
+    // url of the camera parameters
     cameraParametersUrl: THREEx.ArToolkitContext.baseURL + '../data/data/camera_para.dat',
 
 	// tune the maximum rate of pose detection in the source image

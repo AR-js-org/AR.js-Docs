@@ -120,7 +120,7 @@ Please follow this simple steps:
 - Create a new project with the code below (or [**try this codepen**](https://codepen.io/nicolocarpignoli/pen/vYOeYKd) and go directly to the last step)
 - Run it on a server
 - Open the website on your phone
-- Scan [this picture](https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex-image.jpg) to see content through the camera.
+- Scan [this picture](https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex-image-big.jpeg) to see content through the camera.
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>

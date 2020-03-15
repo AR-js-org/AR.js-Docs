@@ -13,12 +13,10 @@ AR.js is now under a Github organisation, that means, more collaborative than ev
 
 A huge, huge thanks to the wonderful guys who made this possible:
 
-- [Walter Perdan](https://www.walterperdan.com/it/)
+- [Walter Perdan](https://www.walterperdan.com)
 - [Thorsten Bux](https://twitter.com/thor_bux)
 - [Daniel Fernandes](https://twitter.com/DanielCarnaux)
 - [misdake](https://github.com/misdake)
 - [hatsumatsu](https://github.com/hatsumatsu)
 
 and many more. It was great to built this with all of you.
-
-
