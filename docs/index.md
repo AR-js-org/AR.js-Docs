@@ -26,7 +26,7 @@ It basically means that is possible to release every new version instantly, fix 
 new features in near real-time, opening a lot of pratical possibilities.
 
 For users, it means to reach an AR experience just visiting a website. As QR Codes are now
-widespread, it's also possible to scan a QR Code and reach the URL without even typing its URL.
+widespread, it's also possible to scan a QR Code and reach the URL without even type.
 Addictionally, users do not have to reserve storage space on their download the AR app,
 and do not have to keep it updated.
 
