@@ -6,9 +6,33 @@
 
 AR.js is a lightweight library for Augmented Reality on the Web, coming with features like Image Tracking, Location based AR and Marker tracking.
 
+## What Web AR means (Augmented Reality on the Web)
+
+Augmented Reality is the technology that makes possible to add overlayed content on the real world.
+It can be provided for several type of devices: handleheld (like mobile phones), headsets, desktop
+displays, and so on.
+
+For handleheld devices (more in general, for video-see-through devices) the 'reality' is captured
+from one or more cameras and then shown on the device display, adding some kind of content on top of it.
+
+-----
+
+<img src="./intro-image.gif"/>
+
+For developers, to develop Augmented Reality ('AR' from now on) on the Web, means to void all the
+Mobile app developement efforts and costs related to App stores (validation, time to publish). It also means to re-use well known technologies like Javascript, HTML and CSS, known from a lot of developers and possibly designers.
+
+It basically means that is possible to release every new version instantly, fix bugs or release
+new features in near real-time, opening a lot of pratical possibilities.
+
+For users, it means to reach an AR experience just visiting a website. As QR Codes are now
+widespread, it's also possible to scan a QR Code and reach the URL without even typing its URL.
+Addictionally, users do not have to reserve storage space on their download the AR app,
+and do not have to keep it updated.
+
 ## Why AR.js
 
-We believe in the Web, a collaborative and accessible place. We also believe in the Augmented Reality technology, as a new communication medium, that can help people to see the reality in new, exciting ways. We see Augmented Reality (AR) used everyday for a lot of useful applications, from art, to education, also for fun.
+We believe in the Web, as a collaborative and accessible environment. We also believe in the Augmented Reality technology, as a new communication medium, that can help people to see the reality in new, exciting ways. We see Augmented Reality (AR) used everyday for a lot of useful applications, from art, to education, also for fun.
 
 We strongly believe that such a powerful technology, that can help people and leverage their creativity, should be free in some way. Also collaborative, if possible. And so, we continue the work started by Jerome Etienne, in bringing AR on the Web, as a free and Open Source technology.
 
@@ -20,9 +44,19 @@ The project is now under a Github organization, that you can find at [https://gi
 
 AR.js features the following types of Augmented Reality, on the Web:
 
-- Image Tracking
-- Location Based AR
-- Marker Tracking.
+- **Image Tracking**, when a 2D images is found by the camera, it's possible to show some kind of content on top of it, or near it. The content can be a 2D image, a GIF, a 3D model (also animated) and a 2D video too.
+Cases of use: Augmented Art, learning (Augmented books), Augmented flyers, advertising, etc.
+
+- **Location Based AR**, this kind of AR uses real-world places in order to show Augmented Reality content, on the user device.
+The experiences that can be built with this library are those that uses users position in
+the real world. The user can move (ideally outdoor) and through their smartphones they can see AR
+content where places are in the real world. Moving around and rotating the phone will make the AR
+content change according to users position and rotation (so places are 'sticked' in their real
+position, and appear bigger/thinner according to their distance from the user). With this solution it’s possible to build experiences like interactive support for touristic guides, support when exploring a new city, find places of interest like buildings, museums, restaurants, hotels and so on. It’s also possible to build learning experiences like treasure hunts and biology or history learning games, or use this technology for situated art (visual art experiences bound to specific real world
+coordinates).
+
+- **Marker Tracking**, When a marker is found by the camera, it's possible to show some content (same as Image Tracking). Markers are very stable but limited in shape, color and size. It is suggested for those  experiences where are required a lot of different markers with different content. Examples of use: (Augmented books), Augmented flyers, advertising.
+
 
 ### Key points
 
@@ -83,7 +117,6 @@ If you want to import a specific version, you can do that easily replacing `mast
 ```html
   <script src="https://raw.githack.com/AR-js-org/AR.js/3.0.0/aframe/build/aframe-ar-nft.js">
 ```
-
 
 ## Requirements
 
@@ -232,21 +265,21 @@ Please follow these simple steps:
 ```html
 <!DOCTYPE html>
 <html>
-    <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
-    <!-- we import arjs version without NFT but with marker + location based support -->
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <body style="margin : 0px; overflow: hidden;">
-        <a-scene embedded arjs>
-        <a-marker preset="hiro">
-            <a-entity
-            position="0 0 0"
-            scale="0.05 0.05 0.05"
-            gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
-            ></a-entity>
-        </a-marker>
-        <a-entity camera></a-entity>
-        </a-scene>
-    </body>
+  <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+  <!-- we import arjs version without NFT but with marker + location based support -->
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <body style="margin : 0px; overflow: hidden;">
+    <a-scene embedded arjs>
+      <a-marker preset="hiro">
+        <a-entity
+          position="0 0 0"
+          scale="0.05 0.05 0.05"
+          gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
+        ></a-entity>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
 </html>
 ```
 
@@ -308,5 +341,5 @@ your pull request should be accepted quickly.
 
 Some things that will increase the chance that your pull request is accepted:
 
-* Follow the existing coding style
-* Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+- Follow the existing coding style
+- Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
