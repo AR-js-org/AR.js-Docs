@@ -105,14 +105,14 @@ Here you will learn how to use Raycaster, Custom Events and Interaction with ove
 <ul>
 <li>need only few clicks, not very reliable</li>
 <li>have to click on very few entities on screen</li>
-<li>clicks work only on the center of the screen, not at the angles, so beware that your entities, to be clicked, should be great enough and not positioned on angles.</li>
+<li>clicks work only on the center of the screen, not at the angles, so beware that your entities, to be clicked, should be big enough and not positioned on angles.</li>
 </ul>
-<p>What I suggest is that you have always to remember that AR.js is Web AR, that means, you can use <strong>any</strong> DOM elements interactions you want.
-They work perfectly and most of the times, the Overlayed DOM content interaction is enough for common needs.</p>
+<p>Always remember that AR.js is Web AR, that means, you can use <strong>any</strong> DOM elements interactions you want.
+Such interactions work perfectly and most of the times, the Overlayed DOM content interaction is enough for common needs.</p>
 <h2 id="handle-clicks-on-ar-content">Handle clicks on AR content</h2>
-<p>We can use click/touch interactions through raycaster, following <a href="https://aframe.io/docs/1.0.0/introduction/interactions-and-controllers.html">A-Frame Docs</a>.</p>
+<p>We can use click/touch interactions through Raycaster, following <a href="https://aframe.io/docs/1.0.0/introduction/interactions-and-controllers.html">A-Frame Docs</a>.</p>
 <p>We can register an event listener for any a-frame entity. So this method works also for Marker Based, Image Tracking and Location Based.
-We will show it on a Location Based examples, registering the click on <code>a-entity</code> - so the same can be done with <code>a-marker</code> or <code>a-nft</code>.</p>
+We will show it on a Location Based examples, registering the click on <code>a-entity</code> - the same can be done with <code>a-marker</code> or <code>a-nft</code>.</p>
 <pre><code class="html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
@@ -127,7 +127,7 @@ We will show it on a Location Based examples, registering the click on <code>a-e
     // here we register che 'clickhandler' component
     AFRAME.registerComponent(&quot;clickhandler&quot;, {
       init: function() {
-        // we add the click event listener to instance of this component
+        // we add the click event listener to any instance of this component
         this.el.addEventListener(&quot;click&quot;, () =&gt; {
           alert(&quot;Clicked!&quot;);
         });
@@ -136,10 +136,9 @@ We will show it on a Location Based examples, registering the click on <code>a-e
   &lt;/script&gt;
 
   &lt;body style=&quot;margin: 0; overflow: hidden;&quot;&gt;
-    &lt;!-- with cursor and raycaster, we define a raycaster handler
-    on raycaster we add a CSS selector to match the only elements that will react to click events
-    for performances reason
-    see: (https://aframe.io/docs/1.0.0/introduction/interactions-and-controllers.html) --&gt;
+    &lt;!-- with cursor and raycaster, we define a raycaster handler.
+    With 'raycaster' we add a CSS selector to match the only elements that will react to click events,
+    for performances reasons. See: (https://aframe.io/docs/1.0.0/introduction/interactions-and-controllers.html) --&gt;
     &lt;a-scene
       cursor=&quot;rayOrigin: mouse; fuse: true; fuseTimeout: 0;&quot;
       raycaster=&quot;objects: [clickhandler];&quot;
@@ -164,12 +163,12 @@ We will show it on a Location Based examples, registering the click on <code>a-e
 </code></pre>
 
 <p>You can use this exact approach for Image Tracking <code>a-nft</code> and Marker Based <code>a-entity</code> elements.
-The <code>clickhandler</code> name can be customized, you can choose the one you like most, it's just a reference.
-Keep in mind that this click/touch interaction is not handled by AR.js at all, it is all A-Frame based.
+The <code>clickhandler</code> name can be customized, you can choose the one you like most, it's just a reference.</p>
+<p>Keep in mind that this click/touch interaction is not handled by AR.js at all, it is all A-Frame based.
 Always look on the A-Frame documentation for more details.</p>
 <h2 id="interaction-with-overlayed-dom-content">Interaction with Overlayed DOM content</h2>
 <p>You can add interations by adding DOM HTML elements on the <code>body</code>.
-For example, startinf from this example:</p>
+For example, starting from this example:</p>
 <pre><code class="html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;script src=&quot;https://aframe.io/releases/1.0.0/aframe.min.js&quot;&gt;&lt;/script&gt;
@@ -226,6 +225,7 @@ For example, startinf from this example:</p>
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 10;
     }
 
     .say-hi-button {
@@ -257,8 +257,8 @@ For example, startinf from this example:</p>
 </code></pre>
 
 <h2 id="custom-events">Custom Events</h2>
-<p>AR.js triggers several Custom Events.</p>
-<p>Some of them are general, other are specific for AR Featuree. Here's the full list.</p>
+<p>AR.js dispatches several Custom Events.</p>
+<p>Some of them are general, others are specific for AR Feature. Here's the full list.</p>
 <table>
 <thead>
 <tr>
@@ -308,7 +308,7 @@ For example, startinf from this example:</p>
 <tr>
 <td><code>gps-camera-update-positon</code></td>
 <td>Fired when <code>gps-camera</code> has updated its position</td>
-<td><code>{ detail:</code>  <code>{ position: &lt;GeolocationCoordinates&gt;,</code>  <code>origin: &lt;GeolocationCoordinates&gt; }}</code></td>
+<td><code>{ detail:</code> <code>{ position: &lt;GeolocationCoordinates&gt;,</code> <code>origin: &lt;GeolocationCoordinates&gt; }}</code></td>
 <td>gps-camera.js</td>
 <td>only Location Based</td>
 </tr>
@@ -342,7 +342,7 @@ For example, startinf from this example:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="when-the-loader-breaks">When the Loader breaks</h3>
+<h3 id="internal-loading-events">Internal Loading Events</h3>
 <p>⚡️ Both Image Tracking and Location Based automatically handle an internal event when</p>
 <ul>
 <li>origin location has been set</li>

@@ -100,26 +100,27 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="image-tracking">Image Tracking</h1>
-<p>Image Tracking makes possible to scan a picture, drawing, any image, and show content over it.</p>
-<p>All the following examples are with A-Frame, for semplicity. You can use three.js if you want. See on the official repository the <a href="https://github.com/AR-js-org/AR.js/tree/master/three.js/examples">three.js examples</a>, search for 'nft' example.</p>
+<p>Image Tracking makes possible to scan a picture, a drawing, any image, and show content over it.</p>
+<p>All the following examples are with A-Frame, for semplicity. You can use three.js if you want. See on the official repository the <a href="https://github.com/AR-js-org/AR.js/blob/master/three.js/examples/nft.html">nft three.js example</a>.</p>
 <p>All A-Frame examples for Image Tracking can be found <a href="https://github.com/AR-js-org/AR.js/tree/master/aframe/examples/image-tracking/">here</a>.</p>
 <h2 id="getting-started-with-image-tracking">Getting started with Image Tracking</h2>
-<p>Thanks to <a href="https://twitter.com/DanielCarnaux">Daniel Fernandes</a> for contribution on this docs section.</p>
 <p>Natural Feature Tracking or NFT is a technology that enables the use of images instead of markers like QR Codes or the Hiro marker.</p>
-<p>The software tracks interesting points in the image and from that it estimates the position of the camera. These interesting points (aka "Image Descriptors") are created using the <code>NFT Marker Creator</code>, a tool available to you for creating NFT markers, it has two versions: the <a href="https://carnaux.github.io/NFT-Marker-Creator/">Web version</a>(recommended), and the <a href="https://github.com/Carnaux/NFT-Marker-Creator">node.js version</a>. There is also a fork of this project on the AR.js Github organisation, but as for now, <a href="https://twitter.com/DanielCarnaux">Daniel Fernandes</a> version works perfectly.</p>
+<p>The software tracks interesting points in the image and using them, it estimates the position of the camera. These interesting points (aka "Image Descriptors") are created using the <code>NFT Marker Creator</code>, a tool available for creating NFT markers. It comes in two versions: the <a href="https://carnaux.github.io/NFT-Marker-Creator/">Web version</a>(recommended), and the <a href="https://github.com/Carnaux/NFT-Marker-Creator">node.js version</a>. There is also a fork of this project on the AR.js Github organisation, but as for now, <a href="https://twitter.com/DanielCarnaux">Daniel Fernandes</a> version works perfectly.</p>
+<p><em>Thanks to <a href="https://twitter.com/DanielCarnaux">Daniel Fernandes</a> for contribution on this docs section.</em></p>
 <h2 id="choose-good-images">Choose good images</h2>
-<p>If you want to understand the creation of markers in more depth, check out the  NFT Marker Creator <a href="https://github.com/Carnaux/NFT-Marker-Creator/wiki/Creating-good-markers">wiki</a>.</p>
+<p>If you want to understand the creation of markers in more depth, check out the  NFT Marker Creator <a href="https://github.com/Carnaux/NFT-Marker-Creator/wiki/Creating-good-markers">wiki</a>. It explains also why certain images work way better than others. An important factor is the DPI of the image: a good dpi (300 or more) will give a very good stabilization, while low DPI (like 72) will require the user to stay very still and close to the image, otherwise tracking will lag.</p>
 <h2 id="create-image-descriptors">Create Image Descriptors</h2>
-<p>Once you have chosen your image, you can either use the <a href="https://carnaux.github.io/NFT-Marker-Creator/">web version</a> or the node version.</p>
+<p>Once you have chosen your image, you can either use the NFT Marker Creator in its <a href="https://carnaux.github.io/NFT-Marker-Creator/">Web version</a> or the node version.</p>
 <p>If you're using the node version, this is the basic command to run:</p>
 <pre><code class="bash">node app.js -i &lt;path-to-the-img/image-name.jpg/png&gt;
 </code></pre>
 
-<p>And you will find the Image Descriptors files on the <code>output</code> folder. In the web version, the generator will automatically download the files from your browser.</p>
+<p>After that, you will find the Image Descriptors files on the <code>output</code> folder. In the web version, the generator will automatically download the files from your browser.</p>
 <p>In either cases, you will end up with three files as Image Descriptors, with <code>.fset</code>, <code>.fset3</code>, <code>.iset</code>.
-Each of them will have the same prefix before the file extension. That one will be the Image Descriptor name that you will use on the AR.js web app.</p>
+Each of them will have the same prefix before the file extension. That one will be the Image Descriptor name that you will use on the AR.js web app.
+For example: with files <code>trex.fset</code>, <code>trex.fset3</code> and <code>trex.iset</code>, your Image Descriptors name will be <code>trex</code>.</p>
 <h2 id="render-the-content">Render the content</h2>
-<p>Now it's time to create the actual Web app.</p>
+<p>Now it's time to create the actual AR web app.</p>
 <pre><code class="html">&lt;!-- import aframe and then ar.js with image tracking / location based features --&gt;
 &lt;script src=&quot;https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js&quot;&gt;&lt;/script&gt;
@@ -147,7 +148,7 @@ Each of them will have the same prefix before the file extension. That one will 
 &lt;/style&gt;
 
 &lt;body style=&quot;margin : 0px; overflow: hidden;&quot;&gt;
-  &lt;!-- minimal loader shown until image descriptors are loaded. this may take a while according to the device computational power --&gt;
+  &lt;!-- minimal loader shown until image descriptors are loaded. Loading may take a while according to the device computational power --&gt;
   &lt;div class=&quot;arjs-loader&quot;&gt;
     &lt;div&gt;Loading, please wait...&lt;/div&gt;
   &lt;/div&gt;
@@ -159,7 +160,6 @@ Each of them will have the same prefix before the file extension. That one will 
     embedded
     arjs=&quot;trackingMethod: best; sourceType: webcam;debugUIEnabled: false;&quot;
   &gt;
-    &lt;!-- we use cors-anywhere proxy to avoid cross-origin problems --&gt;
     &lt;!-- a-nft is the anchor that defines an Image Tracking entity --&gt;
     &lt;!-- on 'url' use the path to the Image Descriptors created before. --&gt;
     &lt;!-- the path should end with the name without the extension e.g. if file is 'pinball.fset' the path should end with 'pinball' --&gt;
@@ -179,15 +179,14 @@ Each of them will have the same prefix before the file extension. That one will 
         &gt;
         &lt;/a-entity&gt;
     &lt;/a-nft&gt;
-    &lt;!-- static camera that moves according to the device movemenents. it always points towards center of the screen --&gt;
+    &lt;!-- static camera that moves according to the device movemenents --&gt;
     &lt;a-entity camera&gt;&lt;/a-entity&gt;
   &lt;/a-scene&gt;
 &lt;/body&gt;
 </code></pre>
 
 <p>See on the comments above, inline on the code, for explanations.</p>
-<p>You can refer to <a href="https://aframe.io/docs/1.0.0/introduction/">A-Frame docs</a> to know everything about content and customization. You can add geometries, 3D models, videos, images.
-And you can customize their position, scale, rotation and so on.</p>
+<p>You can refer to <a href="https://aframe.io/docs/1.0.0/introduction/">A-Frame docs</a> to know everything about content and customization. You can add geometries, 3D models, videos, images. And you can customize their position, scale, rotation and so on.</p>
 <p>The only custom component here is the <code>a-nft</code>, the Image Tracking HTML anchor.</p>
 <h3 id="lta-nftgt"><code>&lt;a-nft\&gt;</code></h3>
 <p>Here are the attributes for this entity</p>

@@ -102,8 +102,11 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="location-based">Location Based</h1>
-<p>Location Based has been implemented only for A-Frame framework.
-Here's the API Reference.</p>
+<p>Location Based has been implemented only for A-Frame framework.</p>
+<p><a href="https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564">This article </a> gives you a first glance to Location Based on AR.js.
+It can be used for indoor (but with low precision) and outdoor geopositioning of AR content.</p>
+<p>You can load places statically, from HTML or from Javascript, or you can load your data from local/remote json, or even through API calls. Choice is yours. On the article above there are all the options explained, as tutorials.</p>
+<p>Following there's the API Reference.</p>
 <h3 id="gps-camera"><code>gps-camera</code></h3>
 <p><strong>Required</strong>: yes</p>
 <p><strong>Max allowed per scene</strong>: 1</p>
@@ -164,16 +167,16 @@ It makes possible to handle both position and rotation of the camera and it's us
 <pre><code class="HTML">&lt;a-box color=&quot;yellow&quot; gps-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot;/&gt;
 </code></pre>
 
-<p>In addition, you can use the a-frame "position" parameter to assign a y-value to change the height of the content.
-This value should be entered in meters above or below sea level. For example, this would assign a height of 300 meters above sea level, and will be displayed relative to the gps-camera's current altitude:</p>
-<pre><code class="HTML">&lt;a-box color=&quot;yellow&quot; gps-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot; position=&quot;0 300 0&quot;/&gt;
+<p>⚡️ In addition, you can use the a-frame "position" parameter to assign a y-value to change the height of the content.
+This value should be entered as meters above or below (if negative) the current camera height. For example, this would assign a height of 30 meters, and will be displayed relative to the gps-camera's current height:</p>
+<pre><code class="HTML">&lt;a-box color=&quot;yellow&quot; gps-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot; position=&quot;0 30 0&quot;/&gt;
 </code></pre>
 
 <h3 id="properties_1">Properties</h3>
 <p>No real property apart from the string that defined latitude and longitude together, as shown above.</p>
 <h3 id="custom-attributes">Custom Attributes</h3>
 <p>The following are Custom Attributes that can be retrieved from <code>gps-entity-place</code> entities, for example:</p>
-<pre><code class="js">const distanceMsg = document.querySelectr('[gps-entity-place]').getAttribrute('distanceMsg');
+<pre><code class="js">const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('distanceMsg');
 console.log(distanceMsg);   // &quot;890 meters&quot;
 </code></pre>
 
@@ -202,7 +205,7 @@ console.log(distanceMsg);   // &quot;890 meters&quot;
 <h3 id="events">Events</h3>
 <p>Take a look at the <a href="../ui-events/">UI and Events</a> page for Location Based Custom Events.</p>
 <hr />
-<p>⚡️ Usually, in Location Based, it's nice to have the augmented content that will always face the user, so when you rotate the camera, 3D models or most of all, text, is well visible.</p>
+<p>⚡️ Usually, in Location Based, it's nice to have the augmented content that will always face the user, so when you rotate the camera, 3D models or most of all, text, are well visible.</p>
 <p>Look at <a href="https://github.com/AR-js-org/AR.js/tree/master/aframe/examples/location-based/always-face-user">this example</a> in order to create <code>gps-entity-place</code> entities that will always face the user (camera).</p></div>
         </div>
 

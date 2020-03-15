@@ -95,6 +95,7 @@
             <li><a href="#import-the-library">Import the library</a></li>
             <li><a href="#requirements">Requirements</a></li>
             <li><a href="#getting-started">Getting started</a></li>
+            <li><a href="#troubleshooting-feature-requests-community">Troubleshooting, feature requests, community</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -109,7 +110,7 @@
 <p>Thank you for being interested in this, if you'd like to collaborate in any way, contact us (<a href="https://twitter.com/nicolocarp">https://twitter.com/nicolocarp</a>).</p>
 <p>The project is now under a Github organization, that you can find at <a href="https://github.com/ar-js-org">https://github.com/ar-js-org</a> and you can ask to be part of it, for free.</p>
 <h3 id="ar-types">AR types</h3>
-<p>Ar.js features the following types of Augmented Reality, on the Web:</p>
+<p>AR.js features the following types of Augmented Reality, on the Web:</p>
 <ul>
 <li>Image Tracking</li>
 <li>Location Based AR</li>
@@ -150,6 +151,10 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <pre><code class="html">&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar.js&quot;&gt;
 </code></pre>
 
+<p>If you want to import a specific version, you can do that easily replacing <code>master</code> with the version tag, e.g.:</p>
+<pre><code class="html">  &lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/3.0.0/aframe/build/aframe-ar-nft.js&quot;&gt;
+</code></pre>
+
 <h2 id="requirements">Requirements</h2>
 <p>Some requirements and known restrictions are listed below:</p>
 <ul>
@@ -157,14 +162,15 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <li>Marker based is very lightweight, while Image Tracking is more CPU consuming</li>
 <li>You cannot use Chrome on iOS, as Chrome on iOS did not support, at the moment, camera access</li>
 <li>On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.</li>
-<li>To work with Location Based feature, your phone needs to have GPS sensors. Please, read carefully all suggestions that AR.js app popp-up for Location Based on iOS, as iOS requires user actions to activate geoposition.</li>
+<li>To work with Location Based feature, your phone needs to have GPS sensors</li>
+<li>Please, read carefully any suggestions that AR.js pops-up -as alerts- for Location Based on iOS, as iOS requires user actions to activate geoposition</li>
 <li>Location Based feature is only available on A-Frame</li>
 <li>Location Based can work with A-Frame up to version 0.9.2. Compatibility with A-Frame 1.0.0 and later is work in progress.</li>
 </ul>
 <h3 id="always-deploy-under-https">Always deploy under https</h3>
 <p>Accessing to the phone camera or to camera GPS sensors, due to major browsers restrictions, can be done only under https websites.</p>
 <p>All the examples you will see, and all AR.js web apps in general, have to be run on a server. You can use local server or deploy the static web app on the web.</p>
-<p>Please, always run your examples on secure connections servers or localhost. <a href="https://pages.github.com/">Github Pages</a> is a great way to have free and live websites under https.</p>
+<p>So don't forget to always run your examples on secure connections servers or localhost. <a href="https://pages.github.com/">Github Pages</a> is a great way to have free and live websites under https.</p>
 <h2 id="getting-started">Getting started</h2>
 <p>Here we present three, basic examples, one for each AR feature. For specific documentation, on the top menu you can find every section, or you can click on the following links:</p>
 <ul>
@@ -173,12 +179,12 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <li><a href="marker-based/">Marker Based Documentation</a></li>
 </ul>
 <h3 id="image-tracking-example">Image Tracking Example</h3>
-<p>Please follow this simple steps:</p>
+<p>Please follow these simple steps:</p>
 <ul>
 <li>Create a new project with the code below (or <a href="https://codepen.io/nicolocarpignoli/pen/vYOeYKd"><strong>try this codepen</strong></a> and go directly to the last step)</li>
 <li>Run it on a server</li>
 <li>Open the website on your phone</li>
-<li>Scan <a href="https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex-image.jpg">this picture</a> to see content through the camera.</li>
+<li>Scan <a href="https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex-image-big.jpeg">this picture</a> to see content through the camera.</li>
 </ul>
 <pre><code class="html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js&quot;&gt;&lt;/script&gt;
@@ -215,7 +221,7 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
     embedded
     arjs=&quot;trackingMethod: best; sourceType: webcam;debugUIEnabled: false;&quot;
   &gt;
-    &lt;!-- we use cors-anywhere proxy to avoid cross-origin problems --&gt;
+    &lt;!-- we use cors proxy to avoid cross-origin problems --&gt;
     &lt;a-nft
       type=&quot;nft&quot;
       url=&quot;https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex&quot;
@@ -237,12 +243,12 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 </code></pre>
 
 <h3 id="location-based-example">Location Based Example</h3>
-<p>Please follow this simple steps:</p>
+<p>Please follow these simple steps:</p>
 <ul>
 <li>Create a new project with the following snippet, and change <code>add-your-latitude</code> and <code>add-your-longitude</code> with your latitude and longitude, without the <code>&lt;&gt;</code>.</li>
 <li>Run it on a server</li>
 <li>Activate GPS on your phone and navigate to the example URL</li>
-<li>Look around. You should see the text looking at you, appearing in the requested position, even if you look around and move.</li>
+<li>Look around. You should see the text looking at you, appearing in the requested position, even if you look around and move the phone.</li>
 </ul>
 <pre><code class="html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -275,12 +281,12 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 </code></pre>
 
 <h3 id="marker-based-example">Marker Based Example</h3>
-<p>Please follow this simple steps:</p>
+<p>Please follow these simple steps:</p>
 <ul>
 <li>Create a new project with the code below (or <a href="https://codepen.io/nicolocarpignoli/pen/vMBgob"><strong>try this codepen</strong></a> and go directly to the last step)</li>
 <li>Run it on a server</li>
 <li>Open the website on your phone</li>
-<li>Scan <a href="https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex-image.jpg">this picture</a> to see content through the camera.</li>
+<li>Scan <a href="https://raw.githubusercontent.com/AR-js-org/AR.js/master/data/images/hiro.png">this picture</a> to see content through the camera.</li>
 </ul>
 <pre><code class="html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -303,8 +309,8 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 </code></pre>
 
 <h3 id="advanced-stuff">Advanced stuff</h3>
-<p>AR.js offers two ways, with A-Frame, to interact with the web page: clicks/touches events and Overlayed DOM interaction.</p>
-<p>Also, there are several Custom Events triggered during the life cycle of an AR.js web app.</p>
+<p>AR.js offers two ways, with A-Frame, to interact with the web page: to interact directly with AR content and Overlayed DOM interaction.</p>
+<p>Also, there are several Custom Events triggered during the life cycle of every AR.js web app.</p>
 <p>You can learn more about these aspects on the <a href="ui-events/">UI and Events section</a>.</p>
 <h3 id="arjs-architecture">AR.js architecture</h3>
 <p>AR.js uses <a href="https://github.com/artoolkitx/jsartoolkit5">jsartoolkit5</a> for tracking, but can display augmented content with either <a href="https://threejs.org/">three.js</a> or <a href="https://aframe.io/">A-Frame</a>.</p>
@@ -317,13 +323,34 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <li>workers (used for Image Tracking).</li>
 </ul>
 <p>When you find files that ends with <code>-nft</code> suffix, they're boundled only with the Image Tracking version.</p>
-<p>A-Frame version of AR.js uses three.js parts as its core. A-Frame here is it simply a wrapper to write AR with Custom Components in HTML.</p>
+<p>A-Frame version of AR.js uses three.js parts as its core. A-Frame code, on AR.js, is simply a wrapper to write AR with Custom Components in HTML.</p>
 <p><code>aframe</code> folder contains</p>
 <ul>
 <li>source code for AR.js A-Frame (aka wrappers for Marker Based, Image Tracking components)</li>
 <li>source code for Location Based</li>
 <li>build for A-Frame AR.js based</li>
 <li>examples for A-Frame AR.js.</li>
+</ul>
+<h2 id="troubleshooting-feature-requests-community">Troubleshooting, feature requests, community</h2>
+<p><strong>You can find a lot of help on the old <a href="https://github.com/jeromeetienne/AR.js/issues">AR.js repositories issues</a>. Please search on open/closed issues, you may find a interesting stuff.</strong></p>
+<h3 id="contributing">Contributing</h3>
+<p>From opening a bug report to creating a pull request: every contribution is
+appreciated and welcome. If you're planning to implement a new feature or change
+the api please create an issue first. This way we can ensure that your precious
+work is not in vain.</p>
+<h3 id="issues">Issues</h3>
+<p>If you are having configuration or setup problems, please post
+a question to <a href="https://stackoverflow.com/search?q=ar.js">StackOverflow</a>.
+You can also address question to us in our <a href="https://gitter.im/AR-js/Lobby">Gitter chatroom</a></p>
+<p><strong>If you have discovered a bug or have a feature suggestion, feel free to create an issue on Github.</strong></p>
+<h3 id="submitting-changes">Submitting Changes</h3>
+<p>After getting some feedback, push to your fork and submit a pull request. We
+may suggest some changes or improvements or alternatives, but for small changes
+your pull request should be accepted quickly.</p>
+<p>Some things that will increase the chance that your pull request is accepted:</p>
+<ul>
+<li>Follow the existing coding style</li>
+<li>Write a <a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">good commit message</a></li>
 </ul></div>
         </div>
 
@@ -407,5 +434,5 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-03-14 19:55:40
+Build Date UTC : 2020-03-15 14:04:12
 -->
