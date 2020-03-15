@@ -193,7 +193,7 @@ Some of them are general, other are specific for AR Featuree. Here's the full li
 | `gps-camera-origin-coord-set` | Fired when the origin coordinates are set | - | gps-camera.js | only Location Based |
 | `gps-entity-place-loaded` | Fired when the `gps-entity-place` has been - see 'loaded' event of A-Frame entities | `{ detail: { component: <HTMLElement> }}` | gps-entity-place.js | only Location Based |
 
-### When the Loader breaks
+### Internal Loading Events
 
 ⚡️ Both Image Tracking and Location Based automatically handle an internal event when
 

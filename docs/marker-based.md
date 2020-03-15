@@ -33,19 +33,18 @@ Here's an article explaining all good practice on how to choose good markers, an
 
 Here are the attributes for this entity
 
-| Attribute | Description | Component Mapping |
-| --- | --- | --- |
-| type | type of marker - ['pattern', 'barcode', 'unknown' ] | artoolkitmarker.type |
-| size | size of the marker in meter | artoolkitmarker.size |
-| url | url of the pattern - IIF type='pattern' | artoolkitmarker.patternUrl |
-| value | value of the barcode - IIF type='barcode' | artoolkitmarker.barcodeValue |
-| preset | parameters preset - ['hiro', 'kanji'] | artoolkitmarker.preset |
-| emitevents | emits 'markerFound' and 'markerLost' events - ['true', 'false'] | - |
-| smooth | turn on/off camera smoothing - ['true', 'false'] - default: false | - |
-| smoothCount | number of matrices to smooth tracking over, more = smoother but slower follow - default: 5 | - |
-| smoothTolerance | distance tolerance for smoothing, if smoothThreshold # of matrices are under tolerance, tracking will stay still - default: 0.01 | - |
-| smoothThreshold | threshold for smoothing, will keep still unless enough matrices are over tolerance - default: 2 | - |
-
+| Attribute       | Description                                                                                                                      | Component Mapping            |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| type            | type of marker - ['pattern', 'barcode', 'unknown' ]                                                                              | artoolkitmarker.type         |
+| size            | size of the marker in meter                                                                                                      | artoolkitmarker.size         |
+| url             | url of the pattern - IIF type='pattern'                                                                                          | artoolkitmarker.patternUrl   |
+| value           | value of the barcode - IIF type='barcode'                                                                                        | artoolkitmarker.barcodeValue |
+| preset          | parameters preset - ['hiro', 'kanji']                                                                                            | artoolkitmarker.preset       |
+| emitevents      | emits 'markerFound' and 'markerLost' events - ['true', 'false']                                                                  | -                            |
+| smooth          | turn on/off camera smoothing - ['true', 'false'] - default: false                                                                | -                            |
+| smoothCount     | number of matrices to smooth tracking over, more = smoother but slower follow - default: 5                                       | -                            |
+| smoothTolerance | distance tolerance for smoothing, if smoothThreshold # of matrices are under tolerance, tracking will stay still - default: 0.01 | -                            |
+| smoothThreshold | threshold for smoothing, will keep still unless enough matrices are over tolerance - default: 2                                  | -                            |
 
 ## three.js
 
@@ -58,38 +57,37 @@ It is the main part of my [AR.js effort](http://github.com/jeromeetienne/AR.js)
 
 threex.artoolkit is composed of 3 classes
 
-- ```THREEx.ArToolkitSource``` : It is the image which is analyzed to do the position tracking.
+- `THREEx.ArToolkitSource` : It is the image which is analyzed to do the position tracking.
   It can be the webcam, a video or even an image
-- ```THREEx.ArToolkitContext```: It is the main engine. It will actually find the marker position
+- `THREEx.ArToolkitContext`: It is the main engine. It will actually find the marker position
   in the image source.
-- ```THREEx.ArMarkerControls```: it controls the position of the marker
+- `THREEx.ArMarkerControls`: it controls the position of the marker
   It use the classical [three.js controls API](https://github.com/mrdoob/three.js/tree/master/examples/js/controls).
   It will make sure to position your content right on top of the marker.
-
 
 #### THREEx.ArMarkerControls
 
 ```javascript
 var parameters = {
-	// size of the marker in meter
-	size : 1,
-	// type of marker - ['pattern', 'barcode', 'unknown' ]
-	type : 'unknown',
-	// url of the pattern - IIF type='pattern'
-	patternUrl : null,
-	// value of the barcode - IIF type='barcode'
-	barcodeValue : null,
-	// change matrix mode - [modelViewMatrix, cameraTransformMatrix]
-	changeMatrixMode : 'modelViewMatrix',
-	// turn on/off camera smoothing
-	smooth: true,
-	// number of matrices to smooth tracking over, more = smoother but slower follow
-	smoothCount: 5,
-	// distance tolerance for smoothing, if smoothThreshold # of matrices are under tolerance, tracking will stay still
-	smoothTolerance: 0.01,
-	// threshold for smoothing, will keep still unless enough matrices are over tolerance
-	smoothThreshold: 2,
-}
+  // size of the marker in meter
+  size: 1,
+  // type of marker - ['pattern', 'barcode', 'unknown' ]
+  type: "unknown",
+  // url of the pattern - IIF type='pattern'
+  patternUrl: null,
+  // value of the barcode - IIF type='barcode'
+  barcodeValue: null,
+  // change matrix mode - [modelViewMatrix, cameraTransformMatrix]
+  changeMatrixMode: "modelViewMatrix",
+  // turn on/off camera smoothing
+  smooth: true,
+  // number of matrices to smooth tracking over, more = smoother but slower follow
+  smoothCount: 5,
+  // distance tolerance for smoothing, if smoothThreshold # of matrices are under tolerance, tracking will stay still
+  smoothTolerance: 0.01,
+  // threshold for smoothing, will keep still unless enough matrices are over tolerance
+  smoothThreshold: 2
+};
 ```
 
 #### THREEx.ArToolkitContext
@@ -109,7 +107,7 @@ var parameters = {
 	labelingMode: 'black_region',
 
 	// url of the camera parameters
-	cameraParametersUrl: 'parameters/camera_para.dat',
+    cameraParametersUrl: THREEx.ArToolkitContext.baseURL + '../data/data/camera_para.dat',
 
 	// tune the maximum rate of pose detection in the source image
 	maxDetectionRate: 60,
@@ -127,16 +125,16 @@ var parameters = {
 
 ```javascript
 var parameters = {
-	// type of source - ['webcam', 'image', 'video']
-	sourceType : 'webcam',
-	// url of the source - valid if sourceType = image|video
-	sourceUrl : null,
+  // type of source - ['webcam', 'image', 'video']
+  sourceType: "webcam",
+  // url of the source - valid if sourceType = image|video
+  sourceUrl: null,
 
-	// resolution of at which we initialize the source image
-	sourceWidth: 640,
-	sourceHeight: 480,
-	// resolution displayed for the source
-	displayWidth: 640,
-	displayHeight: 480,
-}
+  // resolution of at which we initialize the source image
+  sourceWidth: 640,
+  sourceHeight: 480,
+  // resolution displayed for the source
+  displayWidth: 640,
+  displayHeight: 480
+};
 ```

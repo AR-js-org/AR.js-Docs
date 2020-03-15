@@ -78,6 +78,13 @@ Import three.js version:
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar.js">
 ```
 
+If you want to import a specific version, you can do that easily replacing `master` with the version tag, e.g.:
+
+```html
+  <script src="https://raw.githack.com/AR-js-org/AR.js/3.0.0/aframe/build/aframe-ar-nft.js">
+```
+
+
 ## Requirements
 
 Some requirements and known restrictions are listed below:
@@ -219,7 +226,7 @@ Please follow this simple steps:
 - Create a new project with the code below (or [**try this codepen**](https://codepen.io/nicolocarpignoli/pen/vMBgob) and go directly to the last step)
 - Run it on a server
 - Open the website on your phone
-- Scan [this picture](https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex-image.jpg) to see content through the camera.
+- Scan [this picture](https://raw.githubusercontent.com/AR-js-org/AR.js/master/data/images/hiro.png) to see content through the camera.
 
 ```html
 <!DOCTYPE html>
@@ -272,3 +279,34 @@ A-Frame version of AR.js uses three.js parts as its core. A-Frame here is it sim
 - source code for Location Based
 - build for A-Frame AR.js based
 - examples for A-Frame AR.js.
+
+
+## Troubleshooting, feature requests, community
+
+**You can find a lot of help on the old [AR.js repositories issues](https://github.com/jeromeetienne/AR.js/issues). Please search on open/closed issues, you may find a interesting stuff.**
+
+### Contributing
+
+From opening a bug report to creating a pull request: every contribution is
+appreciated and welcome. If you're planning to implement a new feature or change
+the api please create an issue first. This way we can ensure that your precious
+work is not in vain.
+
+### Issues
+
+If you are having configuration or setup problems, please post
+a question to [StackOverflow](https://stackoverflow.com/search?q=ar.js).
+You can also address question to us in our [Gitter chatroom](https://gitter.im/AR-js/Lobby)
+
+**If you have discovered a bug or have a feature suggestion, feel free to create an issue on Github.**
+
+### Submitting Changes
+
+After getting some feedback, push to your fork and submit a pull request. We
+may suggest some changes or improvements or alternatives, but for small changes
+your pull request should be accepted quickly.
+
+Some things that will increase the chance that your pull request is accepted:
+
+* Follow the existing coding style
+* Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
