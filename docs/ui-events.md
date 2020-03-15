@@ -7,17 +7,17 @@ First of all, an introduction about click interactions: it is possible to click 
 
 - need only few clicks, not very reliable
 - have to click on very few entities on screen
-- clicks work only on the center of the screen, not at the angles, so beware that your entities, to be clicked, should be great enough and not positioned on angles.
+- clicks work only on the center of the screen, not at the angles, so beware that your entities, to be clicked, should be big enough and not positioned on angles.
 
-What I suggest is that you have always to remember that AR.js is Web AR, that means, you can use **any** DOM elements interactions you want.
-They work perfectly and most of the times, the Overlayed DOM content interaction is enough for common needs.
+Always remember that AR.js is Web AR, that means, you can use **any** DOM elements interactions you want.
+Such interactions work perfectly and most of the times, the Overlayed DOM content interaction is enough for common needs.
 
 ## Handle clicks on AR content
 
-We can use click/touch interactions through raycaster, following [A-Frame Docs](https://aframe.io/docs/1.0.0/introduction/interactions-and-controllers.html).
+We can use click/touch interactions through Raycaster, following [A-Frame Docs](https://aframe.io/docs/1.0.0/introduction/interactions-and-controllers.html).
 
 We can register an event listener for any a-frame entity. So this method works also for Marker Based, Image Tracking and Location Based.
-We will show it on a Location Based examples, registering the click on `a-entity` - so the same can be done with `a-marker` or `a-nft`.
+We will show it on a Location Based examples, registering the click on `a-entity` - the same can be done with `a-marker` or `a-nft`.
 
 ```html
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ We will show it on a Location Based examples, registering the click on `a-entity
     // here we register che 'clickhandler' component
     AFRAME.registerComponent("clickhandler", {
       init: function() {
-        // we add the click event listener to instance of this component
+        // we add the click event listener to any instance of this component
         this.el.addEventListener("click", () => {
           alert("Clicked!");
         });
@@ -43,10 +43,9 @@ We will show it on a Location Based examples, registering the click on `a-entity
   </script>
 
   <body style="margin: 0; overflow: hidden;">
-    <!-- with cursor and raycaster, we define a raycaster handler
-    on raycaster we add a CSS selector to match the only elements that will react to click events
-    for performances reason
-    see: (https://aframe.io/docs/1.0.0/introduction/interactions-and-controllers.html) -->
+    <!-- with cursor and raycaster, we define a raycaster handler.
+    With 'raycaster' we add a CSS selector to match the only elements that will react to click events,
+    for performances reasons. See: (https://aframe.io/docs/1.0.0/introduction/interactions-and-controllers.html) -->
     <a-scene
       cursor="rayOrigin: mouse; fuse: true; fuseTimeout: 0;"
       raycaster="objects: [clickhandler];"
@@ -72,13 +71,14 @@ We will show it on a Location Based examples, registering the click on `a-entity
 
 You can use this exact approach for Image Tracking `a-nft` and Marker Based `a-entity` elements.
 The `clickhandler` name can be customized, you can choose the one you like most, it's just a reference.
+
 Keep in mind that this click/touch interaction is not handled by AR.js at all, it is all A-Frame based.
 Always look on the A-Frame documentation for more details.
 
 ## Interaction with Overlayed DOM content
 
 You can add interations by adding DOM HTML elements on the `body`.
-For example, startinf from this example:
+For example, starting from this example:
 
 ```html
 <!DOCTYPE html>
@@ -143,6 +143,7 @@ We will end up with the following code:
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 10;
     }
 
     .say-hi-button {
@@ -175,23 +176,22 @@ We will end up with the following code:
 
 ## Custom Events
 
-AR.js triggers several Custom Events.
+AR.js dispatches several Custom Events.
 
-Some of them are general, other are specific for AR Featuree. Here's the full list.
+Some of them are general, others are specific for AR Feature. Here's the full list.
 
-
-| Custom Event name | Description | Payload | Source File | Feature |
-| --- | --- | --- | --- | --- |
-| `arjs-video-loaded` | Fired when camera video stream has been appended to the DOM | `{ detail: { component: <HTMLElement> }}` | threex-artoolkitsource.js | all |
-| `camera-error` | Fired when camera video stream could not be retrieved | `{ error: <Error> }` | threex-artoolkitsource.js | all |
-| `camera-init` | Fired when camera video stream has been retrieved correctly | `{ stream: <MediaStream> }` | threex-artoolkitsource.js | all |
-| `markerFound` | Fired when a marker in Marker Based, or a picture in Image Tracking, has been found | - | component-anchor.js | only Image Tracking and Marker Based |
-| `markerLost` | Fired when a marker in Marker Based, or a picture in Image Tracking, has been lost | - | component-anchor.js | only Image Tracking and Marker Based |
-| `gps-camera-update-positon` | Fired when `gps-camera` has updated its position | `{ detail:`  `{ position: <GeolocationCoordinates>,`  `origin: <GeolocationCoordinates> }}` | gps-camera.js | only Location Based |
-| `gps-entity-place-update-positon` | Fired when `gps-entity-place` has updated its position | `{ detail: { distance: <Number> }}` | gps-entity-place.js | only Location Based |
-| `gps-entity-place-added` | Fired when the `gps-entity-place` has been added | `{ detail: { component: <HTMLElement> }}` | gps-entity-place.js | only Location Based |
-| `gps-camera-origin-coord-set` | Fired when the origin coordinates are set | - | gps-camera.js | only Location Based |
-| `gps-entity-place-loaded` | Fired when the `gps-entity-place` has been - see 'loaded' event of A-Frame entities | `{ detail: { component: <HTMLElement> }}` | gps-entity-place.js | only Location Based |
+| Custom Event name                 | Description                                                                         | Payload                                                                                   | Source File               | Feature                              |
+| --------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------- | ------------------------------------ |
+| `arjs-video-loaded`               | Fired when camera video stream has been appended to the DOM                         | `{ detail: { component: <HTMLElement> }}`                                                 | threex-artoolkitsource.js | all                                  |
+| `camera-error`                    | Fired when camera video stream could not be retrieved                               | `{ error: <Error> }`                                                                      | threex-artoolkitsource.js | all                                  |
+| `camera-init`                     | Fired when camera video stream has been retrieved correctly                         | `{ stream: <MediaStream> }`                                                               | threex-artoolkitsource.js | all                                  |
+| `markerFound`                     | Fired when a marker in Marker Based, or a picture in Image Tracking, has been found | -                                                                                         | component-anchor.js       | only Image Tracking and Marker Based |
+| `markerLost`                      | Fired when a marker in Marker Based, or a picture in Image Tracking, has been lost  | -                                                                                         | component-anchor.js       | only Image Tracking and Marker Based |
+| `gps-camera-update-positon`       | Fired when `gps-camera` has updated its position                                    | `{ detail:` `{ position: <GeolocationCoordinates>,` `origin: <GeolocationCoordinates> }}` | gps-camera.js             | only Location Based                  |
+| `gps-entity-place-update-positon` | Fired when `gps-entity-place` has updated its position                              | `{ detail: { distance: <Number> }}`                                                       | gps-entity-place.js       | only Location Based                  |
+| `gps-entity-place-added`          | Fired when the `gps-entity-place` has been added                                    | `{ detail: { component: <HTMLElement> }}`                                                 | gps-entity-place.js       | only Location Based                  |
+| `gps-camera-origin-coord-set`     | Fired when the origin coordinates are set                                           | -                                                                                         | gps-camera.js             | only Location Based                  |
+| `gps-entity-place-loaded`         | Fired when the `gps-entity-place` has been - see 'loaded' event of A-Frame entities | `{ detail: { component: <HTMLElement> }}`                                                 | gps-entity-place.js       | only Location Based                  |
 
 ### Internal Loading Events
 
@@ -203,4 +203,3 @@ Some of them are general, other are specific for AR Featuree. Here's the full li
 And automatically remove from the DOM elements that match the `.arjs-loader` selector.
 
 You can add any custom loader that will be remove in the above situations, just use the `.arjs-loader` class on it.
-

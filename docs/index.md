@@ -18,7 +18,7 @@ The project is now under a Github organization, that you can find at [https://gi
 
 ### AR types
 
-Ar.js features the following types of Augmented Reality, on the Web:
+AR.js features the following types of Augmented Reality, on the Web:
 
 - Image Tracking
 - Location Based AR
@@ -93,7 +93,8 @@ Some requirements and known restrictions are listed below:
 - Marker based is very lightweight, while Image Tracking is more CPU consuming
 - You cannot use Chrome on iOS, as Chrome on iOS did not support, at the moment, camera access
 - On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.
-- To work with Location Based feature, your phone needs to have GPS sensors. Please, read carefully all suggestions that AR.js app popp-up for Location Based on iOS, as iOS requires user actions to activate geoposition.
+- To work with Location Based feature, your phone needs to have GPS sensors
+- Please, read carefully any suggestions that AR.js pops-up -as alerts- for Location Based on iOS, as iOS requires user actions to activate geoposition
 - Location Based feature is only available on A-Frame
 - Location Based can work with A-Frame up to version 0.9.2. Compatibility with A-Frame 1.0.0 and later is work in progress.
 
@@ -103,7 +104,7 @@ Accessing to the phone camera or to camera GPS sensors, due to major browsers re
 
 All the examples you will see, and all AR.js web apps in general, have to be run on a server. You can use local server or deploy the static web app on the web.
 
-Please, always run your examples on secure connections servers or localhost. [Github Pages](https://pages.github.com/) is a great way to have free and live websites under https.
+So don't forget to always run your examples on secure connections servers or localhost. [Github Pages](https://pages.github.com/) is a great way to have free and live websites under https.
 
 ## Getting started
 
@@ -115,7 +116,7 @@ Here we present three, basic examples, one for each AR feature. For specific doc
 
 ### Image Tracking Example
 
-Please follow this simple steps:
+Please follow these simple steps:
 
 - Create a new project with the code below (or [**try this codepen**](https://codepen.io/nicolocarpignoli/pen/vYOeYKd) and go directly to the last step)
 - Run it on a server
@@ -158,7 +159,7 @@ Please follow this simple steps:
     embedded
     arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
   >
-    <!-- we use cors-anywhere proxy to avoid cross-origin problems -->
+    <!-- we use cors proxy to avoid cross-origin problems -->
     <a-nft
       type="nft"
       url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
@@ -181,12 +182,12 @@ Please follow this simple steps:
 
 ### Location Based Example
 
-Please follow this simple steps:
+Please follow these simple steps:
 
 - Create a new project with the following snippet, and change `add-your-latitude` and `add-your-longitude` with your latitude and longitude, without the `<>`.
 - Run it on a server
 - Activate GPS on your phone and navigate to the example URL
-- Look around. You should see the text looking at you, appearing in the requested position, even if you look around and move.
+- Look around. You should see the text looking at you, appearing in the requested position, even if you look around and move the phone.
 
 ```html
 <!DOCTYPE html>
@@ -221,7 +222,7 @@ Please follow this simple steps:
 
 ### Marker Based Example
 
-Please follow this simple steps:
+Please follow these simple steps:
 
 - Create a new project with the code below (or [**try this codepen**](https://codepen.io/nicolocarpignoli/pen/vMBgob) and go directly to the last step)
 - Run it on a server
@@ -251,9 +252,9 @@ Please follow this simple steps:
 
 ### Advanced stuff
 
-AR.js offers two ways, with A-Frame, to interact with the web page: clicks/touches events and Overlayed DOM interaction.
+AR.js offers two ways, with A-Frame, to interact with the web page: to interact directly with AR content and Overlayed DOM interaction.
 
-Also, there are several Custom Events triggered during the life cycle of an AR.js web app.
+Also, there are several Custom Events triggered during the life cycle of every AR.js web app.
 
 You can learn more about these aspects on the [UI and Events section](./ui-events.md).
 
@@ -271,7 +272,7 @@ AR.js uses [jsartoolkit5](https://github.com/artoolkitx/jsartoolkit5) for tracki
 
 When you find files that ends with `-nft` suffix, they're boundled only with the Image Tracking version.
 
-A-Frame version of AR.js uses three.js parts as its core. A-Frame here is it simply a wrapper to write AR with Custom Components in HTML.
+A-Frame version of AR.js uses three.js parts as its core. A-Frame code, on AR.js, is simply a wrapper to write AR with Custom Components in HTML.
 
 `aframe` folder contains
 
@@ -279,7 +280,6 @@ A-Frame version of AR.js uses three.js parts as its core. A-Frame here is it sim
 - source code for Location Based
 - build for A-Frame AR.js based
 - examples for A-Frame AR.js.
-
 
 ## Troubleshooting, feature requests, community
 

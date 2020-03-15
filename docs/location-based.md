@@ -1,7 +1,13 @@
 # Location Based
 
 Location Based has been implemented only for A-Frame framework.
-Here's the API Reference.
+
+[This article ](https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564) gives you a first glance to Location Based on AR.js.
+It can be used for indoor (but with low precision) and outdoor geopositioning of AR content.
+
+You can load places statically, from HTML or from Javascript, or you can load your data from local/remote json, or even through API calls. Choice is yours. On the article above there are all the options explained, as tutorials.
+
+Following there's the API Reference.
 
 ### `gps-camera`
 
@@ -47,11 +53,11 @@ It requires latitude and longitude as a single string parameter (example with `a
 <a-box color="yellow" gps-entity-place="latitude: <your-latitude>; longitude: <your-longitude>"/>
 ```
 
-In addition, you can use the a-frame "position" parameter to assign a y-value to change the height of the content.
-This value should be entered in meters above or below sea level. For example, this would assign a height of 300 meters above sea level, and will be displayed relative to the gps-camera's current altitude:
+⚡️ In addition, you can use the a-frame "position" parameter to assign a y-value to change the height of the content.
+This value should be entered as meters above or below (if negative) the current camera height. For example, this would assign a height of 30 meters, and will be displayed relative to the gps-camera's current height:
 
 ```HTML
-<a-box color="yellow" gps-entity-place="latitude: <your-latitude>; longitude: <your-longitude>" position="0 300 0"/>
+<a-box color="yellow" gps-entity-place="latitude: <your-latitude>; longitude: <your-longitude>" position="0 30 0"/>
 ```
 
 ### Properties
@@ -63,7 +69,7 @@ No real property apart from the string that defined latitude and longitude toget
 The following are Custom Attributes that can be retrieved from `gps-entity-place` entities, for example:
 
 ```js
-const distanceMsg = document.querySelectr('[gps-entity-place]').getAttribrute('distanceMsg');
+const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('distanceMsg');
 console.log(distanceMsg);   // "890 meters"
 ```
 
@@ -80,8 +86,7 @@ Take a look at the [UI and Events](./ui-events.md) page for Location Based Custo
 
 -----
 
-
-⚡️ Usually, in Location Based, it's nice to have the augmented content that will always face the user, so when you rotate the camera, 3D models or most of all, text, is well visible.
+⚡️ Usually, in Location Based, it's nice to have the augmented content that will always face the user, so when you rotate the camera, 3D models or most of all, text, are well visible.
 
 Look at [this example](https://github.com/AR-js-org/AR.js/tree/master/aframe/examples/location-based/always-face-user) in order to create `gps-entity-place` entities that will always face the user (camera).
 
