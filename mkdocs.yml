@@ -1,4 +1,5 @@
 site_name: AR.js Documentation
+site_description: AR.js Documentation Website
 nav:
     - Home: index.md
     - Image Tracking: image-tracking.md
