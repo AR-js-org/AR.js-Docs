@@ -148,6 +148,8 @@ Here we present three, basic examples, one for each AR feature. For specific doc
 
 ### Image Tracking Example
 
+There is a [Codepen](https://codepen.io/nicolocarpignoli/pen/vYOeYKd) for you to try. Below you can find also a live example.
+
 Please follow these simple steps:
 
 - Create a new project with the code below (or [open this live example](https://ar-js-org.github.io/AR.js/aframe/examples/image-tracking/nft/) and go directly to the last step)
@@ -213,6 +215,8 @@ Please follow these simple steps:
 ```
 
 ### Location Based Example
+
+Try it live with [this Codepen](https://codepen.io/nicolocarpignoli/pen/MWwzyVP). It retrieves your position and places a text near you.
 
 Please follow these simple steps:
 
