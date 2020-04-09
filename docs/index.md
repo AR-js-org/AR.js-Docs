@@ -65,7 +65,7 @@ coordinates).
 - **Open Source** : It is completely open source and free of charge!
 - **Standards** : It works on any phone with [webgl](http://caniuse.com/#feat=webgl) and [webrtc](http://caniuse.com/#feat=stream)
 
-AR.js has reached version 3. This is the official repository: [https://github.com/AR-js-org/AR.js](https://github.com/jeromeetienne/AR.js/issues).
+AR.js has reached version 3. This is the official repository: [https://github.com/AR-js-org/AR.js](https://github.com/AR-js-org/AR.js).
 If you want to visit the old AR.js repository, here it is: [https://github.com/jeromeetienne/AR.js](https://github.com/jeromeetienne/AR.js).
 
 ## Import the library
