@@ -91,3 +91,53 @@ Take a look at the [UI and Events](./ui-events.md) page for Location Based Custo
 Look at [this example](https://github.com/AR-js-org/AR.js/tree/master/aframe/examples/location-based/always-face-user) in order to create `gps-entity-place` entities that will always face the user (camera).
 
 
+## Projected Camera Version
+
+The experimental 'projected camera' version of the location-based components for AR.js uses [Spherical Mercator](https://www.maptiler.com/google-maps-coordinates-tile-bounds-projection) (aka EPSG:3857) to store both the camera position and the position of added points of interest and other geographical data.
+
+The rationale for this version is to allow easy addition of more complex geographic data such as roads and paths. Such data can be projected and added to an AR.js scene, and then, because Spherical Mercator units approximate to metres (away from the poles), the coordinates can be used directly as WebGL/A-Frame world coordinates.
+
+The two components for the projected camera version are `gps-projected-camera` and `gps-projected-entity-place`. Their interface is almost identical to `gps-camera` and `gps-entity-place` but they work differently internally.
+
+For example:
+
+```HTML
+<a-camera gps-projected-camera rotation-reader></a-camera>
+```
+and:
+
+```HTML
+<a-box color="yellow" gps-projected-entity-place="latitude: <your-latitude>; longitude: <your-longitude>"/>
+```
+Note that internally, the latitude and longitude are converted to Spherical Mercator coordinates.
+
+As for `gps-entity-place`, you can specify an altitude using the *y* component of the `position` attribute:
+
+```HTML
+<a-box color="yellow" gps-projected-entity-place="latitude: <your-latitude>; longitude: <your-longitude>" position="0 30 0"/>
+```
+
+### Calculating world coordinates of arbitrary augmented content
+
+`gps-projected-camera` has some useful properties and methods which can be used to easily work with arbitrary augmented content (for example, polylines or polygons sourced from geodata APIs such as [OpenStreetMap](https://openstreetmap.org)). Before introducing these, it needs to be made clear that, in `gps-projected-camera`, the **original GPS position** is set as the world origin. So, if arbitrary content is to be added to the scene, and the source coordinates for this content is in unprojected (WGS84) latitude and longitude, it needs to be:
+
+- projected to Spherical Mercator;
+- and then converted to world coordinates relative to the original GPS position.
+
+On the other hand, only the second step is needed if the source coordinates are already projected. We'll look at each scenario now.
+
+#### Source data in WGS84 latitude/longitude
+
+The `latLonToWorld(lat, lon)` method of the `gps-projected-camera` component converts latitude and longitude directly to world coordinates, performing the projection as the first step and then calculating the world coordinates from the projected coordinates. It will return a 2-member array containing the *x* and *z* world coordinates, allowing the developer to calculate or specify the *y* coordinate (altitude) independently.
+
+#### Source data in Spherical Mercator
+
+An alternative scenario is when the augmented content has already been projected into Spherical Mercator and therefore does not need the initial projection step when added to an AR.js scene. This may occur when an API serves data in Spherical Mercator, for instance. In this case, we still need to convert the Spherical Mercator coordinates to world coordinates relative to the original GPS position. `gps-projected-camera` has an `originCoordsProjected` property, which represents the original GPS position in Spherical Mercator coordinates. This is a two-member array, containing the Spherical Mercator easting and northing, respectively, of the origin point. From this, we can therefore work out the world coordinates from Spherical Mercator coordinates:
+
+* `xWorld = featureEasting - originCoordsProjected[0]`
+
+and
+
+* `zWorld = -(featureNorthing - originCoordsProjected[1])`
+
+where `xWorld` and `zWorld` are the world *x* and *z* coordinates of the augmented content, and *featureEasting* and *featureNorthing* are the content's Spherical Mercator coordinates. Note how we have to reverse the sign of *z* as increasing Spherical Mercator easting corresponds to increasing *x* in OpenGL coordinates, and increasing altitude corresponds to increasing *y*, but increasing Spherical Mercator northing corresponds to **decreasing** *z*.
