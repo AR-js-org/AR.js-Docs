@@ -50,14 +50,14 @@ This component makes each entity GPS-trackable. This assigns a specific world po
 It requires latitude and longitude as a single string parameter (example with `a-box` aframe primitive):
 
 ```HTML
-<a-box color="yellow" gps-entity-place="latitude: <your-latitude>; longitude: <your-longitude>"/>
+<a-box material="color: yellow" gps-entity-place="latitude: <your-latitude>; longitude: <your-longitude>"/>
 ```
 
 ⚡️ In addition, you can use the a-frame "position" parameter to assign a y-value to change the height of the content.
 This value should be entered as meters above or below (if negative) the current camera height. For example, this would assign a height of 30 meters, and will be displayed relative to the gps-camera's current height:
 
 ```HTML
-<a-box color="yellow" gps-entity-place="latitude: <your-latitude>; longitude: <your-longitude>" position="0 30 0"/>
+<a-box material="color: yellow" gps-entity-place="latitude: <your-latitude>; longitude: <your-longitude>" position="0 30 0"/>
 ```
 
 ### Properties
@@ -140,4 +140,4 @@ and
 
 * `zWorld = -(featureNorthing - originCoordsProjected[1])`
 
-where `xWorld` and `zWorld` are the world *x* and *z* coordinates of the augmented content, and *featureEasting* and *featureNorthing* are the content's Spherical Mercator coordinates. Note how we have to reverse the sign of *z* as increasing Spherical Mercator easting corresponds to increasing *x* in OpenGL coordinates, and increasing altitude corresponds to increasing *y*, but increasing Spherical Mercator northing corresponds to **decreasing** *z*.
+where `xWorld` and `zWorld` are the world *x* and *z* coordinates of the augmented content, and `featureEasting` and `featureNorthing` are the content's Spherical Mercator coordinates. Note how we have to reverse the sign of *z* as increasing Spherical Mercator easting corresponds to increasing *x* in OpenGL coordinates, and increasing altitude corresponds to increasing *y*, but increasing Spherical Mercator northing corresponds to **decreasing** *z*.
