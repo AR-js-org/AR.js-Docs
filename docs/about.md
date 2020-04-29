@@ -1,9 +1,10 @@
 
 # Aknowledgments
 
-This project has been created by [@jeromeetienne](https://github.com/jeromeetienne) and it is now maintained by [@nicolocarpignoli](https://github.com/nicolocarpignoli).
+This project has been created by [@jeromeetienne](https://github.com/jeromeetienne) and it is now maintained by [@nicolocarpignoli](https://github.com/nicolocarpignoli) and the AR.js Org Community.
 
-For frequent updates on AR.js you can follow [@nicolocarp](https://twitter.com/nicolocarp) and Watch this repo!
+---------
+Notes about AR.js 3 release:
 
 After months of work, we have changed AR.js for good. The aim was to make it a true, free alternative to paid Web AR solutions. We don't know if we're already there, but now the path is clear, at least.
 
