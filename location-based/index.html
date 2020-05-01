@@ -97,6 +97,7 @@
             <li><a href="#properties_1">Properties</a></li>
             <li><a href="#custom-attributes">Custom Attributes</a></li>
             <li><a href="#events">Events</a></li>
+            <li><a href="#projected-camera-version">Projected Camera Version</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -169,12 +170,12 @@ It makes possible to handle both position and rotation of the camera and it's us
 <p><strong>Max allowed per scene</strong>: no limit</p>
 <p>This component makes each entity GPS-trackable. This assigns a specific world position to an entity, so that the user can see it when their device is pointing to its position in the real world. If the user is far from the entity, it will seem smaller. If it's too far away, it won't be seen at all.</p>
 <p>It requires latitude and longitude as a single string parameter (example with <code>a-box</code> aframe primitive):</p>
-<pre><code class="HTML">&lt;a-box color=&quot;yellow&quot; gps-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot;/&gt;
+<pre><code class="HTML">&lt;a-box material=&quot;color: yellow&quot; gps-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot;/&gt;
 </code></pre>
 
 <p>⚡️ In addition, you can use the a-frame "position" parameter to assign a y-value to change the height of the content.
 This value should be entered as meters above or below (if negative) the current camera height. For example, this would assign a height of 30 meters, and will be displayed relative to the gps-camera's current height:</p>
-<pre><code class="HTML">&lt;a-box color=&quot;yellow&quot; gps-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot; position=&quot;0 30 0&quot;/&gt;
+<pre><code class="HTML">&lt;a-box material=&quot;color: yellow&quot; gps-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot; position=&quot;0 30 0&quot;/&gt;
 </code></pre>
 
 <h3 id="properties_1">Properties</h3>
@@ -211,7 +212,43 @@ console.log(distanceMsg);   // &quot;890 meters&quot;
 <p>Take a look at the <a href="../ui-events/">UI and Events</a> page for Location Based Custom Events.</p>
 <hr />
 <p>⚡️ Usually, in Location Based, it's nice to have the augmented content that will always face the user, so when you rotate the camera, 3D models or most of all, text, are well visible.</p>
-<p>Look at <a href="https://github.com/AR-js-org/AR.js/tree/master/aframe/examples/location-based/always-face-user">this example</a> in order to create <code>gps-entity-place</code> entities that will always face the user (camera).</p></div>
+<p>Look at <a href="https://github.com/AR-js-org/AR.js/tree/master/aframe/examples/location-based/always-face-user">this example</a> in order to create <code>gps-entity-place</code> entities that will always face the user (camera).</p>
+<h2 id="projected-camera-version">Projected Camera Version</h2>
+<p>The experimental 'projected camera' version of the location-based components for AR.js uses <a href="https://www.maptiler.com/google-maps-coordinates-tile-bounds-projection">Spherical Mercator</a> (aka EPSG:3857) to store both the camera position and the position of added points of interest and other geographical data.</p>
+<p>The rationale for this version is to allow easy addition of more complex geographic data such as roads and paths. Such data can be projected and added to an AR.js scene, and then, because Spherical Mercator units approximate to metres (away from the poles), the coordinates can be used directly as WebGL/A-Frame world coordinates.</p>
+<p>The two components for the projected camera version are <code>gps-projected-camera</code> and <code>gps-projected-entity-place</code>. Their interface is almost identical to <code>gps-camera</code> and <code>gps-entity-place</code> but they work differently internally.</p>
+<p>For example:</p>
+<pre><code class="HTML">&lt;a-camera gps-projected-camera rotation-reader&gt;&lt;/a-camera&gt;
+</code></pre>
+
+<p>and:</p>
+<pre><code class="HTML">&lt;a-box color=&quot;yellow&quot; gps-projected-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot;/&gt;
+</code></pre>
+
+<p>Note that internally, the latitude and longitude are converted to Spherical Mercator coordinates.</p>
+<p>As for <code>gps-entity-place</code>, you can specify an altitude using the <em>y</em> component of the <code>position</code> attribute:</p>
+<pre><code class="HTML">&lt;a-box color=&quot;yellow&quot; gps-projected-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot; position=&quot;0 30 0&quot;/&gt;
+</code></pre>
+
+<h3 id="calculating-world-coordinates-of-arbitrary-augmented-content">Calculating world coordinates of arbitrary augmented content</h3>
+<p><code>gps-projected-camera</code> has some useful properties and methods which can be used to easily work with arbitrary augmented content (for example, polylines or polygons sourced from geodata APIs such as <a href="https://openstreetmap.org">OpenStreetMap</a>). Before introducing these, it needs to be made clear that, in <code>gps-projected-camera</code>, the <strong>original GPS position</strong> is set as the world origin. So, if arbitrary content is to be added to the scene, and the source coordinates for this content is in unprojected (WGS84) latitude and longitude, it needs to be:</p>
+<ul>
+<li>projected to Spherical Mercator;</li>
+<li>and then converted to world coordinates relative to the original GPS position.</li>
+</ul>
+<p>On the other hand, only the second step is needed if the source coordinates are already projected. We'll look at each scenario now.</p>
+<h4 id="source-data-in-wgs84-latitudelongitude">Source data in WGS84 latitude/longitude</h4>
+<p>The <code>latLonToWorld(lat, lon)</code> method of the <code>gps-projected-camera</code> component converts latitude and longitude directly to world coordinates, performing the projection as the first step and then calculating the world coordinates from the projected coordinates. It will return a 2-member array containing the <em>x</em> and <em>z</em> world coordinates, allowing the developer to calculate or specify the <em>y</em> coordinate (altitude) independently.</p>
+<h4 id="source-data-in-spherical-mercator">Source data in Spherical Mercator</h4>
+<p>An alternative scenario is when the augmented content has already been projected into Spherical Mercator and therefore does not need the initial projection step when added to an AR.js scene. This may occur when an API serves data in Spherical Mercator, for instance. In this case, we still need to convert the Spherical Mercator coordinates to world coordinates relative to the original GPS position. <code>gps-projected-camera</code> has an <code>originCoordsProjected</code> property, which represents the original GPS position in Spherical Mercator coordinates. This is a two-member array, containing the Spherical Mercator easting and northing, respectively, of the origin point. From this, we can therefore work out the world coordinates from Spherical Mercator coordinates:</p>
+<ul>
+<li><code>xWorld = featureEasting - originCoordsProjected[0]</code></li>
+</ul>
+<p>and</p>
+<ul>
+<li><code>zWorld = -(featureNorthing - originCoordsProjected[1])</code></li>
+</ul>
+<p>where <code>xWorld</code> and <code>zWorld</code> are the world <em>x</em> and <em>z</em> coordinates of the augmented content, and <code>featureEasting</code> and <code>featureNorthing</code> are the content's Spherical Mercator coordinates. Note how we have to reverse the sign of <em>z</em> as increasing Spherical Mercator easting corresponds to increasing <em>x</em> in OpenGL coordinates, and increasing altitude corresponds to increasing <em>y</em>, but increasing Spherical Mercator northing corresponds to <strong>decreasing</strong> <em>z</em>.</p></div>
         </div>
 
         <footer class="col-md-12">
