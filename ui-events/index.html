@@ -9,63 +9,76 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
         <title>UI and Events - AR.js Documentation</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/docco.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
-                <a class="navbar-brand" href="..">AR.js Documentation</a>
-                <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">AR.js Documentation</a>
+                </div>
 
                 <!-- Expanded navigation -->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
+                <div class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem">
-                                <a href=".." class="nav-link">Home</a>
+                            <li >
+                                <a href="..">Home</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../image-tracking/" class="nav-link">Image Tracking</a>
+                            <li >
+                                <a href="../image-tracking/">Image Tracking</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../location-based/" class="nav-link">Location Based</a>
+                            <li >
+                                <a href="../location-based/">Location Based</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../marker-based/" class="nav-link">Marker Based</a>
+                            <li >
+                                <a href="../marker-based/">Marker Based</a>
                             </li>
-                            <li class="navitem active">
-                                <a href="./" class="nav-link">UI and Events</a>
+                            <li class="active">
+                                <a href="./">UI and Events</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../about/" class="nav-link">About</a>
+                            <li >
+                                <a href="../about/">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="../marker-based/" class="nav-link">
+                            <li >
+                                <a rel="next" href="../marker-based/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../about/" class="nav-link">
+                            <li >
+                                <a rel="prev" href="../about/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -75,103 +88,26 @@
         </div>
 
         <div class="container">
-            <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
-            <span class="fa fa-angle-down"></span>
-        </button>
-    </div>
-
-    
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
-        <ul class="nav flex-column">
-            
-            <li class="nav-item" data-level="1"><a href="#ui-and-custom-events" class="nav-link">UI and Custom Events</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#handle-clicks-on-ar-content" class="nav-link">Handle clicks on AR content</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#interaction-with-overlayed-dom-content" class="nav-link">Interaction with Overlayed DOM content</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#custom-events" class="nav-link">Custom Events</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-        </ul>
-    </div>
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#ui-and-custom-events">UI and Custom Events</a></li>
+            <li><a href="#handle-clicks-on-ar-content">Handle clicks on AR content</a></li>
+            <li><a href="#interaction-with-overlayed-dom-content">Interaction with Overlayed DOM content</a></li>
+            <li><a href="#custom-events">Custom Events</a></li>
+            <li><a href="#trigger-actions-when-imagemarker-has-been-found">Trigger actions when image/marker has been found</a></li>
+    </ul>
 </div></div>
-                    <div class="col-md-9" role="main">
+                <div class="col-md-9" role="main">
 
 <h1 id="ui-and-custom-events">UI and Custom Events</h1>
 <p>To make AR.js based Web App looking better and add UI capabilities, it's possible to treat is as common website.
 Here you will learn how to use Raycaster, Custom Events and Interaction with overlayed DOM elements.</p>
-<p>First of all, an introduction about click interactions: it is possible to click directly on content using A-Frame, we tested and had good result with version <code>0.9.2</code>. Keep in mind that clicks (or touch interactions) are not very reliable: it can work if you</p>
-<ul>
-<li>need only few clicks, not very reliable</li>
-<li>have to click on very few entities on screen</li>
-<li>clicks work only on the center of the screen, not at the angles, so beware that your entities, to be clicked, should be big enough and not positioned on angles.</li>
-</ul>
-<p>Always remember that AR.js is Web AR, that means, you can use <strong>any</strong> DOM elements interactions you want.
-Such interactions work perfectly and most of the times, the Overlayed DOM content interaction is enough for common needs.</p>
 <h2 id="handle-clicks-on-ar-content">Handle clicks on AR content</h2>
-<p>We can use click/touch interactions through Raycaster, following <a href="https://aframe.io/docs/1.0.0/introduction/interactions-and-controllers.html">A-Frame Docs</a>.</p>
-<p>We can register an event listener for any a-frame entity. So this method works also for Marker Based, Image Tracking and Location Based.
-We will show it on a Location Based examples, registering the click on <code>a-entity</code> - the same can be done with <code>a-marker</code> or <code>a-nft</code>.</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot; /&gt;
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;
-    &lt;title&gt;Click Location Based Example&lt;/title&gt;
-    &lt;script src=&quot;https://aframe.io/releases/0.9.2/aframe.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js&quot;&gt;&lt;/script&gt;
-  &lt;/head&gt;
-
-  &lt;script&gt;
-    // here we register che 'clickhandler' component
-    AFRAME.registerComponent(&quot;clickhandler&quot;, {
-      init: function() {
-        // we add the click event listener to any instance of this component
-        this.el.addEventListener(&quot;click&quot;, () =&gt; {
-          alert(&quot;Clicked!&quot;);
-        });
-      }
-    });
-  &lt;/script&gt;
-
-  &lt;body style=&quot;margin: 0; overflow: hidden;&quot;&gt;
-    &lt;!-- with cursor and raycaster, we define a raycaster handler.
-    With 'raycaster' we add a CSS selector to match the only elements that will react to click events,
-    for performances reasons. See: (https://aframe.io/docs/1.0.0/introduction/interactions-and-controllers.html) --&gt;
-    &lt;a-scene
-      cursor=&quot;rayOrigin: mouse; fuse: true; fuseTimeout: 0;&quot;
-      raycaster=&quot;objects: [clickhandler];&quot;
-      vr-mode-ui=&quot;enabled: false&quot;
-      embedded
-      arjs=&quot;sourceType: webcam; debugUIEnabled: false;&quot;
-    &gt;
-      &lt;!-- this entity, potentially every other on the a-scene, has the 'clickhandler' component
-      and will behave has we have defined: it will handle click events! --&gt;
-      &lt;a-box
-        clickhandler
-        material=&quot;color: red;&quot;
-        scale=&quot;20 20 20&quot;
-        gps-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;;&quot;
-      &gt;
-      &lt;/a-box&gt;
-
-      &lt;a-camera gps-camera rotation-reader&gt; &lt;/a-camera&gt;
-    &lt;/a-scene&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-
+<p><img src='./pinchzoom.gif' /></p>
+<p>You are now able to use AR.js (marker based or image tracking) with a-frame latest versions (1.0.0 and above) in order
+to have touch gestures to zoom and rotate your content! Disclaimer: this will work for your entire <code>a-scene</code>, so it's not a real
+option if you have to handle different interactions for multiple markers. It will work like charm if you have one marker/image for scene.</p>
+<p>Follow Fabio Cortès great walkthrough in order to add this feature on your AR.js web app.</p>
 <p>You can use this exact approach for Image Tracking <code>a-nft</code> and Marker Based <code>a-entity</code> elements.
 The <code>clickhandler</code> name can be customized, you can choose the one you like most, it's just a reference.</p>
 <p>Keep in mind that this click/touch interaction is not handled by AR.js at all, it is all A-Frame based.
@@ -214,10 +150,10 @@ For example, starting from this example:</p>
   &lt;!-- we import arjs version without NFT but with marker + location based support --&gt;
   &lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js&quot;&gt;&lt;/script&gt;
   &lt;script&gt;
-    window.onload = function() {
+    window.onload = function () {
       document
         .querySelector(&quot;.say-hi-button&quot;)
-        .addEventListener(&quot;click&quot;, function() {
+        .addEventListener(&quot;click&quot;, function () {
           // here you can change also a-scene or a-entity properties, like
           // changing your 3D model source, size, position and so on
           // or you can just open links, trigger actions...
@@ -366,8 +302,67 @@ For example, starting from this example:</p>
 <li>Image Tracking (Image Descriptors) are fully loaded</li>
 </ul>
 <p>And automatically remove from the DOM elements that match the <code>.arjs-loader</code> selector.</p>
-<p>You can add any custom loader that will be remove in the above situations, just use the <code>.arjs-loader</code> class on it.</p></div>
-            </div>
+<p>You can add any custom loader that will be remove in the above situations, just use the <code>.arjs-loader</code> class on it.</p>
+<h2 id="trigger-actions-when-imagemarker-has-been-found">Trigger actions when image/marker has been found</h2>
+<p>You can trigger any action you want when marker/image has been found. You can avoid linking a content to a marker/image and
+only trigger an action (like a redirect to an external website) when the anchor has been found by the camera.</p>
+<pre><code class="html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js&quot;&gt;&lt;/script&gt;
+
+&lt;style&gt;
+  .arjs-loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .arjs-loader div {
+    text-align: center;
+    font-size: 1.25em;
+    color: white;
+  }
+&lt;/style&gt;
+&lt;script&gt;
+  AFRAME.registerComponent('markerhandler', {
+    init: function () {
+      this.el.sceneEl.addEventListener('markerFound', () =&gt; {
+        // redirect to custom URL
+        window.location = 'https://github.com/AR-js-org/AR.js';
+      });
+  });
+  },
+&lt;/script&gt;
+
+&lt;body style=&quot;margin : 0px; overflow: hidden;&quot;&gt;
+  &lt;!-- minimal loader shown until image descriptors are loaded --&gt;
+  &lt;div class=&quot;arjs-loader&quot;&gt;
+    &lt;div&gt;Loading, please wait...&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;a-scene
+    vr-mode-ui=&quot;enabled: false;&quot;
+    renderer=&quot;logarithmicDepthBuffer: true;&quot;
+    embedded
+    arjs=&quot;trackingMethod: best; sourceType: webcam;debugUIEnabled: false;&quot;
+  &gt;
+    &lt;!-- we use cors proxy to avoid cross-origin problems --&gt;
+    &lt;!-- we use the trex image shown on the homepage of the docs --&gt;
+    &lt;a-nft
+      markerhandler
+      type=&quot;nft&quot;
+      url=&quot;https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex&quot;
+    &gt;
+    &lt;/a-nft&gt;
+    &lt;a-entity camera&gt;&lt;/a-entity&gt;
+  &lt;/a-scene&gt;
+&lt;/body&gt;
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
@@ -376,24 +371,24 @@ For example, starting from this example:</p>
         </footer>
         <script>
             var base_url = "..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
         </script>
         <script src="../js/base.js" defer></script>
         <script src="../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form>
+                <form role="form">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
@@ -404,12 +399,12 @@ For example, starting from this example:</p>
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">
