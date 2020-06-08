@@ -5,19 +5,21 @@ Here you will learn how to use Raycaster, Custom Events and Interaction with ove
 
 ## Handle clicks on AR content
 
-<img src='./pinchzoom.gif' />
+<img src='https://miro.medium.com/max/1200/1*7aR8--E_lqt91Ziw1VCCTw.gif' />
 
-You are now able to use AR.js (marker based or image tracking) with a-frame latest versions (1.0.0 and above) in order
+It's now possible to use AR.js (marker based or image tracking) with a-frame latest versions (1.0.0 and above) in order
 to have touch gestures to zoom and rotate your content! Disclaimer: this will work for your entire `a-scene`, so it's not a real
 option if you have to handle different interactions for multiple markers. It will work like charm if you have one marker/image for scene.
 
-Follow Fabio Cortès great walkthrough in order to add this feature on your AR.js web app.
+Check Fabio Cortès [great walkthrough](https://medium.com/@fabiojcortes/manipulate-your-3d-content-with-gestures-in-ar-js-78da4c076607) in order to add this feature on your AR.js web app.
 
 You can use this exact approach for Image Tracking `a-nft` and Marker Based `a-entity` elements.
 The `clickhandler` name can be customized, you can choose the one you like most, it's just a reference.
 
 Keep in mind that this click/touch interaction is not handled by AR.js at all, it is all A-Frame based.
 Always look on the A-Frame documentation for more details.
+
+[Check out the tutorial](https://medium.com/@fabiojcortes/manipulate-your-3d-content-with-gestures-in-ar-js-78da4c076607)
 
 ## Interaction with Overlayed DOM content
 
