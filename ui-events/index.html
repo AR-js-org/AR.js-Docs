@@ -94,7 +94,8 @@
             <li><a href="#handle-clicks-on-ar-content">Handle clicks on AR content</a></li>
             <li><a href="#interaction-with-overlayed-dom-content">Interaction with Overlayed DOM content</a></li>
             <li><a href="#custom-events">Custom Events</a></li>
-            <li><a href="#trigger-actions-when-imagemarker-has-been-found">Trigger actions when image/marker has been found</a></li>
+            <li><a href="#trigger-actions-when-image-has-been-found">Trigger actions when image has been found</a></li>
+            <li><a href="#trigger-action-when-marker-has-been-found">Trigger action when marker has been found</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -304,7 +305,7 @@ For example, starting from this example:</p>
 </ul>
 <p>And automatically remove from the DOM elements that match the <code>.arjs-loader</code> selector.</p>
 <p>You can add any custom loader that will be remove in the above situations, just use the <code>.arjs-loader</code> class on it.</p>
-<h2 id="trigger-actions-when-imagemarker-has-been-found">Trigger actions when image/marker has been found</h2>
+<h2 id="trigger-actions-when-image-has-been-found">Trigger actions when image has been found</h2>
 <p>You can trigger any action you want when marker/image has been found. You can avoid linking a content to a marker/image and
 only trigger an action (like a redirect to an external website) when the anchor has been found by the camera.</p>
 <pre><code class="html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js&quot;&gt;&lt;/script&gt;
@@ -360,6 +361,37 @@ only trigger an action (like a redirect to an external website) when the anchor 
       url=&quot;https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex&quot;
     &gt;
     &lt;/a-nft&gt;
+    &lt;a-entity camera&gt;&lt;/a-entity&gt;
+  &lt;/a-scene&gt;
+&lt;/body&gt;
+</code></pre>
+
+<h2 id="trigger-action-when-marker-has-been-found">Trigger action when marker has been found</h2>
+<pre><code class="html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  AFRAME.registerComponent('markerhandler', {
+    init: function () {
+      this.el.sceneEl.addEventListener('markerFound', () =&gt; {
+        // redirect to custom URL e.g. google.com
+        window.location = 'https://www.google.com/';
+      })
+    }
+  });
+&lt;/script&gt;
+
+&lt;body style=&quot;margin : 0px; overflow: hidden;&quot;&gt;
+  &lt;a-scene
+    vr-mode-ui=&quot;enabled: false;&quot;
+    renderer=&quot;logarithmicDepthBuffer: true;&quot;
+    embedded
+    arjs=&quot;trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;&quot;&gt;
+
+    &lt;a-marker markerhandler type='barcode' value='7'&gt;
+        &lt;a-box position='0 0.5 0' color=&quot;yellow&quot;&gt;&lt;/a-box&gt;
+    &lt;/a-marker&gt;
+
     &lt;a-entity camera&gt;&lt;/a-entity&gt;
   &lt;/a-scene&gt;
 &lt;/body&gt;
