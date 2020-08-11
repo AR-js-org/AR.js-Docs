@@ -151,7 +151,7 @@ And automatically remove from the DOM elements that match the `.arjs-loader` sel
 
 You can add any custom loader that will be remove in the above situations, just use the `.arjs-loader` class on it.
 
-## Trigger actions when image/marker has been found
+## Trigger actions when image has been found
 
 You can trigger any action you want when marker/image has been found. You can avoid linking a content to a marker/image and
 only trigger an action (like a redirect to an external website) when the anchor has been found by the camera.
@@ -210,6 +210,39 @@ only trigger an action (like a redirect to an external website) when the anchor 
       url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
     >
     </a-nft>
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+```
+
+## Trigger action when marker has been found
+
+```html
+<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+
+<script>
+  AFRAME.registerComponent('markerhandler', {
+    init: function () {
+      this.el.sceneEl.addEventListener('markerFound', () => {
+        // redirect to custom URL e.g. google.com
+        window.location = 'https://www.google.com/';
+      })
+    }
+  });
+</script>
+
+<body style="margin : 0px; overflow: hidden;">
+  <a-scene
+    vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+
+    <a-marker markerhandler type='barcode' value='7'>
+        <a-box position='0 0.5 0' color="yellow"></a-box>
+    </a-marker>
+
     <a-entity camera></a-entity>
   </a-scene>
 </body>
