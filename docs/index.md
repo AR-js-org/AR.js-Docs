@@ -255,6 +255,21 @@ Please follow these simple steps:
 </html>
 ```
 
+#### Viewing distant objects in location-based mode 
+
+If your location-based AR content is distant from the user (around 1km or
+more), it is recommended to use the new `arjs-webcam-texture` component, which
+uses a THREE.js texture to stream the camera feed and allows distant content
+to be viewed. This component is automatically injected if the `videoTexture` parameter of the `arjs` system is set to `true` *and* the `sourceType` is `webcam`. For example (code snippet only):
+
+```html
+    <a-scene
+      vr-mode-ui="enabled: false"
+      embedded
+      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
+    >
+```
+
 ### Marker Based Example
 
 Please follow these simple steps:
