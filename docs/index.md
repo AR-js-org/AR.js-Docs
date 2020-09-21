@@ -272,12 +272,12 @@ more), it is recommended to use the new `arjs-webcam-texture` component (introdu
 
 In location-based mode, 'shaking' effects can occur due to frequent small
 changes in the device's orientation, due to the high sensitivity of the device 
-sensors such as the accelerometer. If using AR.js 3.3.1 or greater this can optinally be reduced using an exponential smoothing technique. *Note that there are currently some occasional display artefacts with this if moving the device quickly or suddenly so please test before you enable it in a finished application; work to resolve these is on-going.*
+sensors such as the accelerometer. If using AR.js 3.3.1 or greater this can optionally be reduced using an exponential smoothing technique. *Note that there are currently some occasional display artefacts with this if moving the device quickly or suddenly so please test before you enable it in a finished application; work to resolve these is on-going.*
 
 This is enabled by adding the `arjs-look-controls` component to your `a-camera` with a `smoothingFactor` property. You must also disable A-Frame's default `look-controls`, as `arjs-look-controls` will replace it. For example:
 
 ```html
-<a-camera id='camera1' look-controls-enabled='false' near="0.1" far="50000" fov="80" arjs-look-controls='smoothingFactor: 0.1' gps-projected-camera='gpsMinDistance: 5' rotation-reader vertical-controls wasd-controls="acceleration: 1300"> </a-camera>
+<a-camera id='camera1' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera='gpsMinDistance: 5' rotation-reader> </a-camera>
 ```
 
 Exponential smoothing works by applying a smoothing factor to each newly-read device rotation angle (obtained from sensor readings) such that the previous smoothed value counts more than the current value, thus reducing 'noise' and 'jitter'. If `k` is the smoothing factor:
@@ -287,6 +287,9 @@ smoothedAngle = k * newValue + (1 - k) * previousSmoothedAngle
 ```
 
 It can be seen from this that the **smaller** the value of `k` (the `smoothingFactor` property), the **greater** the smoothing effect. In tests, 0.1 appears to give the best result.
+
+Also you can reduce 'jumping' of augmented content when near a place - a 
+bad-looking effect due to GPS sensors' low precision. To do so you can use the `gpsMinDistance` and `gpsTimeInterval` properties. See the <a href="./location-based.md">Location Based specific docs</a> to learn how to use them.
 
 
 ### Marker Based Example
