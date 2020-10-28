@@ -38,6 +38,8 @@ In addition to that, as you can see on the example above, we also have to add `r
 | simulateLatitude   | Setting this allows you to simulate the latitude of the camera, to aid in testing.    | 0 (disabled) |
 | simulateLongitude   | Setting this allows you to simulate the longitude of the camera, to aid in testing.    | 0 (disabled) |
 | simulateAltitude   | Setting this allows you to simulate the altitude of the camera in meters above sea level, to aid in testing.    | 0 (disabled) |
+| gpsMinDistance   | Setting this allows you to control how far the camera must move, in meters, to generate a GPS update event. Useful to prevent 'jumping' of augmented content due to frequent small changes in position.    | 5 |
+| gpsTimeInterval   | Setting this allows you to control how frequently to obtain a new GPS position. If a previous GPS location is cached, the cached position will be used rather than a new position if its 'age' is less than this value, in milliseconds. This parameter is passed directly to the Geolocation API's `watchPosition()` method.    | 0 (always use new position, not cached) |
 
 
 ### `gps-entity-place`
@@ -129,6 +131,7 @@ On the other hand, only the second step is needed if the source coordinates are 
 
 #### Source data in WGS84 latitude/longitude
 
+This is probably the most common scenario.
 The `latLonToWorld(lat, lon)` method of the `gps-projected-camera` component converts latitude and longitude directly to world coordinates, performing the projection as the first step and then calculating the world coordinates from the projected coordinates. It will return a 2-member array containing the *x* and *z* world coordinates, allowing the developer to calculate or specify the *y* coordinate (altitude) independently.
 
 #### Source data in Spherical Mercator
