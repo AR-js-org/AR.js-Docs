@@ -87,12 +87,51 @@ console.log(distanceMsg);   // "890 meters"
 
 Take a look at the [UI and Events](./ui-events.md) page for Location Based Custom Events.
 
------
+----
 
 ⚡️ Usually, in Location Based, it's nice to have the augmented content that will always face the user, so when you rotate the camera, 3D models or most of all, text, are well visible.
 
 Look at [this example](https://github.com/AR-js-org/AR.js/tree/master/aframe/examples/location-based/always-face-user) in order to create `gps-entity-place` entities that will always face the user (camera).
 
+----
+
+## Viewing every distant object
+
+If your location-based AR content is distant from the user (around 1km or
+more), it is recommended to use the new `arjs-webcam-texture` component (introduced in AR.js 3.2.0), which uses a THREE.js texture to stream the camera feed and allows distant content to be viewed. This component is automatically injected if the `videoTexture` parameter of the `arjs` system is set to `true` *and* the `sourceType` is `webcam`. For example (code snippet only):
+
+```html
+    <a-scene
+      vr-mode-ui="enabled: false"
+      embedded
+      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
+    >
+```
+
+## Reducing shaking effects
+
+In location-based mode, 'shaking' effects can occur due to frequent small
+changes in the device's orientation, due to the high sensitivity of the device
+sensors such as the accelerometer. If using AR.js 3.3.1 or greater this can optionally be reduced using an exponential smoothing technique. *Note that there are currently some occasional display artefacts with this if moving the device quickly or suddenly so please test before you enable it in a finished application; work to resolve these is on-going.*
+
+This is enabled by adding the `arjs-look-controls` component to your `a-camera` with a `smoothingFactor` property. You must also disable A-Frame's default `look-controls`, as `arjs-look-controls` will replace it. For example:
+
+```html
+<a-camera id='camera1' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera='gpsMinDistance: 5' rotation-reader> </a-camera>
+```
+
+Exponential smoothing works by applying a smoothing factor to each newly-read device rotation angle (obtained from sensor readings) such that the previous smoothed value counts more than the current value, thus reducing 'noise' and 'jitter'. If `k` is the smoothing factor:
+
+```
+smoothedAngle = k * newValue + (1 - k) * previousSmoothedAngle
+```
+
+It can be seen from this that the **smaller** the value of `k` (the `smoothingFactor` property), the **greater** the smoothing effect. In tests, 0.1 appears to give the best result.
+
+Also you can reduce 'jumping' of augmented content when near a place - a
+bad-looking effect due to GPS sensors' low precision. To do so you can use the `gpsMinDistance` and `gpsTimeInterval` properties. See the <a href="./location-based.md">Location Based specific docs</a> to learn how to use them.
+
+----
 
 ## Projected Camera Version
 
