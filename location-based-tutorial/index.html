@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>AR.js Location-Based Tutorial - Develop a Simple Peakfinder App - AR.js Documentation</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/docco.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">AR.js Documentation</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Home</a>
+                            </li>
+                            <li >
+                                <a href="../image-tracking/">Image Tracking</a>
+                            </li>
+                            <li >
+                                <a href="../location-based/">Location Based</a>
+                            </li>
+                            <li >
+                                <a href="../marker-based/">Marker Based</a>
+                            </li>
+                            <li >
+                                <a href="../ui-events/">UI and Events</a>
+                            </li>
+                            <li >
+                                <a href="../about/">About</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#arjs-location-based-tutorial-develop-a-simple-peakfinder-app">AR.js Location-Based Tutorial - Develop a Simple Peakfinder App</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#basic-example">Basic example</a></li>
+            <li><a href="#introducing-javascript-with-arjs">Introducing JavaScript with AR.js</a></li>
+            <li><a href="#adding-elevation-and-tiling">Adding elevation, and tiling</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="arjs-location-based-tutorial-develop-a-simple-peakfinder-app">AR.js Location-Based Tutorial - Develop a Simple Peakfinder App</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This tutorial aims to take you from a basic location-based AR.js example all
+the way to a working, simple peak-finder app. We will start with an HTML-only
+example and gradually add JavaScript to make our app more sophisticated.</p>
+<p>It is expected that you have some basic <a href="https://aframe.io">A-Frame</a> experience.</p>
+<h2 id="basic-example">Basic example</h2>
+<p>We will start with a basic example, using pure HTML, to display a box close
+to your location. This example is similar to the location-based example on the
+<a href="..">index page</a>.</p>
+<pre><code class="html">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;AR.js Basic Projected Camera Example&lt;/title&gt;
+        &lt;script src=&quot;https://aframe.io/releases/1.0.4/aframe.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js&quot;&gt;&lt;/script&gt;
+        &lt;!-- Look-at component. We don't need this now, but we will later. --&gt;
+        &lt;script src=&quot;https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;a-scene
+        vr-mode-ui=&quot;enabled: false&quot;
+        arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false;'
+        renderer='antialias: true; alpha: true'&gt;
+            &lt;a-camera gps-projected-camera rotation-reader&gt;&lt;/a-camera&gt;
+            &lt;a-box gps-projected-entity-place='latitude: your-lat; longitude: your-lon' material='color: red' scale='10 10 10'&gt;&lt;/a-box&gt;
+        &lt;/a-scene&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Upload this to a server with HTTPS, or run locally on <code>localhost</code>. Make
+sure you replace <code>your-lat</code> and <code>your-lon</code> with values close to your
+actual position (to see the box clearly, I would recommend an offset of 
+around 0.0004 degrees in any direction for both the latitude and longitude).</p>
+<h3 id="how-does-this-work">How does this work?</h3>
+<ul>
+<li>
+<p>This is simplar to the example on the <a href="..">index page</a>. </p>
+</li>
+<li>
+<p>The <code>arjs</code> component of our <code>a-scene</code> initialises AR.js. Note the properties
+we are setting: we set the <code>sourceType</code> to <code>webcam</code> for obvious reasons
+but also set <code>videoTexture</code> to true. This is vital in an outdoor 
+location-based AR app as it allows distant augmented content - such at the
+peaks we are going to eventually visualise - to be seen. (It does this by
+using a three.js texture for the camera feed which can be easily combined with
+our augmented content).</p>
+</li>
+<li>
+<p>Note the <code>gps-projected-camera</code> component on our <code>a-camera</code>. This is the 
+AR.js component which automatically
+converts latitudes and longitudes into 3D world coordinates, allowing us to
+use latitude and longitude, rather than world coordinates, when adding places.
+Note that we are using <code>gps-projected-camera</code>, not <code>gps-camera</code>. The
+<code>gps-projected-camera</code> component makes it easy for us to work with arbitrary
+geographical data provided by a server, as internally it uses the
+Spherical Mercator projection to represent the augmented content's world
+coordinates. Spherical Mercator units are commonly used to represent 
+mapping data and are almost (but not quite) equivalent to metres. Away from the polar regions, though, it's good enough to use for AR.</p>
+</li>
+<li>
+<p>We then create an <code>a-box</code> primitive. This is the augmented content that we
+want to display. Ordinarily, in A-Frame, you would give this a <code>position</code> in
+world coordinates. However, AR.js, and specifically the <code>gps-projected-entity-place</code> component, allows us to position it using latitude and longitude. 
+We can position any A-Frame entity at a given latitude and longitude using
+<code>gps-projected-entity-place</code>.</p>
+</li>
+</ul>
+<h3 id="things-to-try">Things to try</h3>
+<ul>
+<li>
+<p>Change the <code>a-box</code> to some other kind of A-Frame primitive, such as an
+<code>a-sphere</code> or <code>a-cylinder</code>. Does it still work?</p>
+</li>
+<li>
+<p>Try adding multiple objects with different colours at different locations.</p>
+</li>
+<li>
+<p>Try adding a text primitive at a nearby latitude and longitude. Use the
+location-based example on the <a href="..">index.page</a> to help you. You will
+need to use the A-Frame <code>look-at</code> component to ensure the text always 
+faces the camera.</p>
+</li>
+<li>
+<p>Try giving your objects an elevation. This can be done by setting the
+<code>y</code> coordinate of the <code>position</code> property of each object to a given height 
+(in metres) and setting the <code>x</code> and <code>z</code> coordinates to 0.</p>
+</li>
+<li>
+<p>Having done that, try giving the <em>camera</em> an elevation by similarly setting its <code>position</code> property, and look at the effect this has on where the objects appear.</p>
+</li>
+</ul>
+<h2 id="introducing-javascript-with-arjs">Introducing JavaScript with AR.js</h2>
+<p>Much of the power of A-Frame, and AR.js, comes from adding scripting to your
+basic applications. It is assumed that you already know the basics of how
+to create components in A-Frame, but let's start with a refresher. Create
+this file, <code>peakfinder.js</code>:</p>
+<pre><code class="javascript">AFRAME.registerComponent('peakfinder', {
+    init: function() {
+        alert('Peakfinder component initialising!');
+    }
+});
+</code></pre>
+
+<p>and link to it from your HTML by adding, in the head section after the
+A-Frame and AR.js scripts:</p>
+<pre><code class="html">&lt;script type='text/javascript' src='peakfinder.js'&gt;&lt;/script&gt;
+</code></pre>
+
+<p>Also add a new entity to your scene and add this component to it:</p>
+<pre><code class="html">&lt;a-entity peakfinder&gt;&lt;/a-entity&gt;
+</code></pre>
+
+<p>Load your page again. You should see the alert box come up. Remember from
+basic A-Frame that to create a component, you need to register it as in the
+example above. Remember also that the <code>init()</code> function runs when the component
+is first initialised, and you add components to entities by making them
+attributes of the <code>&lt;a-entity&gt;</code> tag.</p>
+<h3 id="connecting-to-a-web-api">Connecting to a web API</h3>
+<p>Now we've got a basic component set up, we are going to make it do something:
+connect to a web API to retrieve the locations of nearby peaks - with our
+eventual aim of making a peakfinder app. There are various APIs which can
+be used, but we will use one which is based on <a href="https://openstreetmap.org">OpenStreetMap</a> data. This API is present on the <a href="https://hikar.org">Hikar</a> web server and delivers the peak data as GeoJSON, but only covers Europe, Turkey and Washington State, USA, due to server capacity constraints. However, please feel free to research alternative APIs which cover other parts of the world and adjust the code accordingly. Also please feel free to contact me(@nickw1 on GitHub) if you want to add your area of the world (please do not ask, however, for large, heavily-populated countries in their entirety; to give you an idea of the size I could accommodate, the Washington State coverage was the result of a request). Also, note that the API is open source so again contact me for guidance on how you can set it up on your own server to cover your area of the world.</p>
+<p>Modify your code as follows:</p>
+<pre><code class="javascript">AFRAME.registerComponent('peakfinder', {
+    init: function() {
+        this.loaded = false;
+        window.addEventListener('gps-camera-update-position', e =&gt; {
+            if(this.loaded === false) {
+                this._loadPeaks(e.detail.position.longitude, e.detail.position.latitude);
+                this.loaded = true;
+            }
+        });
+    }
+});
+</code></pre>
+
+<p>What is this doing? We are listening for the <code>gps-camera-update-position</code> event. This is emitted by <code>gps-projected-camera</code> whenever our GPS location changes. The detail of the event contains a <code>position</code> object with <code>longitude</code> and <code>latitude</code> properties which contain our current position. So when we have obtained our position, we call an (as yet unwritten) <code>_loadPeaks()</code> method which will actually download the locations of the peaks from a web API.</p>
+<p>Note also the <code>loaded</code> boolean. This is used to prevent the peaks being loaded <em>every time the position changes</em>, which will clearly result in unnecessary network communication. For now, we just download the peaks once, when the application is initialised.</p>
+<p>So next, we will write the <code>_loadPeaks()</code> method. Add this as a new method to your component:</p>
+<pre><code class="javascript"> _loadPeaks: function(longitude, latitude) {
+        const scale = 2000;
+        fetch(`https://www.hikar.org/fm/ws/bsvr.php?bbox=${longitude-0.1},${latitude-0.1},${longitude+0.1},${latitude+0.1}&amp;outProj=4326&amp;format=json&amp;poi=natural`
+            )
+        .then ( response =&gt; response.json() )
+        .then ( json =&gt; {
+            json.features.filter ( f =&gt; f.properties.natural == 'peak' )
+                .forEach ( peak =&gt; {
+                    const entity = document.createElement('a-text');
+                    entity.setAttribute('look-at', '[gps-projected-camera]');
+                    entity.setAttribute('value', peak.properties.name);
+                    entity.setAttribute('scale', {
+                        x: scale,
+                        y: scale,
+                        z: scale
+                    });
+                    entity.setAttribute('gps-projected-entity-place', {
+                        latitude: peak.geometry.coordinates[1],
+                        longitude: peak.geometry.coordinates[0]
+                    });
+                    this.el.appendChild(entity);
+                });
+        });
+    }
+</code></pre>
+
+<p>How is this working?</p>
+<ul>
+<li>We first send a standard AJAX request to our API, using <code>fetch</code>, and using a bounding box of width and height 0.2 degrees centered on our current location.</li>
+<li>We obtain JSON from the response using the standard <code>fetch</code> promise-based approach.</li>
+<li>Once we have our JSON (specifically, GeoJSON) as an array of features, we filter them to select only peaks.</li>
+<li>For each peak, we:<ul>
+<li>Create an <code>a-text</code> primitive and set it to <code>look-at</code> the <code>gps-projected-camera</code> component (the camera). This will ensure that the text will always face the user. Ensure that you have linked the source code of the A-Frame <code>look-at</code> component! </li>
+<li>Set the text's value to the peak's name. In other words, the name of each peak will be displayed.</li>
+<li>Scale the text appropriately. </li>
+<li>Add the <code>gps-projected-entity-place</code> component to our <code>a-text</code> to position the text using latitude and longitude. The coordinates are extracted from the GeoJSON.</li>
+<li>Using standard DOM, append the <code>a-text</code> to the parent element of our <code>peakfinder</code> component.</li>
+</ul>
+</li>
+</ul>
+<p>Try this out, making sure you do so in an area where there are at least small hills, which are likely to be on OpenStreetMap. You can check <a href="https://openstreetmap.org">OpenStreetMap</a> and look for peak symbols near you on the map. If necessary, expand the bounding box.</p>
+<p>You will find that the text should appear at the correct place for the peak, <strong>but</strong> with one big problem - elevation is not included. So far, we are only using latitude and longitude to place the peak. Clearly, a fully-working peakfinder app will include elevation too! The next tutorial section addresses this. </p>
+<p>Nonetheless, even without elevation, hopefully this tutorial will show you how easy it is to generate dynamic location-based AR content using AR.js.</p>
+<h3 id="things-to-try_1">Things to try</h3>
+<ul>
+<li>Rather than hard-coding the scale at 2000, add it as a property using the component's schema, and experiment with different values by setting the property in your HTML.</li>
+</ul>
+<h2 id="adding-elevation-and-tiling">Adding elevation, and tiling</h2>
+<p>As discussed, we would like our peakfinder app to show the peaks at the correct <em>elevation</em>. Another issue with any outdoor AR app is that we want, ideally, to <em>download new data as we move to new areas</em> so that, for example, peaks within 10km of us are downloaded when we start the app, and then as we reach the edge of the already-downloaded area, new peaks are downloaded. At the moment, we simply download the peaks when we start the app, and do not update them.</p>
+<p>These issues provide much of the complexity of a location-based AR app. Luckily, though, a pre-built solution to both problems exists. One of the great things about A-Frame is the fact that there are <em>many pre-built components which can be added to our app</em>, and two pre-built components exists for this precise problem: <code>terrarium-dem</code> and <code>osm3d</code>, both part of the <a href="https://github.com/nickw1/aframe-osm-3d">aframe-osm-3d</a> package.</p>
+<h3 id="how-the-aframe-osm-3d-components-work">How the aframe-osm-3d components work</h3>
+<ul>
+<li>
+<p><code>terrarium-dem</code> downloads Digital Elevation Model (DEM) data for a given location. This data was based on NASA SRTM data, and was converted into the Terrarium PNG format by the former mapping company Mapzen (see <a href="https://www.mapzen.com/blog/terrain-tile-service/">original article</a>). As discussed in this article, elevation is encoded in the red, green, and blue channels of a PNG image, and is now available, without usage restrictions, on <a href="https://registry.opendata.aws/terrain-tiles/">AWS</a>. The raw elevation data is emitted within an event (see below) and optionally, the terrain is rendered as a 3D mesh.</p>
+</li>
+<li>
+<p><code>osm3d</code> is used to download OSM data from a GeoJSON data structure in 3D, in other words, the coordinates of the OSM features contain not just latitude and longitude, but elevation in metres. The elevation is obtained from the DEM emitted from <code>terrarium-dem</code>, above; <code>osm3d</code> automatically listens for the <code>terrarium-dem-loaded</code> event emitted from <code>terrarium-dem</code> and uses the DEM to calculate the elevation.</p>
+</li>
+</ul>
+<p>You can find out how these components work in more detail by visiting their <a href="https://github.com/nickw1/aframe-osm-3d">GitHub repository</a>.</p>
+<h3 id="tiling">Tiling</h3>
+<p>The <code>aframe-osm-3d</code> components discussed above both work using a <strong>tiling</strong> system. Regions of the world are split up into <em>tiles</em>, using the "XYZ" or "Google" tiling system, which you can read about in more detail <a href="https://developers.google.com/maps/documentation/javascript/coordinates">here</a>. The general idea is that each tile is defined by an X, a Y, and a Z coordinate, in which:</p>
+<ul>
+<li>X represents the tile's coordinate on a west-east axis; </li>
+<li>Y represents the tile's coordinate on a north-south axis; </li>
+<li>Z represents the tile's zoom level, discussed in more detail in the link above.</li>
+</ul>
+<p><code>terrarium-dem</code> reads in a given longitude and latitude, and downloads the current XYZ elevation tile at a given zoom level, <em>and</em> the eight surrounding tiles (nine in total). These tiles are internally cached by <code>terrarium-dem</code> so that if a nearby location is requested, and the user hasn't moved to a different tile, the cached data will be used, avoiding unnecessary downloads. Also, when tiles are downloaded, they are emitted within the <code>terrarium-dem-loaded</code> event, which the <code>osm3d</code> component responds to by downloading the corresponding tiles from an OSM web API, calculating the OSM data's elevation using the DEM, and again caching and emitting the result.</p>
+<h3 id="the-code">The code</h3>
+<p>With that in mind, here is our code which makes use of <code>terrarium-dem</code> and <code>osm3d</code> to download elevation and OSM data to create peaks with elevations. We will start with the HTML:</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot; /&gt;
+&lt;title&gt;AR.js Peak Finder&lt;/title&gt;
+&lt;script src=&quot;https://aframe.io/releases/1.0.4/aframe.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/bundle.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;a-scene
+        vr-mode-ui=&quot;enabled: false&quot;
+        arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false;'&gt;
+    &lt;a-camera gps-projected-camera rotation-reader&gt;&lt;/a-camera&gt;
+    &lt;a-entity terrarium-dem='zoom: 12; url: proxy.php?x={x}&amp;y={y}&amp;z={z}' osm3d='url: https://hikar.org/fm/ws/tsvr.php?x={x}&amp;y={y}&amp;z={z}&amp;amp;poi=natural&amp;amp;outProj=4326' peakfinder&gt;&lt;/a-entity&gt;
+&lt;/a-scene&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>What's new here?</p>
+<ul>
+<li>Note that we are linking in our JavaScript (which we will come to shortly) as a <em>bundle</em>. This is a great way of developing code which relies on third-party modules without having to link multiple JS files, and we will expand upon this below.</li>
+<li>Note how our custom entity now has some additional components: the <code>terrarium-dem</code> and <code>osm3d</code> components which we discussed above. Note how each component has a <code>url</code> property defining the source URL to download the data.</li>
+<li>Note also how we set the <code>zoom</code> to 12 for <code>terrarium-dem</code>. This will use the zoom level of 12 for our tiles, which means that peaks several kilometres away in every direction will be downloaded on startup.</li>
+</ul>
+<p>You'll notice that the <code>url</code> property for <code>terrarium-dem</code> is not an AWS URL but rather a local URL, <code>proxy.php</code>. Why is this? Due to the <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">same-origin-policy</a> we cannot contact AWS directly via AJAX, so we need to create a proxy script to do it for us. The example provided is in PHP and will look something like the code below. (If your server does not have PHP installed, feel free to replace this code with another language).</p>
+<pre><code class="php">&lt;?php
+$x = $_GET[&quot;x&quot;];
+$y = $_GET[&quot;y&quot;];
+$z = $_GET[&quot;z&quot;];
+if(ctype_digit($x) &amp;&amp; ctype_digit($y) &amp;&amp; ctype_digit($z)) {
+    header(&quot;Content-Type: image/png&quot;);
+    echo file_get_contents(&quot;https://s3.amazonaws.com/elevation-tiles-prod/terrarium/$z/$x/$y.png&quot;);
+} else {
+    header(&quot;HTTP/1.1 400 Bad Request&quot;);
+    header(&quot;Content-Type: application/json&quot;);
+    echo json_encode([&quot;error&quot; =&gt; &quot;invalid x, y and/or z params&quot;]);
+}
+?&gt;
+</code></pre>
+
+<p>For the OSM URL (on <code>hikar.org</code>), we do not need a proxy as this script has <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">CORS</a> enabled by default.</p>
+<p>We can now move on to our JavaScript. This will look something like this:</p>
+<pre><code class="javascript">require('aframe-osm-3d');
+
+AFRAME.registerComponent('peakfinder', {
+    schema: {
+        scale: {
+            type: 'number',
+            default: 15
+        }
+    },
+
+    init: function() {
+        this.textScale = this.data.scale * 100;
+        this.camera = document.querySelector('a-camera');
+
+        window.addEventListener('gps-camera-update-position', e =&gt; {
+            this.el.setAttribute('terrarium-dem', {
+                lat: e.detail.position.latitude,
+                lon: e.detail.position.longitude 
+            })
+        });
+
+        this.el.addEventListener('elevation-available', e =&gt; {
+            const position = this.camera.getAttribute('position');
+            position.y = e.detail.elevation + 1.6;
+            this.camera.setAttribute('position', position);
+        });
+
+        this.el.addEventListener('osm-data-loaded', e =&gt; {
+            e.detail.pois
+                .filter ( f =&gt; f.properties.natural == 'peak' )
+                .forEach ( peak =&gt; {
+                    const entity = document.createElement('a-entity');
+                    entity.setAttribute('look-at', '[gps-projected-camera]');
+                    const text = document.createElement('a-text');
+                    text.setAttribute('value', peak.properties.name);
+                    text.setAttribute('scale', {
+                        x: this.textScale,
+                        y: this.textScale,
+                        z: this.textScale
+                    });
+                    text.setAttribute('align', 'center');
+                    text.setAttribute('position', {
+                        x: 0,
+                        y: this.data.scale * 20, 
+                        z: 0
+                    });
+                    entity.setAttribute('gps-projected-entity-place', {
+                        latitude: peak.geometry.coordinates[1],
+                        longitude: peak.geometry.coordinates[0]
+                    });
+                    entity.setAttribute('position', {
+                        x: 0,
+                        y: peak.geometry.coordinates[2],
+                        z: 0
+                    });
+                    entity.appendChild(text);
+                    const cone = document.createElement('a-cone');
+                    cone.setAttribute('radiusTop', 0.1);
+                    cone.setAttribute('scale', {
+                        x: this.data.scale * 10,
+                        y: this.data.scale * 10,
+                        z: this.data.scale * 10
+                    });
+                    cone.setAttribute('height', 3);
+                    cone.setAttribute('material', { color: 'magenta' } );
+                    entity.appendChild(cone);
+
+                    this.el.appendChild(entity);
+                });
+        });
+    }
+});
+</code></pre>
+
+<p>How does this work?</p>
+<ul>
+<li>
+<p>We start by <em>require</em>ing the <code>aframe-osm-3d</code> package. This is a package available on <a href="https://npmjs.com">NPM</a>, and as we have seen, contains the <code>terrarium-dem</code> and <code>osm3d</code> components. <code>aframe-osm-3d</code> is a JavaScript <em>module</em>, specifically a CommonJS module, and this technique of <em>require</em>ing modules is standard in Node.js. However with the help of tools such as <a href="https://browserify.org">Browserify</a>, we can use modules in the browser, too. More on this below.</p>
+</li>
+<li>
+<p>We then begin our actual component. Note how its schema includes a <code>scale</code>, allowing us to control the scale of the rendered peaks. Feel free to experiment with changing this.</p>
+</li>
+<li>
+<p>We then move on to our <code>init()</code>. This works a bit differently this time:</p>
+<ul>
+<li>We once again handle the <code>gps-camera-update-position</code> event, but this time we pass the latitude and longitude onto our <code>terrarium-dem</code> component. As we saw above, this will download the local tiles for this position.</li>
+<li>We next handle the <code>elevation-available</code> event, which is emitted from our <code>terrarium-dem</code> component as soon as we have elevation available for our current position. The elevation is contained in the emitted event; we handle it by setting the camera's <code>y</code> coordinate to that elevation plus 1.6 (to account for the fact that a user will be holding the device above the ground0.</li>
+<li>We then handle the <code>osm-data-loaded</code> event. This will be emitted from <code>osm3d</code> whenever new data has been downloaded from the OSM API and elevation added. This event contains various properties, but we will use the <code>pois</code> property which is an array of GeoJSON features, one for each POI. Note how we filter the POIs to select peaks only, once again.</li>
+<li>We then create one entity per peak, as before. We ensure the entity is looking at the camera, and then create two child entities, an <code>a-cone</code> primitive to show a peak-like graphic, and an <code>a-text</code> primitive to show the peak's name. We align the text to the centre so that it's correctly placed relative to the cone, and set coordinates and scale appropriately. We also add a <code>gps-projected-entity-place</code> component to each entity, as before, so that we can position them using their latitude and longitude.</li>
+<li>Note how, once we have set the latitude and longitude with <code>gps-projected-entity-place</code>, we <strong>set the elevation</strong> of each peak entity. We do this using the third member of the <code>coordinates</code> array contained within the GeoJSON, which will contain the peak's elevation in metres.</li>
+</ul>
+</li>
+</ul>
+<p>And that is all that is needed to create a very simple peak finder in AR.js!</p>
+<p>We now need to <em>build</em> the peakfinder, as indicated above. First, we need to
+install the <code>aframe-osm-3d</code> package with NPM (included with <a href="https://nodejs.org">Node.js</a>).</p>
+<pre><code>npm install aframe-osm-3d
+</code></pre>
+
+<p>Next, we need to create a <em>bundle</em> with <a href="https://browserify.org">Browserify</a>. Browserify is an example of a "bundling" tool. It takes multiple JavaScript files, including third-party modules, and produces a single <strong>bundle</strong>, which can be linked to from an HTML page. To use, it's simply:</p>
+<pre><code>browserify peakfinder.js &gt; bundle.js
+</code></pre>
+
+<p>(assuming that you saved your peakfinder component as <code>peakfinder.js</code>).</p>
+<p>And that is it! Try it out and see if you can see peaks in their correct location, and elevation.</p>
+<h3 id="further-things-to-try">Further things to try</h3>
+<p>It would be nice to show users status messages as the peaks are downloading. You can do this by handling a couple of other events:</p>
+<ul>
+<li><code>terrarium-start-update</code> is emitted when we start to download new DEM data.</li>
+<li><code>terrarium-dem-loaded</code>, as we have already seen, is emitted when DEM data has finished downloading.</li>
+</ul>
+<p>Adapt your example to include a <code>&lt;div&gt;</code> which displays a status message. (You can make a <code>&lt;div&gt;</code> a child of your <code>&lt;a-scene&gt;</code>). Display "Downloading elevation data..." while it's downloading the DEM data, and then "Downloading OSM data" when the DEM download has finished. Finally, when the OSM data has loaded, set the <code>&lt;div&gt;</code>'s contents to a blank string. </p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

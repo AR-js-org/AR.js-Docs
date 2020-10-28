@@ -96,6 +96,7 @@
             <li><a href="#import-the-library">Import the library</a></li>
             <li><a href="#requirements">Requirements</a></li>
             <li><a href="#getting-started">Getting started</a></li>
+            <li><a href="#tutorials">Tutorials</a></li>
             <li><a href="#troubleshooting-feature-requests-community">Troubleshooting, feature requests, community</a></li>
     </ul>
 </div></div>
@@ -310,6 +311,31 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 &lt;/html&gt;
 </code></pre>
 
+<h4 id="viewing-distant-objects-in-location-based-mode">Viewing distant objects in location-based mode</h4>
+<p>If your location-based AR content is distant from the user (around 1km or
+more), it is recommended to use the new <code>arjs-webcam-texture</code> component (introduced in AR.js 3.2.0), which uses a THREE.js texture to stream the camera feed and allows distant content to be viewed. This component is automatically injected if the <code>videoTexture</code> parameter of the <code>arjs</code> system is set to <code>true</code> <em>and</em> the <code>sourceType</code> is <code>webcam</code>. For example (code snippet only):</p>
+<pre><code class="html">    &lt;a-scene
+      vr-mode-ui=&quot;enabled: false&quot;
+      embedded
+      arjs=&quot;sourceType: webcam; videoTexture: true; debugUIEnabled: false;&quot;
+    &gt;
+</code></pre>
+
+<h4 id="reducing-shaking-effects-in-location-based-mode">Reducing shaking effects in location-based mode</h4>
+<p>In location-based mode, 'shaking' effects can occur due to frequent small
+changes in the device's orientation, due to the high sensitivity of the device 
+sensors such as the accelerometer. If using AR.js 3.3.1 or greater this can optionally be reduced using an exponential smoothing technique. <em>Note that there are currently some occasional display artefacts with this if moving the device quickly or suddenly so please test before you enable it in a finished application; work to resolve these is on-going.</em></p>
+<p>This is enabled by adding the <code>arjs-look-controls</code> component to your <code>a-camera</code> with a <code>smoothingFactor</code> property. You must also disable A-Frame's default <code>look-controls</code>, as <code>arjs-look-controls</code> will replace it. For example:</p>
+<pre><code class="html">&lt;a-camera id='camera1' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera='gpsMinDistance: 5' rotation-reader&gt; &lt;/a-camera&gt;
+</code></pre>
+
+<p>Exponential smoothing works by applying a smoothing factor to each newly-read device rotation angle (obtained from sensor readings) such that the previous smoothed value counts more than the current value, thus reducing 'noise' and 'jitter'. If <code>k</code> is the smoothing factor:</p>
+<pre><code>smoothedAngle = k * newValue + (1 - k) * previousSmoothedAngle
+</code></pre>
+
+<p>It can be seen from this that the <strong>smaller</strong> the value of <code>k</code> (the <code>smoothingFactor</code> property), the <strong>greater</strong> the smoothing effect. In tests, 0.1 appears to give the best result.</p>
+<p>Also you can reduce 'jumping' of augmented content when near a place - a 
+bad-looking effect due to GPS sensors' low precision. To do so you can use the <code>gpsMinDistance</code> and <code>gpsTimeInterval</code> properties. See the <a href="./location-based.md">Location Based specific docs</a> to learn how to use them.</p>
 <h3 id="marker-based-example">Marker Based Example</h3>
 <p>Please follow these simple steps:</p>
 <ul>
@@ -360,6 +386,13 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <li>source code for Location Based</li>
 <li>build for A-Frame AR.js based</li>
 <li>examples for A-Frame AR.js.</li>
+</ul>
+<h2 id="tutorials">Tutorials</h2>
+<p>There are various tutorials available for developing with AR.js. These include:</p>
+<h3 id="location-based">Location Based</h3>
+<ul>
+<li><a href="https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564">Build your Location-Based Augmented Reality Web App</a></li>
+<li><a href="location-based-tutorial/">Develop a Simple Peakfinder App</a> (<em>Provided with these docs</em>)</li>
 </ul>
 <h2 id="troubleshooting-feature-requests-community">Troubleshooting, feature requests, community</h2>
 <p><strong>You can find a lot of help on the old <a href="https://github.com/jeromeetienne/AR.js/issues">AR.js repositories issues</a>. Please search on open/closed issues, you may find a interesting stuff.</strong></p>
@@ -464,5 +497,5 @@ your pull request should be accepted quickly.</p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-08-11 07:00:37
+Build Date UTC : 2020-10-28 13:09:02
 -->

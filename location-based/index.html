@@ -163,6 +163,16 @@ It makes possible to handle both position and rotation of the camera and it's us
 <td>Setting this allows you to simulate the altitude of the camera in meters above sea level, to aid in testing.</td>
 <td>0 (disabled)</td>
 </tr>
+<tr>
+<td>gpsMinDistance</td>
+<td>Setting this allows you to control how far the camera must move, in meters, to generate a GPS update event. Useful to prevent 'jumping' of augmented content due to frequent small changes in position.</td>
+<td>5</td>
+</tr>
+<tr>
+<td>gpsTimeInterval</td>
+<td>Setting this allows you to control how frequently to obtain a new GPS position. If a previous GPS location is cached, the cached position will be used rather than a new position if its 'age' is less than this value, in milliseconds. This parameter is passed directly to the Geolocation API's <code>watchPosition()</code> method.</td>
+<td>0 (always use new position, not cached)</td>
+</tr>
 </tbody>
 </table>
 <h3 id="gps-entity-place"><code>gps-entity-place</code></h3>
@@ -238,7 +248,8 @@ console.log(distanceMsg);   // &quot;890 meters&quot;
 </ul>
 <p>On the other hand, only the second step is needed if the source coordinates are already projected. We'll look at each scenario now.</p>
 <h4 id="source-data-in-wgs84-latitudelongitude">Source data in WGS84 latitude/longitude</h4>
-<p>The <code>latLonToWorld(lat, lon)</code> method of the <code>gps-projected-camera</code> component converts latitude and longitude directly to world coordinates, performing the projection as the first step and then calculating the world coordinates from the projected coordinates. It will return a 2-member array containing the <em>x</em> and <em>z</em> world coordinates, allowing the developer to calculate or specify the <em>y</em> coordinate (altitude) independently.</p>
+<p>This is probably the most common scenario.
+The <code>latLonToWorld(lat, lon)</code> method of the <code>gps-projected-camera</code> component converts latitude and longitude directly to world coordinates, performing the projection as the first step and then calculating the world coordinates from the projected coordinates. It will return a 2-member array containing the <em>x</em> and <em>z</em> world coordinates, allowing the developer to calculate or specify the <em>y</em> coordinate (altitude) independently.</p>
 <h4 id="source-data-in-spherical-mercator">Source data in Spherical Mercator</h4>
 <p>An alternative scenario is when the augmented content has already been projected into Spherical Mercator and therefore does not need the initial projection step when added to an AR.js scene. This may occur when an API serves data in Spherical Mercator, for instance. In this case, we still need to convert the Spherical Mercator coordinates to world coordinates relative to the original GPS position. <code>gps-projected-camera</code> has an <code>originCoordsProjected</code> property, which represents the original GPS position in Spherical Mercator coordinates. This is a two-member array, containing the Spherical Mercator easting and northing, respectively, of the origin point. From this, we can therefore work out the world coordinates from Spherical Mercator coordinates:</p>
 <ul>
