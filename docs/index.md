@@ -353,6 +353,15 @@ A-Frame version of AR.js uses three.js parts as its core. A-Frame code, on AR.js
 - build for A-Frame AR.js based
 - examples for A-Frame AR.js.
 
+## Tutorials
+
+There are various tutorials available for developing with AR.js. These include:
+
+### Location Based
+
+- [Build your Location-Based Augmented Reality Web App](https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564)
+- [Develop a Simple Peakfinder App](location-based-tutorial.md) (*Provided with these docs*)
+
 ## Troubleshooting, feature requests, community
 
 **You can find a lot of help on the old [AR.js repositories issues](https://github.com/jeromeetienne/AR.js/issues). Please search on open/closed issues, you may find a interesting stuff.**
