@@ -97,6 +97,8 @@
             <li><a href="#properties_1">Properties</a></li>
             <li><a href="#custom-attributes">Custom Attributes</a></li>
             <li><a href="#events">Events</a></li>
+            <li><a href="#viewing-every-distant-object">Viewing every distant object</a></li>
+            <li><a href="#reducing-shaking-effects">Reducing shaking effects</a></li>
             <li><a href="#projected-camera-version">Projected Camera Version</a></li>
     </ul>
 </div></div>
@@ -223,6 +225,33 @@ console.log(distanceMsg);   // &quot;890 meters&quot;
 <hr />
 <p>⚡️ Usually, in Location Based, it's nice to have the augmented content that will always face the user, so when you rotate the camera, 3D models or most of all, text, are well visible.</p>
 <p>Look at <a href="https://github.com/AR-js-org/AR.js/tree/master/aframe/examples/location-based/always-face-user">this example</a> in order to create <code>gps-entity-place</code> entities that will always face the user (camera).</p>
+<hr />
+<h2 id="viewing-every-distant-object">Viewing every distant object</h2>
+<p>If your location-based AR content is distant from the user (around 1km or
+more), it is recommended to use the new <code>arjs-webcam-texture</code> component (introduced in AR.js 3.2.0), which uses a THREE.js texture to stream the camera feed and allows distant content to be viewed. This component is automatically injected if the <code>videoTexture</code> parameter of the <code>arjs</code> system is set to <code>true</code> <em>and</em> the <code>sourceType</code> is <code>webcam</code>. For example (code snippet only):</p>
+<pre><code class="html">    &lt;a-scene
+      vr-mode-ui=&quot;enabled: false&quot;
+      embedded
+      arjs=&quot;sourceType: webcam; videoTexture: true; debugUIEnabled: false;&quot;
+    &gt;
+</code></pre>
+
+<h2 id="reducing-shaking-effects">Reducing shaking effects</h2>
+<p>In location-based mode, 'shaking' effects can occur due to frequent small
+changes in the device's orientation, due to the high sensitivity of the device
+sensors such as the accelerometer. If using AR.js 3.3.1 or greater this can optionally be reduced using an exponential smoothing technique. <em>Note that there are currently some occasional display artefacts with this if moving the device quickly or suddenly so please test before you enable it in a finished application; work to resolve these is on-going.</em></p>
+<p>This is enabled by adding the <code>arjs-look-controls</code> component to your <code>a-camera</code> with a <code>smoothingFactor</code> property. You must also disable A-Frame's default <code>look-controls</code>, as <code>arjs-look-controls</code> will replace it. For example:</p>
+<pre><code class="html">&lt;a-camera id='camera1' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera='gpsMinDistance: 5' rotation-reader&gt; &lt;/a-camera&gt;
+</code></pre>
+
+<p>Exponential smoothing works by applying a smoothing factor to each newly-read device rotation angle (obtained from sensor readings) such that the previous smoothed value counts more than the current value, thus reducing 'noise' and 'jitter'. If <code>k</code> is the smoothing factor:</p>
+<pre><code>smoothedAngle = k * newValue + (1 - k) * previousSmoothedAngle
+</code></pre>
+
+<p>It can be seen from this that the <strong>smaller</strong> the value of <code>k</code> (the <code>smoothingFactor</code> property), the <strong>greater</strong> the smoothing effect. In tests, 0.1 appears to give the best result.</p>
+<p>Also you can reduce 'jumping' of augmented content when near a place - a
+bad-looking effect due to GPS sensors' low precision. To do so you can use the <code>gpsMinDistance</code> and <code>gpsTimeInterval</code> properties. See the <a href="./location-based.md">Location Based specific docs</a> to learn how to use them.</p>
+<hr />
 <h2 id="projected-camera-version">Projected Camera Version</h2>
 <p>The experimental 'projected camera' version of the location-based components for AR.js uses <a href="https://www.maptiler.com/google-maps-coordinates-tile-bounds-projection">Spherical Mercator</a> (aka EPSG:3857) to store both the camera position and the position of added points of interest and other geographical data.</p>
 <p>The rationale for this version is to allow easy addition of more complex geographic data such as roads and paths. Such data can be projected and added to an AR.js scene, and then, because Spherical Mercator units approximate to metres (away from the poles), the coordinates can be used directly as WebGL/A-Frame world coordinates.</p>
