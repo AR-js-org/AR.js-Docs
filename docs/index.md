@@ -124,7 +124,6 @@ Some requirements and known restrictions are listed below:
 
 - It works on every phone with [webgl](http://caniuse.com/#feat=webgl) and [webrtc](http://caniuse.com/#feat=stream).
 - Marker based is very lightweight, while Image Tracking is more CPU consuming
-- You cannot use Chrome on iOS, as Chrome on iOS did not support, at the moment, camera access
 - On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.
 - To work with Location Based feature, your phone needs to have GPS sensors
 - Please, read carefully any suggestions that AR.js pops-up -as alerts- for Location Based on iOS, as iOS requires user actions to activate geoposition
