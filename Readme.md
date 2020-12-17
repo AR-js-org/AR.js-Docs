@@ -10,7 +10,8 @@ To modify the Docs, you need to push on `master` branch.
 
 To publish them (they are currently hosted on Github Pages), you need to run
 
-(You need first to install `mkdocs`, see on official website for instructions. Make sure you install also MkDocs Bootstrap Theme by pip install mkdocs-bootswatch https://mkdocs.github.io/mkdocs-bootswatch/#flatly)
+(You need first to install `mkdocs`, see on official website for instructions. 
+Make sure you install also MkDocs Bootstrap Theme by pip install mkdocs-bootswatch https://mkdocs.github.io/mkdocs-bootswatch/#flatly)
 
 Run ```mkdocs serve``` to serve the doc site local.
 
