@@ -7,5 +7,4 @@ nav:
     - Marker Based: marker-based.md
     - UI and Events: ui-events.md
     - About: about.md
-    - Github: https://github.com/AR-js-org
 theme: flatly
