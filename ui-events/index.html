@@ -64,6 +64,9 @@
                             <li >
                                 <a href="../about/">About</a>
                             </li>
+                            <li >
+                                <a href="https://github.com/AR-js-org">Github</a>
+                            </li>
                         </ul>
 
                     <ul class="nav navbar-nav navbar-right">
@@ -96,6 +99,7 @@
             <li><a href="#custom-events">Custom Events</a></li>
             <li><a href="#trigger-actions-when-image-has-been-found">Trigger actions when image has been found</a></li>
             <li><a href="#trigger-action-when-marker-has-been-found">Trigger action when marker has been found</a></li>
+            <li><a href="#get-distance-from-marker">Get distance from marker</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -395,6 +399,34 @@ only trigger an action (like a redirect to an external website) when the anchor 
     &lt;a-entity camera&gt;&lt;/a-entity&gt;
   &lt;/a-scene&gt;
 &lt;/body&gt;
+</code></pre>
+
+<h2 id="get-distance-from-marker">Get distance from marker</h2>
+<pre><code>// import this on your HTML
+window.addEventListener('load', () =&gt; {
+    const camera = document.querySelector('[camera]');
+    const marker = document.querySelector('a-marker');
+    let check;
+
+    marker.addEventListener('markerFound', () =&gt; {
+        let cameraPosition = camera.object3D.position;
+        let markerPosition = marker.object3D.position;
+        let distance = cameraPosition.distanceTo(markerPosition)
+
+        check = setInterval(() =&gt; {
+            cameraPosition = camera.object3D.position;
+            markerPosition = marker.object3D.position;
+            distance = cameraPosition.distanceTo(markerPosition)
+
+            // do what you want with the distance:
+            console.log(distance);
+        }, 100);
+    });
+
+    marker.addEventListener('markerLost', () =&gt; {
+      clearInterval(check);
+    })
+})
 </code></pre></div>
         </div>
 
