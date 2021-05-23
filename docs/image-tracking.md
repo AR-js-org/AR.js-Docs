@@ -2,7 +2,7 @@
 
 Image Tracking makes possible to scan a picture, a drawing, any image, and show content over it.
 
-All the following examples are with A-Frame, for semplicity. You can use three.js if you want. See on the official repository the [nft three.js example](https://github.com/AR-js-org/AR.js/blob/master/three.js/examples/nft.html).
+All the following examples are with A-Frame, for simplicity. You can use three.js if you want. See on the official repository the [nft three.js example](https://github.com/AR-js-org/AR.js/blob/master/three.js/examples/nft.html).
 
 All A-Frame examples for Image Tracking can be found [here](https://github.com/AR-js-org/AR.js/tree/master/aframe/examples/image-tracking/).
 
