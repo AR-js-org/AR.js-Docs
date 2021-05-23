@@ -6,7 +6,7 @@ Markers can be of three, different types:
 - Barcode
 - Pattern.
 
-To learn more about markers, please read this articles:
+To learn more about markers, please read these articles:
 
 - [AR.js basic Marker Based tutorial and Markers explanation](https://medium.com/chialab-open-source/ar-js-the-simpliest-way-to-get-cross-browser-ar-on-the-web-8f670dd45462)
 - [Deliver AR.js experiences using only QRCodes (Markers inside QRCodes)](https://medium.com/chialab-open-source/how-to-deliver-ar-on-the-web-only-with-a-qr-code-e24b7b61f8cb).
@@ -21,7 +21,7 @@ To learn more about markers, please read this articles:
 
 ### How to choose good images for Pattern Markers
 
-Markers have a black border and high contrast shapes. Lately, we have added also white border markers with black background, altough the classic ones, with black border, behave better.
+Markers have a black border and high contrast shapes. Lately, we have added also white border markers with black background, although the classic ones, with black border, behave better.
 
 Here's an article explaining all good practice on how to choose good images to be used to generate custom markers: [10 tips to enhance your AR.js app](https://medium.com/chialab-open-source/10-tips-to-enhance-your-ar-js-app-8b44c6faffca).
 
@@ -61,7 +61,7 @@ threex.artoolkit is composed of 3 classes
 - `THREEx.ArToolkitContext`: It is the main engine. It will actually find the marker position
   in the image source.
 - `THREEx.ArMarkerControls`: it controls the position of the marker
-  It use the classical [three.js controls API](https://github.com/mrdoob/three.js/tree/master/examples/js/controls).
+  It uses the classical [three.js controls API](https://github.com/mrdoob/three.js/tree/master/examples/js/controls).
   It will make sure to position your content right on top of the marker.
 
 #### THREEx.ArMarkerControls
