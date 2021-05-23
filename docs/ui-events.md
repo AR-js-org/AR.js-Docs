@@ -1,6 +1,6 @@
 # UI and Custom Events
 
-To make AR.js based Web App looking better and add UI capabilities, it's possible to treat is as common website.
+To make AR.js based Web App look better and add UI capabilities, it's possible to treat is as common website.
 Here you will learn how to use Raycaster, Custom Events and Interaction with overlayed DOM elements.
 
 ## Handle clicks on AR content
