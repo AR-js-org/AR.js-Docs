@@ -16,7 +16,7 @@ The software tracks interesting points in the image and using them, it estimates
 
 ## Choose good images
 
-If you want to understand the creation of markers in more depth, check out the  NFT Marker Creator [wiki](https://github.com/Carnaux/NFT-Marker-Creator/wiki/Creating-good-markers). It explains also why certain images work way better than others. An important factor is the DPI of the image: a good dpi (300 or more) will give a very good stabilization, while low DPI (like 72) will require the user to stay very still and close to the image, otherwise tracking will lag.
+If you want to understand the creation of markers in more depth, check out the NFT Marker Creator [wiki](https://github.com/Carnaux/NFT-Marker-Creator/wiki/Creating-good-markers). It explains also why certain images work way better than others. An important factor is the DPI of the image: a good dpi (300 or more) will give a very good stabilization, while low DPI (like 72) will require the user to stay very still and close to the image, otherwise tracking will lag.
 
 ## Create Image Descriptors
 
@@ -89,13 +89,13 @@ Now it's time to create the actual AR web app.
       smoothTolerance=".01"
       smoothThreshold="5"
     >
-        <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
-        <a-entity
-            gltf-model="<path-to-your-model>"
-            scale="5 5 5"
-            position="50 150 0"
-        >
-        </a-entity>
+      <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
+      <a-entity
+        gltf-model="<path-to-your-model>"
+        scale="5 5 5"
+        position="50 150 0"
+      >
+      </a-entity>
     </a-nft>
     <!-- static camera that moves according to the device movemenents -->
     <a-entity camera></a-entity>
@@ -125,3 +125,17 @@ Here are the attributes for this entity
 | size | size of the marker in meter | artoolkitmarker.size |
 
 ⚡️ It is suggested to use `smooth`, `smoothCount` and `smoothTolerance` because of weak stabilization of content in Image Tracking. Thanks to smoothing, content is way more stable, from 3D models to 2D videos.
+
+## Event listeners
+
+The `arjs-nft-loaded` event is fired when all NFT Markers have finished loading. This is when you will be able to start tracking your NFT Marker with the camera.
+
+You can use this to build a UI to inform the user that things are still loading.
+
+### Usage
+
+```js
+window.addEventListener("arjs-nft-loaded", (event) => {
+  // Hide loading overlay
+});
+```
