@@ -254,7 +254,7 @@ Please follow these simple steps:
 </html>
 ```
 
-If you want to enhance and customize your Location Based experience, take a look at the <a href="./location-based.md"> Location Based docs.</a>
+If you want to enhance and customize your Location Based experience, take a look at the <a href="./location-based"> Location Based docs.</a>
 
 ### Marker Based Example
 
