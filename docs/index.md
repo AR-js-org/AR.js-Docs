@@ -127,7 +127,7 @@ Some requirements and known restrictions are listed below:
 - On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.
 - To work with Location Based feature, your phone needs to have GPS sensors
 - Please, read carefully any suggestions that AR.js pops-up -as alerts- for Location Based on iOS, as iOS requires user actions to activate geoposition
-- Location Based feature is only available on A-Frame
+- Location Based feature is only available on A-Frame in `master` however a pure three.js version is available on the `dev` branch
 
 ### Always deploy under https
 
