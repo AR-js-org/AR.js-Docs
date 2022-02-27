@@ -105,25 +105,25 @@
 <h1 id="arjs-augmented-reality-on-the-web">AR.js - Augmented Reality on the Web</h1>
 <p><img src="./logo.png" height="200" /></p>
 <hr />
-<p>AR.js is a lightweight library for Augmented Reality on the Web, coming with features like Image Tracking, Location based AR and Marker tracking.</p>
+<p>AR.js is a lightweight library for Augmented Reality on the Web, which includes features like Image Tracking, Location based AR and Marker tracking.</p>
 <h2 id="what-web-ar-means-augmented-reality-on-the-web">What Web AR means (Augmented Reality on the Web)</h2>
-<p>Augmented Reality is the technology that makes possible to add overlayed content on the real world.
-It can be provided for several type of devices: handleheld (like mobile phones), headsets, desktop
+<p>Augmented Reality is the technology that makes possible to overlay content on the real world.
+It can be provided for several type of devices: handheld (like mobile phones), headsets, desktop
 displays, and so on.</p>
-<p>For handleheld devices (more in general, for video-see-through devices) the 'reality' is captured
+<p>For handheld devices (more generally, for video-see-through devices) the 'reality' is captured
 from one or more cameras and then shown on the device display, adding some kind of content on top of it.</p>
 <hr />
 <p><img src="./intro-image.gif"/></p>
-<p>For developers, to develop Augmented Reality ('AR' from now on) on the Web, means to void all the
-Mobile app developement efforts and costs related to App stores (validation, time to publish). It also means to re-use well known technologies like Javascript, HTML and CSS, known from a lot of developers and possibly designers.</p>
-<p>It basically means that is possible to release every new version instantly, fix bugs or release
-new features in near real-time, opening a lot of pratical possibilities.</p>
+<p>For developers, to develop Augmented Reality ('AR' from now on) on the Web, means to avoid all the
+Mobile app development efforts and costs related to App stores (validation, time to publish). It also means to re-use well known technologies like Javascript, HTML and CSS, familiar to a lot of developers and possibly designers.</p>
+<p>It basically means that it is possible to release every new version instantly, fix bugs or release
+new features in near real-time, opening a lot of practical possibilities.</p>
 <p>For users, it means to reach an AR experience just visiting a website. As QR Codes are now
-widespread, it's also possible to scan a QR Code and reach the URL without even type.
-Addictionally, users do not have to reserve storage space on their download the AR app,
+widespread, it's also possible to scan a QR Code and reach the URL without typing.
+Additionally, users do not have to reserve storage space on their download the AR app,
 and do not have to keep it updated.</p>
 <h2 id="why-arjs">Why AR.js</h2>
-<p>We believe in the Web, as a collaborative and accessible environment. We also believe in the Augmented Reality technology, as a new communication medium, that can help people to see the reality in new, exciting ways. We see Augmented Reality (AR) used everyday for a lot of useful applications, from art, to education, also for fun.</p>
+<p>We believe in the Web, as a collaborative and accessible environment. We also believe in Augmented Reality technology, as a new communication medium, that can help people see reality in new, exciting ways. We see Augmented Reality (AR) used everyday for a lot of useful applications, from art, to education, also for fun.</p>
 <p>We strongly believe that such a powerful technology, that can help people and leverage their creativity, should be free in some way. Also collaborative, if possible. And so, we continue the work started by Jerome Etienne, in bringing AR on the Web, as a free and Open Source technology.</p>
 <p>Thank you for being interested in this, if you'd like to collaborate in any way, contact us (<a href="https://twitter.com/nicolocarp">https://twitter.com/nicolocarp</a>).</p>
 <p>The project is now under a Github organization, that you can find at <a href="https://github.com/ar-js-org">https://github.com/ar-js-org</a> and you can ask to be part of it, for free.</p>
@@ -136,11 +136,11 @@ Cases of use: Augmented Art, learning (Augmented books), Augmented flyers, adver
 </li>
 <li>
 <p><strong>Location Based AR</strong>, this kind of AR uses real-world places in order to show Augmented Reality content, on the user device.
-The experiences that can be built with this library are those that uses users position in
+The experiences that can be built with this library are those that use a user's position in
 the real world. The user can move (ideally outdoor) and through their smartphones they can see AR
 content where places are in the real world. Moving around and rotating the phone will make the AR
-content change according to users position and rotation (so places are 'sticked' in their real
-position, and appear bigger/thinner according to their distance from the user). With this solution it’s possible to build experiences like interactive support for touristic guides, support when exploring a new city, find places of interest like buildings, museums, restaurants, hotels and so on. It’s also possible to build learning experiences like treasure hunts and biology or history learning games, or use this technology for situated art (visual art experiences bound to specific real world
+content change according to users position and rotation (so places are 'anchored' in their real
+position, and appear bigger/smaller according to their distance from the user). With this solution it’s possible to build experiences like interactive support for tourist guides, assistance when exploring a new city, find places of interest like buildings, museums, restaurants, hotels and so on. It’s also possible to build learning experiences like treasure hunts, and biology or history learning games, or use this technology for situated art (visual art experiences bound to specific real world
 coordinates).</p>
 </li>
 <li>
@@ -150,7 +150,7 @@ coordinates).</p>
 <h3 id="key-points">Key points</h3>
 <ul>
 <li><strong>Very Fast</strong> : It runs efficiently even on phones</li>
-<li><strong>Web-based</strong> : It is a pure web solution, so no installation required. Full javascript based on three.js + A-Frame + jsartoolkit5</li>
+<li><strong>Web-based</strong> : It is a pure web solution, so no installation required. Fully javascript based, using three.js + A-Frame + jsartoolkit5</li>
 <li><strong>Open Source</strong> : It is completely open source and free of charge!</li>
 <li><strong>Standards</strong> : It works on any phone with <a href="http://caniuse.com/#feat=webgl">webgl</a> and <a href="http://caniuse.com/#feat=stream">webrtc</a></li>
 </ul>
@@ -158,7 +158,7 @@ coordinates).</p>
 If you want to visit the old AR.js repository, here it is: <a href="https://github.com/jeromeetienne/AR.js">https://github.com/jeromeetienne/AR.js</a>.</p>
 <h2 id="import-the-library">Import the library</h2>
 <p>AR.js from version 3 has a new structure.</p>
-<p><strong>AR.js is coming in two, different build. They are both maintained. They are exclusive.</strong></p>
+<p><strong>AR.js comes in two, different builds. They are both maintained. They are exclusive.</strong></p>
 <p>The file you want to import depends on what features you want, and also which render library you want to use (A-Frame or three.js).</p>
 <p>AR.js uses <a href="https://github.com/artoolkitx/jsartoolkit5">jsartoolkit5</a> for tracking, but can display augmented content with either <a href="https://threejs.org/">three.js</a> or <a href="https://aframe.io/">A-Frame</a>.</p>
 <p>You can import AR.js in one version of your choice, using the <code>&lt;script&gt;</code> tag on your HTML.</p>
@@ -190,14 +190,14 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <p>Some requirements and known restrictions are listed below:</p>
 <ul>
 <li>It works on every phone with <a href="http://caniuse.com/#feat=webgl">webgl</a> and <a href="http://caniuse.com/#feat=stream">webrtc</a>.</li>
-<li>Marker based is very lightweight, while Image Tracking is more CPU consuming</li>
+<li>Marker based tracking is very lightweight, while Image Tracking is more CPU consuming</li>
 <li>On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.</li>
 <li>To work with Location Based feature, your phone needs to have GPS sensors</li>
 <li>Please, read carefully any suggestions that AR.js pops-up -as alerts- for Location Based on iOS, as iOS requires user actions to activate geoposition</li>
 <li>Location Based feature is only available on A-Frame</li>
 </ul>
 <h3 id="always-deploy-under-https">Always deploy under https</h3>
-<p>Accessing to the phone camera or to camera GPS sensors, due to major browsers restrictions, can be done only under https websites.</p>
+<p>Access to the phone camera or to camera GPS sensors, due to major browsers restrictions, can be done only under https websites.</p>
 <p>All the examples you will see, and all AR.js web apps in general, have to be run on a server. You can use local server or deploy the static web app on the web.</p>
 <p>So don't forget to always run your examples on secure connections servers or localhost. <a href="https://pages.github.com/">Github Pages</a> is a great way to have free and live websites under https.</p>
 <h2 id="getting-started">Getting started</h2>
@@ -310,7 +310,7 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 &lt;/html&gt;
 </code></pre>
 
-<p>If you want to enhance and customize your Location Based experience, take a look at the <a href="./location-based.md"> Location Based docs.</a></p>
+<p>If you want to enhance and customize your Location Based experience, take a look at the <a href="./location-based"> Location Based docs.</a></p>
 <h3 id="marker-based-example">Marker Based Example</h3>
 <p>Please follow these simple steps:</p>
 <ul>
@@ -353,7 +353,7 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <li>vendor stuff (jsartoolkit5)</li>
 <li>workers (used for Image Tracking).</li>
 </ul>
-<p>When you find files that ends with <code>-nft</code> suffix, they're boundled only with the Image Tracking version.</p>
+<p>When you find files that ends with <code>-nft</code> suffix, they're bundled only with the Image Tracking version.</p>
 <p>A-Frame version of AR.js uses three.js parts as its core. A-Frame code, on AR.js, is simply a wrapper to write AR with Custom Components in HTML.</p>
 <p><code>aframe</code> folder contains</p>
 <ul>
@@ -370,11 +370,11 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <li><a href="location-based-tutorial/">Develop a Simple Peakfinder App</a> (<em>Provided with these docs</em>)</li>
 </ul>
 <h2 id="troubleshooting-feature-requests-community">Troubleshooting, feature requests, community</h2>
-<p><strong>You can find a lot of help on the old <a href="https://github.com/jeromeetienne/AR.js/issues">AR.js repositories issues</a>. Please search on open/closed issues, you may find a interesting stuff.</strong></p>
+<p><strong>You can find a lot of help on the old <a href="https://github.com/jeromeetienne/AR.js/issues">AR.js repositories issues</a>. Please search on open/closed issues, you may find useful information.</strong></p>
 <h3 id="contributing">Contributing</h3>
 <p>From opening a bug report to creating a pull request: every contribution is
 appreciated and welcome. If you're planning to implement a new feature or change
-the api please create an issue first. This way we can ensure that your precious
+the API please create an issue first. This way we can ensure that your precious
 work is not in vain.</p>
 <h3 id="issues">Issues</h3>
 <p>If you are having configuration or setup problems, please post
@@ -472,5 +472,5 @@ your pull request should be accepted quickly.</p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2021-04-10 20:04:23
+Build Date UTC : 2022-02-27 20:30:31
 -->

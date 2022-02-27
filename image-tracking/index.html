@@ -95,20 +95,21 @@
             <li><a href="#choose-good-images">Choose good images</a></li>
             <li><a href="#create-image-descriptors">Create Image Descriptors</a></li>
             <li><a href="#render-the-content">Render the content</a></li>
+            <li><a href="#event-listeners">Event listeners</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h1 id="image-tracking">Image Tracking</h1>
 <p>Image Tracking makes possible to scan a picture, a drawing, any image, and show content over it.</p>
-<p>All the following examples are with A-Frame, for semplicity. You can use three.js if you want. See on the official repository the <a href="https://github.com/AR-js-org/AR.js/blob/master/three.js/examples/nft.html">nft three.js example</a>.</p>
+<p>All the following examples are with A-Frame, for simplicity. You can use three.js if you want. See on the official repository the <a href="https://github.com/AR-js-org/AR.js/blob/master/three.js/examples/nft.html">nft three.js example</a>.</p>
 <p>All A-Frame examples for Image Tracking can be found <a href="https://github.com/AR-js-org/AR.js/tree/master/aframe/examples/image-tracking/">here</a>.</p>
 <h2 id="getting-started-with-image-tracking">Getting started with Image Tracking</h2>
 <p>Natural Feature Tracking or NFT is a technology that enables the use of images instead of markers like QR Codes or the Hiro marker.</p>
 <p>The software tracks interesting points in the image and using them, it estimates the position of the camera. These interesting points (aka "Image Descriptors") are created using the <code>NFT Marker Creator</code>, a tool available for creating NFT markers. It comes in two versions: the <a href="https://carnaux.github.io/NFT-Marker-Creator/">Web version</a>(recommended), and the <a href="https://github.com/Carnaux/NFT-Marker-Creator">node.js version</a>. There is also a fork of this project on the AR.js Github organisation, but as for now, <a href="https://twitter.com/DanielCarnaux">Daniel Fernandes</a> version works perfectly.</p>
 <p><em>Thanks to <a href="https://twitter.com/DanielCarnaux">Daniel Fernandes</a> for contribution on this docs section.</em></p>
 <h2 id="choose-good-images">Choose good images</h2>
-<p>If you want to understand the creation of markers in more depth, check out the  NFT Marker Creator <a href="https://github.com/Carnaux/NFT-Marker-Creator/wiki/Creating-good-markers">wiki</a>. It explains also why certain images work way better than others. An important factor is the DPI of the image: a good dpi (300 or more) will give a very good stabilization, while low DPI (like 72) will require the user to stay very still and close to the image, otherwise tracking will lag.</p>
+<p>If you want to understand the creation of markers in more depth, check out the NFT Marker Creator <a href="https://github.com/Carnaux/NFT-Marker-Creator/wiki/Creating-good-markers">wiki</a>. It explains also why certain images work way better than others. An important factor is the DPI of the image: a good dpi (300 or more) will give a very good stabilization, while low DPI (like 72) will require the user to stay very still and close to the image, otherwise tracking will lag.</p>
 <h2 id="create-image-descriptors">Create Image Descriptors</h2>
 <p>Once you have chosen your image, you can either use the NFT Marker Creator in its <a href="https://carnaux.github.io/NFT-Marker-Creator/">Web version</a> or the node version.</p>
 <p>If you're using the node version, this is the basic command to run:</p>
@@ -171,13 +172,13 @@ For example: with files <code>trex.fset</code>, <code>trex.fset3</code> and <cod
       smoothTolerance=&quot;.01&quot;
       smoothThreshold=&quot;5&quot;
     &gt;
-        &lt;!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity --&gt;
-        &lt;a-entity
-            gltf-model=&quot;&lt;path-to-your-model&gt;&quot;
-            scale=&quot;5 5 5&quot;
-            position=&quot;50 150 0&quot;
-        &gt;
-        &lt;/a-entity&gt;
+      &lt;!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity --&gt;
+      &lt;a-entity
+        gltf-model=&quot;&lt;path-to-your-model&gt;&quot;
+        scale=&quot;5 5 5&quot;
+        position=&quot;50 150 0&quot;
+      &gt;
+      &lt;/a-entity&gt;
     &lt;/a-nft&gt;
     &lt;!-- static camera that moves according to the device movemenents --&gt;
     &lt;a-entity camera&gt;&lt;/a-entity&gt;
@@ -241,7 +242,15 @@ For example: with files <code>trex.fset</code>, <code>trex.fset3</code> and <cod
 </tr>
 </tbody>
 </table>
-<p>⚡️ It is suggested to use <code>smooth</code>, <code>smoothCount</code> and <code>smoothTolerance</code> because of weak stabilization of content in Image Tracking. Thanks to smoothing, content is way more stable, from 3D models to 2D videos.</p></div>
+<p>⚡️ It is suggested to use <code>smooth</code>, <code>smoothCount</code> and <code>smoothTolerance</code> because of weak stabilization of content in Image Tracking. Thanks to smoothing, content is way more stable, from 3D models to 2D videos.</p>
+<h2 id="event-listeners">Event listeners</h2>
+<p>The <code>arjs-nft-loaded</code> event is fired when all NFT Markers have finished loading. This is when you will be able to start tracking your NFT Marker with the camera.</p>
+<p>You can use this to build a UI to inform the user that things are still loading.</p>
+<h3 id="usage">Usage</h3>
+<pre><code class="js">window.addEventListener(&quot;arjs-nft-loaded&quot;, (event) =&gt; {
+  // Hide loading overlay
+});
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
