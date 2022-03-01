@@ -324,6 +324,7 @@ There are various tutorials available for developing with AR.js. These include:
 ### Location Based
 
 - [Build your Location-Based Augmented Reality Web App](https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564)
+- [Location Based with three.js](location-based-with-three.md) (*Provided with these docs*)
 - [Develop a Simple Peakfinder App](location-based-tutorial.md) (*Provided with these docs*)
 
 ## Troubleshooting, feature requests, community
