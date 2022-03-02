@@ -100,6 +100,44 @@ cam.update();
 
 This API call will render the latest camera frame.
 
-## Try it!
+### Try it!
 
-Try it on either a desktop machine or an Android phone running Chrome. On a desktop you should see the feed from the webcam, and a red box just in front of you. On Chrome on an Android device, you should be able to rotate the phone and the box will always appear to your north. (Unfortunately mobile platforms other than Chrome and Android are not currently supported: we have been unable to develop on an iDevice and Firefox lacks the ability to recognise real-world north in any case; see [this table of compatibility for absolute device orientation](https://developer.mozilla.org/en-US/docs/Web/API/Window/ondeviceorientationabsolute)).
+Try it on either a desktop machine or an Android device running Chrome. On a desktop you should see the feed from the webcam, and a red box just in front of you. On Chrome on an Android device, you should be able to rotate the device and the box will always appear to your north. (Unfortunately mobile platforms other than Chrome and Android are not currently supported: we have been unable to develop on an iDevice and Firefox lacks the ability to recognise real-world north in any case; see [this table of compatibility for absolute device orientation](https://developer.mozilla.org/en-US/docs/Web/API/Window/ondeviceorientationabsolute)).
+
+### Faking rotation on a desktop machine
+
+If you do not have a suitable mobile device, you can simulate rotation with the mouse. The code below will do this (add to your main block of code, just before the rendering function):
+
+```javascript
+const rotationStep = THREE.Math.degToRad(2);
+
+let mousedown = false, lastX =0;
+
+window.addEventListener("mousedown", e=> {
+    mousedown = true;
+});
+
+window.addEventListener("mouseup", e=> {
+    mousedown = false;
+});
+
+window.addEventListener("mousemove", e=> {
+    if(!mousedown) return;
+    if(e.clientX < lastX) {
+        camera.rotation.y -= rotationStep;
+        if(camera.rotation.y < 0) {
+            camera.rotation.y += 2 * Math.PI;
+        }
+    } else if (e.clientX > lastX) {
+        camera.rotation.y += rotationStep;
+        if(camera.rotation.y > 2 * Math.PI) {
+            camera.rotation.y -= 2 * Math.PI;
+        }
+    }
+    lastX = e.clientX;
+});
+```
+
+What does this do? Using mouse events, it detects the direction of movement of the mouse when it's pressed down, and in doing so, determines whether to rotate the camera clockwise or anticlockwise. It does this using the `clientX` property of the event object, which contains the mouse X position. This is compared to the previous value of `e.clientX` and from this, we can determine whether we moved the mouse to the left or to the right, and rotate accordingly.
+
+We move the camera by the amount specified in `rotationStep` and ensure that the camera rotation is always within the range 0 to 2PI radians (i.e. 360 degrees).
