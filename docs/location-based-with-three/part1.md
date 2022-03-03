@@ -102,7 +102,7 @@ This API call will render the latest camera frame.
 
 ### Try it!
 
-Try it on either a desktop machine or an Android device running Chrome. On a desktop you should see the feed from the webcam, and a red box just in front of you. On Chrome on an Android device, you should be able to rotate the device and the box will always appear to your north. (Unfortunately mobile platforms other than Chrome and Android are not currently supported: we have been unable to develop on an iDevice and Firefox lacks the ability to recognise real-world north in any case; see [this table of compatibility for absolute device orientation](https://developer.mozilla.org/en-US/docs/Web/API/Window/ondeviceorientationabsolute)).
+Try it on either a desktop machine or an Android device running Chrome. On a mobile device or desktop you should see the feed from the webcam, and a red box just in front of you. Note that the mobile device will not yet respond to changes in orientation: we will add that next time. For this reason you *must ensure the box is to your north* as the default view is to face north.
 
 ### Faking rotation on a desktop machine
 
