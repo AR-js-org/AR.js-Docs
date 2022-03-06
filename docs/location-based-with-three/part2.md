@@ -107,7 +107,7 @@ const deviceOrientationControls = new THREEx.DeviceOrientationControls(camera);
 
 The device orientation tracker updates the camera, so we need to pass it in as an argument.
 
-Also note how we update the device orientation tracker in our rendering functiom, so that new readings from the sensors are accounted for:
+Also note how we update the device orientation tracker in our rendering function, so that new readings from the sensors are accounted for:
 
 ```javascript
 deviceOrientationControls.update();
@@ -115,4 +115,4 @@ deviceOrientationControls.update();
 
 ### Try it!
 
-Try it out. As real GPS location and device orientation is used, you will need a mobile device.
+Try it out. As real GPS location and device orientation is used, you will need a mobile device. You should find that the red box appears in its real world position (ensure it's not too far from you, e.g. 0.001 degrees of longitude to the north) and, due to the use of orientation tracking, only appears in the field of view when you are facing its location.
