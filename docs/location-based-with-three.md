@@ -6,3 +6,4 @@ In the `dev` branch, a three.js API for location-based AR has now been implement
 
 - [Part 1: Hello World](location-based-with-three/part1.md)
 - [Part 2: Using the GPS and Device Orientation](location-based-with-three/part2.md)
+- [Part 3: Connecting to a web API](location-based-with-three/part3.md)
