@@ -9,66 +9,53 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
         <title>AR.js Location-Based Tutorial - Develop a Simple Peakfinder App - AR.js Documentation</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/docco.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/docco.min.css">
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="..">AR.js Documentation</a>
-                </div>
+                <a class="navbar-brand" href="..">AR.js Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="..">Home</a>
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
                             </li>
-                            <li >
-                                <a href="../image-tracking/">Image Tracking</a>
+                            <li class="navitem">
+                                <a href="../image-tracking/" class="nav-link">Image Tracking</a>
                             </li>
-                            <li >
-                                <a href="../location-based/">Location Based</a>
+                            <li class="navitem">
+                                <a href="../location-based/" class="nav-link">Location Based</a>
                             </li>
-                            <li >
-                                <a href="../marker-based/">Marker Based</a>
+                            <li class="navitem">
+                                <a href="../marker-based/" class="nav-link">Marker Based</a>
                             </li>
-                            <li >
-                                <a href="../ui-events/">UI and Events</a>
+                            <li class="navitem">
+                                <a href="../ui-events/" class="nav-link">UI and Events</a>
                             </li>
-                            <li >
-                                <a href="../about/">About</a>
+                            <li class="navitem">
+                                <a href="../about/" class="nav-link">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
@@ -78,16 +65,42 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#arjs-location-based-tutorial-develop-a-simple-peakfinder-app">AR.js Location-Based Tutorial - Develop a Simple Peakfinder App</a></li>
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#basic-example">Basic example</a></li>
-            <li><a href="#introducing-javascript-with-arjs">Introducing JavaScript with AR.js</a></li>
-            <li><a href="#adding-elevation-and-tiling">Adding elevation, and tiling</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#arjs-location-based-tutorial-develop-a-simple-peakfinder-app" class="nav-link">AR.js Location-Based Tutorial - Develop a Simple Peakfinder App</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#introduction" class="nav-link">Introduction</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#basic-example" class="nav-link">Basic example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#introducing-javascript-with-arjs" class="nav-link">Introducing JavaScript with AR.js</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#adding-elevation-and-tiling" class="nav-link">Adding elevation, and tiling</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <h1 id="arjs-location-based-tutorial-develop-a-simple-peakfinder-app">AR.js Location-Based Tutorial - Develop a Simple Peakfinder App</h1>
 <h2 id="introduction">Introduction</h2>
@@ -99,7 +112,7 @@ example and gradually add JavaScript to make our app more sophisticated.</p>
 <p>We will start with a basic example, using pure HTML, to display a box close
 to your location. This example is similar to the location-based example on the
 <a href="..">index page</a>.</p>
-<pre><code class="html">&lt;html&gt;
+<pre><code class="language-html">&lt;html&gt;
     &lt;head&gt;
         &lt;title&gt;AR.js Basic Projected Camera Example&lt;/title&gt;
         &lt;script src=&quot;https://aframe.io/releases/1.0.4/aframe.min.js&quot;&gt;&lt;/script&gt;
@@ -118,7 +131,6 @@ to your location. This example is similar to the location-based example on the
     &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-
 <p>Upload this to a server with HTTPS, or run locally on <code>localhost</code>. Make
 sure you replace <code>your-lat</code> and <code>your-lon</code> with values close to your
 actual position (to see the box clearly, I would recommend an offset of 
@@ -186,22 +198,19 @@ faces the camera.</p>
 basic applications. It is assumed that you already know the basics of how
 to create components in A-Frame, but let's start with a refresher. Create
 this file, <code>peakfinder.js</code>:</p>
-<pre><code class="javascript">AFRAME.registerComponent('peakfinder', {
+<pre><code class="language-javascript">AFRAME.registerComponent('peakfinder', {
     init: function() {
         alert('Peakfinder component initialising!');
     }
 });
 </code></pre>
-
 <p>and link to it from your HTML by adding, in the head section after the
 A-Frame and AR.js scripts:</p>
-<pre><code class="html">&lt;script type='text/javascript' src='peakfinder.js'&gt;&lt;/script&gt;
+<pre><code class="language-html">&lt;script type='text/javascript' src='peakfinder.js'&gt;&lt;/script&gt;
 </code></pre>
-
 <p>Also add a new entity to your scene and add this component to it:</p>
-<pre><code class="html">&lt;a-entity peakfinder&gt;&lt;/a-entity&gt;
+<pre><code class="language-html">&lt;a-entity peakfinder&gt;&lt;/a-entity&gt;
 </code></pre>
-
 <p>Load your page again. You should see the alert box come up. Remember from
 basic A-Frame that to create a component, you need to register it as in the
 example above. Remember also that the <code>init()</code> function runs when the component
@@ -213,7 +222,7 @@ connect to a web API to retrieve the locations of nearby peaks - with our
 eventual aim of making a peakfinder app. There are various APIs which can
 be used, but we will use one which is based on <a href="https://openstreetmap.org">OpenStreetMap</a> data. This API is present on the <a href="https://hikar.org">Hikar</a> web server and delivers the peak data as GeoJSON, but only covers Europe, Turkey and Washington State, USA, due to server capacity constraints. However, please feel free to research alternative APIs which cover other parts of the world and adjust the code accordingly. Also please feel free to contact me(@nickw1 on GitHub) if you want to add your area of the world (please do not ask, however, for large, heavily-populated countries in their entirety; to give you an idea of the size I could accommodate, the Washington State coverage was the result of a request). Also, note that the API is open source so again contact me for guidance on how you can set it up on your own server to cover your area of the world.</p>
 <p>Modify your code as follows:</p>
-<pre><code class="javascript">AFRAME.registerComponent('peakfinder', {
+<pre><code class="language-javascript">AFRAME.registerComponent('peakfinder', {
     init: function() {
         this.loaded = false;
         window.addEventListener('gps-camera-update-position', e =&gt; {
@@ -225,11 +234,10 @@ be used, but we will use one which is based on <a href="https://openstreetmap.or
     }
 });
 </code></pre>
-
 <p>What is this doing? We are listening for the <code>gps-camera-update-position</code> event. This is emitted by <code>gps-projected-camera</code> whenever our GPS location changes. The detail of the event contains a <code>position</code> object with <code>longitude</code> and <code>latitude</code> properties which contain our current position. So when we have obtained our position, we call an (as yet unwritten) <code>_loadPeaks()</code> method which will actually download the locations of the peaks from a web API.</p>
 <p>Note also the <code>loaded</code> boolean. This is used to prevent the peaks being loaded <em>every time the position changes</em>, which will clearly result in unnecessary network communication. For now, we just download the peaks once, when the application is initialised.</p>
 <p>So next, we will write the <code>_loadPeaks()</code> method. Add this as a new method to your component:</p>
-<pre><code class="javascript"> _loadPeaks: function(longitude, latitude) {
+<pre><code class="language-javascript"> _loadPeaks: function(longitude, latitude) {
         const scale = 2000;
         fetch(`https://www.hikar.org/fm/ws/bsvr.php?bbox=${longitude-0.1},${latitude-0.1},${longitude+0.1},${latitude+0.1}&amp;outProj=4326&amp;format=json&amp;poi=natural`
             )
@@ -254,7 +262,6 @@ be used, but we will use one which is based on <a href="https://openstreetmap.or
         });
     }
 </code></pre>
-
 <p>How is this working?</p>
 <ul>
 <li>We first send a standard AJAX request to our API, using <code>fetch</code>, and using a bounding box of width and height 0.2 degrees centered on our current location.</li>
@@ -299,7 +306,7 @@ be used, but we will use one which is based on <a href="https://openstreetmap.or
 <p><code>terrarium-dem</code> reads in a given longitude and latitude, and downloads the current XYZ elevation tile at a given zoom level, <em>and</em> the eight surrounding tiles (nine in total). These tiles are internally cached by <code>terrarium-dem</code> so that if a nearby location is requested, and the user hasn't moved to a different tile, the cached data will be used, avoiding unnecessary downloads. Also, when tiles are downloaded, they are emitted within the <code>terrarium-dem-loaded</code> event, which the <code>osm3d</code> component responds to by downloading the corresponding tiles from an OSM web API, calculating the OSM data's elevation using the DEM, and again caching and emitting the result.</p>
 <h3 id="the-code">The code</h3>
 <p>With that in mind, here is our code which makes use of <code>terrarium-dem</code> and <code>osm3d</code> to download elevation and OSM data to create peaks with elevations. We will start with the HTML:</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot; /&gt;
@@ -319,7 +326,6 @@ be used, but we will use one which is based on <a href="https://openstreetmap.or
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-
 <p>What's new here?</p>
 <ul>
 <li>Note that we are linking in our JavaScript (which we will come to shortly) as a <em>bundle</em>. This is a great way of developing code which relies on third-party modules without having to link multiple JS files, and we will expand upon this below.</li>
@@ -327,7 +333,7 @@ be used, but we will use one which is based on <a href="https://openstreetmap.or
 <li>Note also how we set the <code>zoom</code> to 12 for <code>terrarium-dem</code>. This will use the zoom level of 12 for our tiles, which means that peaks several kilometres away in every direction will be downloaded on startup.</li>
 </ul>
 <p>You'll notice that the <code>url</code> property for <code>terrarium-dem</code> is not an AWS URL but rather a local URL, <code>proxy.php</code>. Why is this? Due to the <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">same-origin-policy</a> we cannot contact AWS directly via AJAX, so we need to create a proxy script to do it for us. The example provided is in PHP and will look something like the code below. (If your server does not have PHP installed, feel free to replace this code with another language).</p>
-<pre><code class="php">&lt;?php
+<pre><code class="language-php">&lt;?php
 $x = $_GET[&quot;x&quot;];
 $y = $_GET[&quot;y&quot;];
 $z = $_GET[&quot;z&quot;];
@@ -341,10 +347,9 @@ if(ctype_digit($x) &amp;&amp; ctype_digit($y) &amp;&amp; ctype_digit($z)) {
 }
 ?&gt;
 </code></pre>
-
 <p>For the OSM URL (on <code>hikar.org</code>), we do not need a proxy as this script has <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">CORS</a> enabled by default.</p>
 <p>We can now move on to our JavaScript. This will look something like this:</p>
-<pre><code class="javascript">require('aframe-osm-3d');
+<pre><code class="language-javascript">require('aframe-osm-3d');
 
 AFRAME.registerComponent('peakfinder', {
     schema: {
@@ -417,7 +422,6 @@ AFRAME.registerComponent('peakfinder', {
     }
 });
 </code></pre>
-
 <p>How does this work?</p>
 <ul>
 <li>
@@ -442,11 +446,9 @@ AFRAME.registerComponent('peakfinder', {
 install the <code>aframe-osm-3d</code> package with NPM (included with <a href="https://nodejs.org">Node.js</a>).</p>
 <pre><code>npm install aframe-osm-3d
 </code></pre>
-
 <p>Next, we need to create a <em>bundle</em> with <a href="https://browserify.org">Browserify</a>. Browserify is an example of a "bundling" tool. It takes multiple JavaScript files, including third-party modules, and produces a single <strong>bundle</strong>, which can be linked to from an HTML page. To use, it's simply:</p>
 <pre><code>browserify peakfinder.js &gt; bundle.js
 </code></pre>
-
 <p>(assuming that you saved your peakfinder component as <code>peakfinder.js</code>).</p>
 <p>And that is it! Try it out and see if you can see peaks in their correct location, and elevation.</p>
 <h3 id="further-things-to-try">Further things to try</h3>
@@ -456,6 +458,7 @@ install the <code>aframe-osm-3d</code> package with NPM (included with <a href="
 <li><code>terrarium-dem-loaded</code>, as we have already seen, is emitted when DEM data has finished downloading.</li>
 </ul>
 <p>Adapt your example to include a <code>&lt;div&gt;</code> which displays a status message. (You can make a <code>&lt;div&gt;</code> a child of your <code>&lt;a-scene&gt;</code>). Display "Downloading elevation data..." while it's downloading the DEM data, and then "Downloading OSM data" when the DEM download has finished. Finally, when the OSM data has loaded, set the <code>&lt;div&gt;</code>'s contents to a blank string. </p></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -464,40 +467,37 @@ install the <code>aframe-osm-3d</code> package with NPM (included with <a href="
         </footer>
         <script>
             var base_url = "..",
-                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../js/base.js" defer></script>
         <script src="../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form role="form">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results"></div>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
             </div>
             <div class="modal-footer">
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

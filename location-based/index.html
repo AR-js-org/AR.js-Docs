@@ -9,76 +9,63 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
         <title>Location Based - AR.js Documentation</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/docco.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/docco.min.css">
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="..">AR.js Documentation</a>
-                </div>
+                <a class="navbar-brand" href="..">AR.js Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="..">Home</a>
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
                             </li>
-                            <li >
-                                <a href="../image-tracking/">Image Tracking</a>
+                            <li class="navitem">
+                                <a href="../image-tracking/" class="nav-link">Image Tracking</a>
                             </li>
-                            <li class="active">
-                                <a href="./">Location Based</a>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Location Based</a>
                             </li>
-                            <li >
-                                <a href="../marker-based/">Marker Based</a>
+                            <li class="navitem">
+                                <a href="../marker-based/" class="nav-link">Marker Based</a>
                             </li>
-                            <li >
-                                <a href="../ui-events/">UI and Events</a>
+                            <li class="navitem">
+                                <a href="../ui-events/" class="nav-link">UI and Events</a>
                             </li>
-                            <li >
-                                <a href="../about/">About</a>
+                            <li class="navitem">
+                                <a href="../about/" class="nav-link">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../image-tracking/">
+                            <li class="nav-item">
+                                <a rel="prev" href="../image-tracking/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../marker-based/">
+                            <li class="nav-item">
+                                <a rel="next" href="../marker-based/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -88,21 +75,38 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#location-based">Location Based</a></li>
-            <li><a href="#gps-camera">gps-camera</a></li>
-            <li><a href="#properties">Properties</a></li>
-            <li><a href="#gps-entity-place">gps-entity-place</a></li>
-            <li><a href="#properties_1">Properties</a></li>
-            <li><a href="#custom-attributes">Custom Attributes</a></li>
-            <li><a href="#events">Events</a></li>
-            <li><a href="#viewing-every-distant-object">Viewing every distant object</a></li>
-            <li><a href="#reducing-shaking-effects">Reducing shaking effects</a></li>
-            <li><a href="#projected-camera-version">Projected Camera Version</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#location-based" class="nav-link">Location Based</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#viewing-every-distant-object" class="nav-link">Viewing every distant object</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#reducing-shaking-effects" class="nav-link">Reducing shaking effects</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#projected-camera-version" class="nav-link">Projected Camera Version</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <h1 id="location-based">Location Based</h1>
 <p>Location Based has been implemented only for A-Frame framework.</p>
@@ -116,9 +120,8 @@ It can be used for indoor (but with low precision) and outdoor geopositioning of
 <p>This component enables the Location AR. It has to be added to the <code>camera</code> entity.
 It makes possible to handle both position and rotation of the camera and it's used to determine where the user is pointing their device.</p>
 <p>For example:</p>
-<pre><code class="HTML">&lt;a-camera gps-camera rotation-reader&gt;&lt;/a-camera&gt;
+<pre><code class="language-HTML">&lt;a-camera gps-camera rotation-reader&gt;&lt;/a-camera&gt;
 </code></pre>
-
 <p>In addition to that, as you can see on the example above, we also have to add <code>rotation-reader</code> to handle rotation events. See <a href="https://aframe.io/docs/0.9.0/components/camera.html#reading-position-or-rotation-of-the-camera">here</a> for more details.</p>
 <h3 id="properties">Properties</h3>
 <table>
@@ -182,22 +185,19 @@ It makes possible to handle both position and rotation of the camera and it's us
 <p><strong>Max allowed per scene</strong>: no limit</p>
 <p>This component makes each entity GPS-trackable. This assigns a specific world position to an entity, so that the user can see it when their device is pointing to its position in the real world. If the user is far from the entity, it will seem smaller. If it's too far away, it won't be seen at all.</p>
 <p>It requires latitude and longitude as a single string parameter (example with <code>a-box</code> aframe primitive):</p>
-<pre><code class="HTML">&lt;a-box material=&quot;color: yellow&quot; gps-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot;/&gt;
+<pre><code class="language-HTML">&lt;a-box material=&quot;color: yellow&quot; gps-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot;/&gt;
 </code></pre>
-
 <p>⚡️ In addition, you can use the a-frame "position" parameter to assign a y-value to change the height of the content.
 This value should be entered as meters above or below (if negative) the current camera height. For example, this would assign a height of 30 meters, and will be displayed relative to the gps-camera's current height:</p>
-<pre><code class="HTML">&lt;a-box material=&quot;color: yellow&quot; gps-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot; position=&quot;0 30 0&quot;/&gt;
+<pre><code class="language-HTML">&lt;a-box material=&quot;color: yellow&quot; gps-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot; position=&quot;0 30 0&quot;/&gt;
 </code></pre>
-
 <h3 id="properties_1">Properties</h3>
 <p>No real property apart from the string that defined latitude and longitude together, as shown above.</p>
 <h3 id="custom-attributes">Custom Attributes</h3>
 <p>The following are Custom Attributes that can be retrieved from <code>gps-entity-place</code> entities, for example:</p>
-<pre><code class="js">const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('distanceMsg');
+<pre><code class="language-js">const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('distanceMsg');
 console.log(distanceMsg);   // &quot;890 meters&quot;
 </code></pre>
-
 <table>
 <thead>
 <tr>
@@ -229,25 +229,22 @@ console.log(distanceMsg);   // &quot;890 meters&quot;
 <h2 id="viewing-every-distant-object">Viewing every distant object</h2>
 <p>If your location-based AR content is distant from the user (around 1km or
 more), it is recommended to use the new <code>arjs-webcam-texture</code> component (introduced in AR.js 3.2.0), which uses a THREE.js texture to stream the camera feed and allows distant content to be viewed. This component is automatically injected if the <code>videoTexture</code> parameter of the <code>arjs</code> system is set to <code>true</code> <em>and</em> the <code>sourceType</code> is <code>webcam</code>. For example (code snippet only):</p>
-<pre><code class="html">    &lt;a-scene
+<pre><code class="language-html">    &lt;a-scene
       vr-mode-ui=&quot;enabled: false&quot;
       embedded
       arjs=&quot;sourceType: webcam; videoTexture: true; debugUIEnabled: false;&quot;
     &gt;
 </code></pre>
-
 <h2 id="reducing-shaking-effects">Reducing shaking effects</h2>
 <p>In location-based mode, 'shaking' effects can occur due to frequent small
 changes in the device's orientation, due to the high sensitivity of the device
 sensors such as the accelerometer. If using AR.js 3.3.1 or greater this can optionally be reduced using an exponential smoothing technique. <em>Note that there are currently some occasional display artefacts with this if moving the device quickly or suddenly so please test before you enable it in a finished application; work to resolve these is on-going.</em></p>
 <p>This is enabled by adding the <code>arjs-look-controls</code> component to your <code>a-camera</code> with a <code>smoothingFactor</code> property. You must also disable A-Frame's default <code>look-controls</code>, as <code>arjs-look-controls</code> will replace it. For example:</p>
-<pre><code class="html">&lt;a-camera id='camera1' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera='gpsMinDistance: 5' rotation-reader&gt; &lt;/a-camera&gt;
+<pre><code class="language-html">&lt;a-camera id='camera1' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera='gpsMinDistance: 5' rotation-reader&gt; &lt;/a-camera&gt;
 </code></pre>
-
 <p>Exponential smoothing works by applying a smoothing factor to each newly-read device rotation angle (obtained from sensor readings) such that the previous smoothed value counts more than the current value, thus reducing 'noise' and 'jitter'. If <code>k</code> is the smoothing factor:</p>
 <pre><code>smoothedAngle = k * newValue + (1 - k) * previousSmoothedAngle
 </code></pre>
-
 <p>It can be seen from this that the <strong>smaller</strong> the value of <code>k</code> (the <code>smoothingFactor</code> property), the <strong>greater</strong> the smoothing effect. In tests, 0.1 appears to give the best result.</p>
 <p>Also you can reduce 'jumping' of augmented content when near a place - a
 bad-looking effect due to GPS sensors' low precision. To do so you can use the <code>gpsMinDistance</code> and <code>gpsTimeInterval</code> properties. See the <a href="./location-based.md">Location Based specific docs</a> to learn how to use them.</p>
@@ -257,18 +254,15 @@ bad-looking effect due to GPS sensors' low precision. To do so you can use the <
 <p>The rationale for this version is to allow easy addition of more complex geographic data such as roads and paths. Such data can be projected and added to an AR.js scene, and then, because Spherical Mercator units approximate to metres (away from the poles), the coordinates can be used directly as WebGL/A-Frame world coordinates.</p>
 <p>The two components for the projected camera version are <code>gps-projected-camera</code> and <code>gps-projected-entity-place</code>. Their interface is almost identical to <code>gps-camera</code> and <code>gps-entity-place</code> but they work differently internally.</p>
 <p>For example:</p>
-<pre><code class="HTML">&lt;a-camera gps-projected-camera rotation-reader&gt;&lt;/a-camera&gt;
+<pre><code class="language-HTML">&lt;a-camera gps-projected-camera rotation-reader&gt;&lt;/a-camera&gt;
 </code></pre>
-
 <p>and:</p>
-<pre><code class="HTML">&lt;a-box color=&quot;yellow&quot; gps-projected-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot;/&gt;
+<pre><code class="language-HTML">&lt;a-box color=&quot;yellow&quot; gps-projected-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot;/&gt;
 </code></pre>
-
 <p>Note that internally, the latitude and longitude are converted to Spherical Mercator coordinates.</p>
 <p>As for <code>gps-entity-place</code>, you can specify an altitude using the <em>y</em> component of the <code>position</code> attribute:</p>
-<pre><code class="HTML">&lt;a-box color=&quot;yellow&quot; gps-projected-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot; position=&quot;0 30 0&quot;/&gt;
+<pre><code class="language-HTML">&lt;a-box color=&quot;yellow&quot; gps-projected-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot; position=&quot;0 30 0&quot;/&gt;
 </code></pre>
-
 <h3 id="calculating-world-coordinates-of-arbitrary-augmented-content">Calculating world coordinates of arbitrary augmented content</h3>
 <p><code>gps-projected-camera</code> has some useful properties and methods which can be used to easily work with arbitrary augmented content (for example, polylines or polygons sourced from geodata APIs such as <a href="https://openstreetmap.org">OpenStreetMap</a>). Before introducing these, it needs to be made clear that, in <code>gps-projected-camera</code>, the <strong>original GPS position</strong> is set as the world origin. So, if arbitrary content is to be added to the scene, and the source coordinates for this content is in unprojected (WGS84) latitude and longitude, it needs to be:</p>
 <ul>
@@ -289,6 +283,7 @@ The <code>latLonToWorld(lat, lon)</code> method of the <code>gps-projected-camer
 <li><code>zWorld = -(featureNorthing - originCoordsProjected[1])</code></li>
 </ul>
 <p>where <code>xWorld</code> and <code>zWorld</code> are the world <em>x</em> and <em>z</em> coordinates of the augmented content, and <code>featureEasting</code> and <code>featureNorthing</code> are the content's Spherical Mercator coordinates. Note how we have to reverse the sign of <em>z</em> as increasing Spherical Mercator easting corresponds to increasing <em>x</em> in OpenGL coordinates, and increasing altitude corresponds to increasing <em>y</em>, but increasing Spherical Mercator northing corresponds to <strong>decreasing</strong> <em>z</em>.</p></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -297,40 +292,37 @@ The <code>latLonToWorld(lat, lon)</code> method of the <code>gps-projected-camer
         </footer>
         <script>
             var base_url = "..",
-                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../js/base.js" defer></script>
         <script src="../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form role="form">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results"></div>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
             </div>
             <div class="modal-footer">
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">
