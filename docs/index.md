@@ -82,7 +82,7 @@ You can import AR.js in one version of your choice, using the `<script>` tag on 
 
 ---
 
-**AR.js with Image Tracking + Location Based AR**
+**AR.js with Image Tracking**
 
 Import AFRAME version:
 
@@ -98,7 +98,7 @@ Import three.js version:
 
 ---
 
-**AR.js with Marker Tracking + Location Based AR:**
+**AR.js with Marker Tracking**
 
 Import AFRAME version:
 
@@ -118,16 +118,34 @@ If you want to import a specific version, you can do that easily replacing `mast
   <script src="https://raw.githack.com/AR-js-org/AR.js/3.0.0/aframe/build/aframe-ar-nft.js">
 ```
 
+**Location-based AR.js**
+
+For the *three.js* version, it's recommended to import AR.js as a module and build with a bundler such as Webpack. There is an example given in the location-based section.
+
+For the *A-Frame* version:
+
+```html
+<!-- A-Frame itself -->
+<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+
+<!-- Pure three.js code that the A-Frame components use for location-based AR -->
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
+
+<!-- AR.js A-Frame components -->
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+```
+
+
 ## Requirements
 
 Some requirements and known restrictions are listed below:
 
 - It works on every phone with [webgl](http://caniuse.com/#feat=webgl) and [webrtc](http://caniuse.com/#feat=stream).
 - Marker based tracking is very lightweight, while Image Tracking is more CPU consuming
+- Location-based AR will not work correctly on Firefox, due to the inability to obtain absolute device orientation (compass bearing)
 - On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.
 - To work with Location Based feature, your phone needs to have GPS sensors
 - Please, read carefully any suggestions that AR.js pops-up -as alerts- for Location Based on iOS, as iOS requires user actions to activate geoposition
-- Location Based feature is only available on A-Frame
 
 ### Always deploy under https
 
@@ -227,7 +245,7 @@ Try it live with [this Codepen](https://codepen.io/nicolocarpignoli/pen/MWwzyVP)
 
 Please follow these simple steps:
 
-- Create a new project with the following snippet, and change `add-your-latitude` and `add-your-longitude` with your latitude and longitude, without the `<>`.
+- Create a new project with the following snippet, and change `add-your-latitude` and `add-your-longitude` with a point very close to your latitude and longitude, without the `<>`.
 - Run it on a server
 - Activate GPS on your phone and navigate to the example URL
 - Look around. You should see the text looking at you, appearing in the requested position, even if you look around and move the phone.
@@ -235,34 +253,24 @@ Please follow these simple steps:
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>GeoAR.js demo</title>
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-  </head>
+<head>
+<title>AR.js A-Frame Location-based</title>
+<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+</head>
+<body>
+<a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+    <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+    <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: <your latitude>; longitude: <your longitude>" scale="10 10 10"></a-entity>
+</a-scene>
 
-  <body style="margin: 0; overflow: hidden;">
-    <a-scene
-      vr-mode-ui="enabled: false"
-      embedded
-      arjs="sourceType: webcam; debugUIEnabled: false;"
-    >
-      <a-text
-        value="This content will always face you."
-        look-at="[gps-camera]"
-        scale="120 120 120"
-        gps-entity-place="latitude: <add-your-latitude>; longitude: <add-your-longitude>;"
-      ></a-text>
-      <a-camera gps-camera rotation-reader> </a-camera>
-    </a-scene>
-  </body>
+</body>
 </html>
+
 ```
 
-If you want to enhance and customize your Location Based experience, take a look at the <a href="./location-based"> Location Based docs.</a>
+This is just a basic example and most location-based applications will involve JavaScript coding. So, if you want to enhance and customize your Location Based experience, take a look at the <a href="./location-based"> Location Based docs.</a>
 
 ### Marker Based Example
 
