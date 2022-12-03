@@ -6,6 +6,8 @@
 
 AR.js is a lightweight library for Augmented Reality on the Web, which includes features like Image Tracking, Location based AR and Marker tracking.
 
+**Location Based documentation updated and enhanced for AR.js 3.4**
+
 ## What Web AR means (Augmented Reality on the Web)
 
 Augmented Reality is the technology that makes possible to overlay content on the real world.
@@ -135,23 +137,22 @@ For the *A-Frame* version:
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
 ```
 
+## Requirements
 
-## Requirements
+## 
 
 Some requirements and known restrictions are listed below:
-
 - It works on every phone with [webgl](http://caniuse.com/#feat=webgl) and [webrtc](http://caniuse.com/#feat=stream).
 - Marker based tracking is very lightweight, while Image Tracking is more CPU consuming
 - Location-based AR will not work correctly on Firefox, due to the inability to obtain absolute device orientation (compass bearing)
 - On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.
 - To work with Location Based feature, your phone needs to have GPS sensors
 - Please, read carefully any suggestions that AR.js pops-up -as alerts- for Location Based on iOS, as iOS requires user actions to activate geoposition
-
-### Always deploy under https
-
 Access to the phone camera or to camera GPS sensors, due to major browsers restrictions, can be done only under https websites.
 
 All the examples you will see, and all AR.js web apps in general, have to be run on a server. You can use local server or deploy the static web app on the web.
+
+### Always deploy under https
 
 So don't forget to always run your examples on secure connections servers or localhost. [Github Pages](https://pages.github.com/) is a great way to have free and live websites under https.
 
@@ -241,14 +242,14 @@ Please follow these simple steps:
 
 ### Location Based Example
 
-Try it live with [this Codepen](https://codepen.io/nicolocarpignoli/pen/MWwzyVP). It retrieves your position and places a text near you.
+This example retrieves your position and places a red box near you.
 
 Please follow these simple steps:
 
-- Create a new project with the following snippet, and change `add-your-latitude` and `add-your-longitude` with a point very close to your latitude and longitude, without the `<>`.
+- Create a new project with the following snippet, and change `add-your-latitude` and `add-your-longitude` with a point very close to your latitude and longitude (about 0.001 degrees distant for both latitude and longitude), without the `<>`.
 - Run it on a server
 - Activate GPS on your phone and navigate to the example URL
-- Look around. You should see the text looking at you, appearing in the requested position, even if you look around and move the phone.
+- Look around. You should see the box close to you, appearing in the requested position, even if you look around and move the phone.
 
 ```html
 <!DOCTYPE html>
@@ -262,9 +263,8 @@ Please follow these simple steps:
 <body>
 <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
     <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-    <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: <your latitude>; longitude: <your longitude>" scale="10 10 10"></a-entity>
+    <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: <add-your-latitude>; longitude: <add-your-longitude>" scale="10 10 10"></a-entity>
 </a-scene>
-
 </body>
 </html>
 
@@ -346,8 +346,9 @@ There are various tutorials available for developing with AR.js. These include:
 
 ### Location Based
 
-- [Build your Location-Based Augmented Reality Web App](https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564)
-- [Develop a Simple Peakfinder App](location-based-tutorial.md) (*Provided with these docs*)
+- [Build your Location-Based Augmented Reality Web App](https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564): note this is using a web API which may no longer work
+- [Develop a Simple Points Of Interest App (A-Frame version)](location-based-aframe/index.md) (*Provided with these docs*): a more up-to-date version of the tutorial above, written for AR.js 3.4 and covering the A-Frame AR.js API.
+- [Develop a Simple Points of Interest App (three.js version)](location-based-three/index.md) (*Provided with these docs*): a pure three.js version of the above, also written for AR.js 3.4. 
 
 ## Troubleshooting, feature requests, community
 

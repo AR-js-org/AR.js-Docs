@@ -1,15 +1,39 @@
 # Location Based
 
-Location Based has been implemented only for A-Frame framework.
+[This article](https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564) gives you a first glance to Location Based on AR.js.
 
-[This article ](https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564) gives you a first glance to Location Based on AR.js.
 It can be used for indoor (but with low precision) and outdoor geopositioning of AR content.
 
 You can load places statically, from HTML or from Javascript, or you can load your data from local/remote json, or even through API calls. Choice is yours. On the article above there are all the options explained, as tutorials.
 
-Following there's the API Reference.
+Location Based has been implemented for both three.js and A-Frame. Each of these is documented below.
 
-### `gps-camera`
+This document is intended as reference documentation. There are also two *tutorials* available, with full example code:
+
+- [A-Frame location based](location-based-aframe/index.md)
+- [three.js location based](location-based-three/index.md)
+
+## A-Frame
+
+AR.js offers A-Frame components to implement location-based AR. There are three variants of the components, detailed as below:
+
+- The `new-location-based` components. These have been available since AR.js 3.4.0, incorporate various bug fixes, use simpler code, and provide a thin wrapper round the three.js API shown below. These are recommended for most uses, though are missing a few more specialist features from the older variants described below. However, these are the components likely to see further development - the older variants are unlikely to see further work besides bug fixes.
+
+- The `projected` components. These have been available since AR.js 3.3.1. These are recommended if you are having problems with "shaking" effects,  as these include functionality to mitigate such "shaking" and this functionality has not been incorporated into the `new-location-based` components yet.
+
+- The classic components, available before AR.js 3.3.1. These are similar to the `projected` components but do not offer the facility to convert between latitude/longitude and the projected coordinates used for augmented reality, which can cause problems for more specialist uses such as showing roads and paths in augmented reality.
+
+### The components
+
+Each variant above includes two components, a `camera` component which enables the location-based AR, and an `entity-place` component which enables setting components' latitude and longitude. The exact component names for each variant are shown below.
+
+|Component variant|Camera component|Entity-place component
+|-----------------|----------------|----------------------
+|new-location-based|gps-new-camera|gps-new-entity-place
+|projected|gps-projected-camera|gps-projected-entity-place
+|classic|gps-camera|gps-entity-place
+
+### Camera component (`gps-new-camera`, `gps-projected-camera` or `gps-camera`)
 
 **Required**: yes
 
@@ -21,28 +45,25 @@ It makes possible to handle both position and rotation of the camera and it's us
 For example:
 
 ```HTML
-<a-camera gps-camera rotation-reader></a-camera>
+<a-camera gps-new-camera></a-camera>
 ```
-
-In addition to that, as you can see on the example above, we also have to add `rotation-reader` to handle rotation events. See [here](https://aframe.io/docs/0.9.0/components/camera.html#reading-position-or-rotation-of-the-camera) for more details.
-
 
 ### Properties
 
-| Property   | Description | Default Value |
-|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| alert     | Whether to show a message when GPS signal is under the `positionMinAccuracy`                  | false |                                                                                                                                                                        | true          |
-| positionMinAccuracy        | Minimum accuracy allowed for position signal    | 100 |
-| minDistance        | If set, places with a distance from the user lower than this value, are not showed. Only a positive value is allowed. Value is in meters.    | 0 (disabled) |
-| maxDistance        | If set, places with a distance from the user higher than this value, are not showed. Only a positive value is allowed. Value is in meters.    | 0 (disabled) |
-| simulateLatitude   | Setting this allows you to simulate the latitude of the camera, to aid in testing.    | 0 (disabled) |
-| simulateLongitude   | Setting this allows you to simulate the longitude of the camera, to aid in testing.    | 0 (disabled) |
-| simulateAltitude   | Setting this allows you to simulate the altitude of the camera in meters above sea level, to aid in testing.    | 0 (disabled) |
-| gpsMinDistance   | Setting this allows you to control how far the camera must move, in meters, to generate a GPS update event. Useful to prevent 'jumping' of augmented content due to frequent small changes in position.    | 5 |
-| gpsTimeInterval   | Setting this allows you to control how frequently to obtain a new GPS position. If a previous GPS location is cached, the cached position will be used rather than a new position if its 'age' is less than this value, in milliseconds. This parameter is passed directly to the Geolocation API's `watchPosition()` method.    | 0 (always use new position, not cached) |
+| Property   | Description | Default Value | Availability
+|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|--------
+| positionMinAccuracy        | Minimum accuracy allowed for position signal    | 100 | all
+| gpsMinDistance | Setting this allows you to control how far the camera must move, in meters, to generate a GPS update event. Useful to prevent 'jumping' of augmented content due to frequent small changes in position.    | 5 | all 
+| simulateLatitude   | Setting this allows you to simulate the latitude of the camera, to aid in testing.    | 0 (disabled) | all (but only triggers GPS update event in new-location-based)
+| simulateLongitude   | Setting this allows you to simulate the longitude of the camera, to aid in testing.    | 0 (disabled) | all (but only triggers GPS update event in new-location-based)
+| simulateAltitude   | Setting this allows you to simulate the altitude of the camera in meters above sea level, to aid in testing.    | 0 (disabled) | all
+| alert     | Whether to show a message when GPS signal is under the `positionMinAccuracy`                  | false | projected, classic 
+| minDistance        | If set, places with a distance from the user lower than this value, are not showed. Only a positive value is allowed. Value is in meters.    | 0 (disabled) | projected, classic
+| maxDistance        | If set, places with a distance from the user higher than this value, are not showed. Only a positive value is allowed. Value is in meters.    | 0 (disabled) | projected, classic
+| gpsTimeInterval   | Setting this allows you to control how frequently to obtain a new GPS position. If a previous GPS location is cached, the cached position will be used rather than a new position if its 'age' is less than this value, in milliseconds. This parameter is passed directly to the Geolocation API's `watchPosition()` method.    | 0 (always use new position, not cached) | projected, classic
 
 
-### `gps-entity-place`
+### Entity-place component (`gps-new-entity-place`, `gps-projected-entity-place` or `gps-entity-place`)
 
 **Required**: yes
 
@@ -53,33 +74,19 @@ This component makes each entity GPS-trackable. This assigns a specific world po
 It requires latitude and longitude as a single string parameter (example with `a-box` aframe primitive):
 
 ```HTML
-<a-box material="color: yellow" gps-entity-place="latitude: <your-latitude>; longitude: <your-longitude>"/>
+<a-box material="color: yellow" gps-new-entity-place="latitude: <your-latitude>; longitude: <your-longitude>"/>
 ```
 
 ⚡️ In addition, you can use the a-frame "position" parameter to assign a y-value to change the height of the content.
-This value should be entered as meters above or below (if negative) the current camera height. For example, this would assign a height of 30 meters, and will be displayed relative to the gps-camera's current height:
+This value should be entered as meters above or below (if negative) the current camera height. For example, this would assign a height of 30 meters, and will be displayed relative to the gps-new-camera's current height:
 
 ```HTML
-<a-box material="color: yellow" gps-entity-place="latitude: <your-latitude>; longitude: <your-longitude>" position="0 30 0"/>
+<a-box material="color: yellow" gps-new-entity-place="latitude: <your-latitude>; longitude: <your-longitude>" position="0 30 0"/>
 ```
 
 ### Properties
 
 No real property apart from the string that defined latitude and longitude together, as shown above.
-
-### Custom Attributes
-
-The following are Custom Attributes that can be retrieved from `gps-entity-place` entities, for example:
-
-```js
-const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('distanceMsg');
-console.log(distanceMsg);   // "890 meters"
-```
-
-| Custom Attribute   | Description | Default Value |
-|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| distance        | Distance from user, updated at every user position update. Value in meters.   | 0 |
-| distanceMsg        | Distance from user as string, with unit, updated at every user position update. Value as `<distance> meters/kilometers`.   | '' |
 
 ----
 
@@ -91,33 +98,35 @@ Take a look at the [UI and Events](./ui-events.md) page for Location Based Custo
 
 ⚡️ Usually, in Location Based, it's nice to have the augmented content that will always face the user, so when you rotate the camera, 3D models or most of all, text, are well visible.
 
-Look at [this example](https://github.com/AR-js-org/AR.js/tree/master/aframe/examples/location-based/always-face-user) in order to create `gps-entity-place` entities that will always face the user (camera).
+Look at [this example](https://github.com/AR-js-org/AR.js/tree/master/aframe/examples/location-based/always-face-user) in order to create `gps-new-entity-place` entities that will always face the user (camera).
 
 ----
 
 ## Viewing every distant object
 
 If your location-based AR content is distant from the user (around 1km or
-more), it is recommended to use the new `arjs-webcam-texture` component (introduced in AR.js 3.2.0), which uses a THREE.js texture to stream the camera feed and allows distant content to be viewed. This component is automatically injected if the `videoTexture` parameter of the `arjs` system is set to `true` *and* the `sourceType` is `webcam`. For example (code snippet only):
+more), it is recommended to use the new `arjs-webcam-texture` component (introduced in AR.js 3.2.0), which uses a three.js texture to stream the camera feed and allows distant content to be viewed. This component is automatically injected if the `videoTexture` parameter of the `arjs` system is set to `true` *and* the `sourceType` is `webcam`. For example (code snippet only):
 
 ```html
     <a-scene
       vr-mode-ui="enabled: false"
-      embedded
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
 ```
 
 ## Reducing shaking effects
 
-In location-based mode, 'shaking' effects can occur due to frequent small
+In location-based mode, 
+'shaking' effects can occur due to frequent small
 changes in the device's orientation, due to the high sensitivity of the device
-sensors such as the accelerometer. If using AR.js 3.3.1 or greater this can optionally be reduced using an exponential smoothing technique. *Note that there are currently some occasional display artefacts with this if moving the device quickly or suddenly so please test before you enable it in a finished application; work to resolve these is on-going.*
+sensors such as the accelerometer. 
+
+If using AR.js 3.3.1 or greater, but only currently with the older `gps-projected-camera` and `gps-projected-entity-place` components (not the newer `gps-new-camera` and `gps-new-entity-place` components), this can optionally be reduced using an exponential smoothing technique. *Note that there are currently some occasional display artefacts with this if moving the device quickly or suddenly so please test before you enable it in a finished application; work to resolve these is on-going.*
 
 This is enabled by adding the `arjs-look-controls` component to your `a-camera` with a `smoothingFactor` property. You must also disable A-Frame's default `look-controls`, as `arjs-look-controls` will replace it. For example:
 
 ```html
-<a-camera id='camera1' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera='gpsMinDistance: 5' rotation-reader> </a-camera>
+<a-camera id='camera1' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-projected-camera='gpsMinDistance: 5' rotation-reader> </a-camera>
 ```
 
 Exponential smoothing works by applying a smoothing factor to each newly-read device rotation angle (obtained from sensor readings) such that the previous smoothed value counts more than the current value, thus reducing 'noise' and 'jitter'. If `k` is the smoothing factor:
@@ -128,59 +137,123 @@ smoothedAngle = k * newValue + (1 - k) * previousSmoothedAngle
 
 It can be seen from this that the **smaller** the value of `k` (the `smoothingFactor` property), the **greater** the smoothing effect. In tests, 0.1 appears to give the best result.
 
-Also you can reduce 'jumping' of augmented content when near a place - a
-bad-looking effect due to GPS sensors' low precision. To do so you can use the `gpsMinDistance` and `gpsTimeInterval` properties. See the <a href="./location-based.md">Location Based specific docs</a> to learn how to use them.
+Also for *all* variants of the components you can reduce 'jumping' of augmented content when near a place - a bad-looking effect due to GPS sensors' low precision. To do so you can use the `gpsMinDistance` property.
 
 ----
 
-## Projected Camera Version
+## Projection Details
 
-The experimental 'projected camera' version of the location-based components for AR.js uses [Spherical Mercator](https://www.maptiler.com/google-maps-coordinates-tile-bounds-projection) (aka EPSG:3857) to store both the camera position and the position of added points of interest and other geographical data.
+The `new-location-based` and `projected` location-based components for AR.js uses [Spherical Mercator](https://www.maptiler.com/google-maps-coordinates-tile-bounds-projection) (aka EPSG:3857) to store both the camera position and the position of added points of interest and other geographical data.
 
-The rationale for this version is to allow easy addition of more complex geographic data such as roads and paths. Such data can be projected and added to an AR.js scene, and then, because Spherical Mercator units approximate to metres (away from the poles), the coordinates can be used directly as WebGL/A-Frame world coordinates.
+Spherical Mercator is the same projection used by Google Maps and projects the earth onto a flat surface. It works reasonably at most latitudes but is highly distorted near the poles. Latitude and longitude is projected into Spherical Mercator *eastings* and *northings*, which are approximately (but not exactly) equivalent to metres. 
 
-The two components for the projected camera version are `gps-projected-camera` and `gps-projected-entity-place`. Their interface is almost identical to `gps-camera` and `gps-entity-place` but they work differently internally.
-
-For example:
-
-```HTML
-<a-camera gps-projected-camera rotation-reader></a-camera>
-```
-and:
-
-```HTML
-<a-box color="yellow" gps-projected-entity-place="latitude: <your-latitude>; longitude: <your-longitude>"/>
-```
-Note that internally, the latitude and longitude are converted to Spherical Mercator coordinates.
-
-As for `gps-entity-place`, you can specify an altitude using the *y* component of the `position` attribute:
-
-```HTML
-<a-box color="yellow" gps-projected-entity-place="latitude: <your-latitude>; longitude: <your-longitude>" position="0 30 0"/>
-```
+The rationale for this is to allow easy addition of more complex geographic data such as roads and paths. Such data can be projected and added to an AR.js scene, and then, because Spherical Mercator units approximate to metres (away from the poles), the coordinates can be used directly as WebGL/A-Frame world coordinates.
 
 ### Calculating world coordinates of arbitrary augmented content
 
-`gps-projected-camera` has some useful properties and methods which can be used to easily work with arbitrary augmented content (for example, polylines or polygons sourced from geodata APIs such as [OpenStreetMap](https://openstreetmap.org)). Before introducing these, it needs to be made clear that, in `gps-projected-camera`, the **original GPS position** is set as the world origin. So, if arbitrary content is to be added to the scene, and the source coordinates for this content is in unprojected (WGS84) latitude and longitude, it needs to be:
+The `new-location-based` and `projected` components have some useful properties and methods which can be used to easily work with more specialist augmented content (for example, you might want to overlay AR polylines or polygons representing roads and paths, downloaded from geodata APIs such as [OpenStreetMap](https://openstreetmap.org)).  Such data can be downloaded from the API as lat/lon based coordinates, projected using AR.js API methods into Spherical Mercator (approximating to metres, and therefore suitable to use as world coordinates), and then added to the scene as a three.js object.
+
+This is done differently in the `new-location-based` and `projected` components.
+
+`gps-new-camera` provides access to the underlying AR.js three.js `LocationBased` object (see three.js documentation, below) via the `threeLoc` property of the component. The three.js `LocationBased` object has a `lonLatToWorldCoords(lon, lat)` method which converts a longitude and latitude to an array containing the equivalent *world coordinates* in the current projection (by default Spherical Mercator). Note that the sign of the Spherical Mercator northing is reversed to align with the OpenGL coordinate system (eastings are equivalent to `x` coordinates and northings to `z` coordinates).
+
+`gps-projected-camera` provided similar functionality but via a different method and with some implementation differences. `gps-projected-camera`, the **original GPS position** is set as the world origin. So, if arbitrary content is to be added to the scene, and the source coordinates for this content is in unprojected (WGS84) latitude and longitude, it needs to be:
 
 - projected to Spherical Mercator;
 - and then converted to world coordinates relative to the original GPS position.
 
-On the other hand, only the second step is needed if the source coordinates are already projected. We'll look at each scenario now.
-
-#### Source data in WGS84 latitude/longitude
-
-This is probably the most common scenario.
 The `latLonToWorld(lat, lon)` method of the `gps-projected-camera` component converts latitude and longitude directly to world coordinates, performing the projection as the first step and then calculating the world coordinates from the projected coordinates. It will return a 2-member array containing the *x* and *z* world coordinates, allowing the developer to calculate or specify the *y* coordinate (altitude) independently.
 
-#### Source data in Spherical Mercator
 
-An alternative scenario is when the augmented content has already been projected into Spherical Mercator and therefore does not need the initial projection step when added to an AR.js scene. This may occur when an API serves data in Spherical Mercator, for instance. In this case, we still need to convert the Spherical Mercator coordinates to world coordinates relative to the original GPS position. `gps-projected-camera` has an `originCoordsProjected` property, which represents the original GPS position in Spherical Mercator coordinates. This is a two-member array, containing the Spherical Mercator easting and northing, respectively, of the origin point. From this, we can therefore work out the world coordinates from Spherical Mercator coordinates:
+## three.js 
 
-* `xWorld = featureEasting - originCoordsProjected[0]`
+The three.js API keeps track of your current GPS location (or allows you to set a fake location) and allows you to add three.js objects at a given latitude and longitude. It includes these classes:
 
-and
+- `THREEx.LocationBased` - general manager class for the three.js location-based API.
+- `THREEx.WebcamRenderer` - renders the feed from the webcam as a WebGL texture.
+- `THREEx.DeviceOrientationControls` - for detecting changes in the orientation of the device.
 
-* `zWorld = -(featureNorthing - originCoordsProjected[1])`
+These classes include the following methods:
 
-where `xWorld` and `zWorld` are the world *x* and *z* coordinates of the augmented content, and `featureEasting` and `featureNorthing` are the content's Spherical Mercator coordinates. Note how we have to reverse the sign of *z* as increasing Spherical Mercator easting corresponds to increasing *x* in OpenGL coordinates, and increasing altitude corresponds to increasing *y*, but increasing Spherical Mercator northing corresponds to **decreasing** *z*.
+### LocationBased
+
+- `constructor(scene, camera, options={})` : Initialises a new `LocationBased` object. Takes a `THREE.Scene` and a `THREE.Camera` object as parameters, as well as an object of GPS options (see `setGpsOptions()`, below)
+
+- `setProjection(proj)` : allows the projection to be defined. By default Spherical Mercator is used. The projection object must provide a `project()` method which takes longitude and latitude as parameters and returns a 2-member array of projected coordinates (easting, northing).
+
+- `setGpsOptions(options={})` : sets the GPS options. These include `gpsMinDistance` and `gpsMinAccuracy`, described in the A-Frame documentation above.
+
+- `startGps()` : starts the GPS. Takes an optional `maximumAge`, as used by the native Geolocation API.
+
+- `stopGps()` : stops the GPS.
+
+- `fakeGps(lon, lat, elev=null, acc=0)` : fakes a GPS position being received. Elevation and accuracy can optionally be provided.
+
+- `lonLatToWorldCoords(lon, lat)` : projects a given longitude and latitude into world coordinates using the current projection. The sign of the northing is reversed to align it with the OpenGL coordinate system.
+
+- `add(object, lon, lat, elev)` : adds a given three.js object to the world at the given longitude and latitude and at the given elevation.
+
+- `setWorldPosition(object, lon, lat, elev)` : changes the world position of a given object to the given longitude and latitude, without adding it to the scene.
+
+- `setElevation(elev)` : sets the current elevation in metres. This will set the camera's `y` coordinate to that elevation.
+
+- `on(eventname, eventhandler)` : allows event handlers to be specified. Currently `gpsupdate` and `gpserror` handlers are supported, for receiving a new GPS position and GPS errors (as in the Geolocation API) respectively.
+
+### WebcamRenderer
+
+Renders the webcam feed.
+
+- `constructor(renderer, videoElementSelector)` : creates a `WebcamRenderer`. Takes a `THREE.WebGLRenderer` plus a selector for an HTML `video` element to stream the feed to.
+
+- `update()` : updates the camera feed. Should be done each time the scene is rendered.
+
+### DeviceOrientationControls
+
+Represents the device orientation controls, i.e. accelerometer and magnetic field sensors, for determining the orientation of the device. Based on the sample included in the three.js distribution.
+
+- `constructor(cameraObject)` : creates a `DeviceOrientationControls` object. Takes a three.js camera.
+
+- `update()` : updates the device orientation controls. Should be done each time the scene is rendered.
+
+### Using three.js location-based in an application
+
+You are recommended to use `npm` to install AR.js, `import` it into your application, and use a bundler such as Webpack to build.
+
+Here is a sample `package.json`:
+
+```
+{
+    "dependencies": {
+        "@ar-js-org/ar.js": "3.4.2",
+    },
+    "devDependencies": {
+        "webpack": "^5.75.0",
+        "webpack-cli": "^5.0.0"
+    },
+    "scripts": {
+        "build": "npx webpack"
+    }
+}
+```
+and a sample `webpack.config.js`:
+```javascript
+const path = require('path');
+
+module.exports = {
+    mode: 'development',
+    entry: './index.js',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js'
+    },
+    optimization: {
+        minimize: false
+    }
+};
+```
+This will build a bundle named `bundle.js` in the `dist` subdirectory from a source file `index.js`. 
+
+Here is an example of importing the components into an application:
+```javascript
+import * as THREEx from './node_modules/@ar-js-org/ar.js/three.js/build/ar-threex-location-only.js'
+```
