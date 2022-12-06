@@ -9,63 +9,76 @@
         
         <link rel="shortcut icon" href="img/favicon.ico">
         <title>AR.js Documentation</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/docco.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/docco.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
         <script src="js/jquery-1.10.2.min.js" defer></script>
-        <script src="js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body class="homepage">
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
-                <a class="navbar-brand" href=".">AR.js Documentation</a>
-                <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href=".">AR.js Documentation</a>
+                </div>
 
                 <!-- Expanded navigation -->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
+                <div class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem active">
-                                <a href="." class="nav-link">Home</a>
+                            <li class="active">
+                                <a href=".">Home</a>
                             </li>
-                            <li class="navitem">
-                                <a href="image-tracking/" class="nav-link">Image Tracking</a>
+                            <li >
+                                <a href="image-tracking/">Image Tracking</a>
                             </li>
-                            <li class="navitem">
-                                <a href="location-based/" class="nav-link">Location Based</a>
+                            <li >
+                                <a href="location-based/">Location Based</a>
                             </li>
-                            <li class="navitem">
-                                <a href="marker-based/" class="nav-link">Marker Based</a>
+                            <li >
+                                <a href="marker-based/">Marker Based</a>
                             </li>
-                            <li class="navitem">
-                                <a href="ui-events/" class="nav-link">UI and Events</a>
+                            <li >
+                                <a href="ui-events/">UI and Events</a>
                             </li>
-                            <li class="navitem">
-                                <a href="about/" class="nav-link">About</a>
+                            <li >
+                                <a href="about/">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" class="nav-link disabled">
+                            <li class="disabled">
+                                <a rel="next" >
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a rel="next" href="image-tracking/" class="nav-link">
+                            <li >
+                                <a rel="prev" href="image-tracking/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -75,59 +88,35 @@
         </div>
 
         <div class="container">
-            <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
-            <span class="fa fa-angle-down"></span>
-        </button>
-    </div>
-
-    
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
-        <ul class="nav flex-column">
-            
-            <li class="nav-item" data-level="1"><a href="#arjs-augmented-reality-on-the-web" class="nav-link">AR.js - Augmented Reality on the Web</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#what-web-ar-means-augmented-reality-on-the-web" class="nav-link">What Web AR means (Augmented Reality on the Web)</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#why-arjs" class="nav-link">Why AR.js</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#import-the-library" class="nav-link">Import the library</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#requirements" class="nav-link">Requirements</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#getting-started" class="nav-link">Getting started</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#tutorials" class="nav-link">Tutorials</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#troubleshooting-feature-requests-community" class="nav-link">Troubleshooting, feature requests, community</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-        </ul>
-    </div>
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#arjs-augmented-reality-on-the-web">AR.js - Augmented Reality on the Web</a></li>
+            <li><a href="#what-web-ar-means-augmented-reality-on-the-web">What Web AR means (Augmented Reality on the Web)</a></li>
+            <li><a href="#why-arjs">Why AR.js</a></li>
+            <li><a href="#import-the-library">Import the library</a></li>
+            <li><a href="#requirements">Requirements</a></li>
+            <li><a href="#always-deploy-under-https">Always deploy under https</a></li>
+        <li class="main "><a href="#getting-started">Getting started</a></li>
+            <li><a href="#image-tracking-example">Image Tracking Example</a></li>
+            <li><a href="#location-based-example">Location Based Example</a></li>
+            <li><a href="#marker-based-example">Marker Based Example</a></li>
+            <li><a href="#advanced-stuff">Advanced stuff</a></li>
+            <li><a href="#arjs-architecture">AR.js architecture</a></li>
+        <li class="main "><a href="#tutorials">Tutorials</a></li>
+            <li><a href="#location-based">Location Based</a></li>
+        <li class="main "><a href="#troubleshooting-feature-requests-community">Troubleshooting, feature requests, community</a></li>
+            <li><a href="#contributing">Contributing</a></li>
+            <li><a href="#issues">Issues</a></li>
+            <li><a href="#submitting-changes">Submitting Changes</a></li>
+    </ul>
 </div></div>
-                    <div class="col-md-9" role="main">
+                <div class="col-md-9" role="main">
 
 <h1 id="arjs-augmented-reality-on-the-web">AR.js - Augmented Reality on the Web</h1>
 <p><img src="./logo.png" height="200" /></p>
 <hr />
 <p>AR.js is a lightweight library for Augmented Reality on the Web, which includes features like Image Tracking, Location based AR and Marker tracking.</p>
+<p><strong>Location Based documentation updated and enhanced for AR.js 3.4</strong></p>
 <h2 id="what-web-ar-means-augmented-reality-on-the-web">What Web AR means (Augmented Reality on the Web)</h2>
 <p>Augmented Reality is the technology that makes possible to overlay content on the real world.
 It can be provided for several type of devices: handheld (like mobile phones), headsets, desktop
@@ -185,37 +174,54 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <p>AR.js uses <a href="https://github.com/artoolkitx/jsartoolkit5">jsartoolkit5</a> for tracking, but can display augmented content with either <a href="https://threejs.org/">three.js</a> or <a href="https://aframe.io/">A-Frame</a>.</p>
 <p>You can import AR.js in one version of your choice, using the <code>&lt;script&gt;</code> tag on your HTML.</p>
 <hr />
-<p><strong>AR.js with Image Tracking + Location Based AR</strong></p>
+<p><strong>AR.js with Image Tracking</strong></p>
 <p>Import AFRAME version:</p>
-<pre><code class="language-html">&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js&quot;&gt;
+<pre><code class="html">&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js&quot;&gt;
 </code></pre>
+
 <p>Import three.js version:</p>
-<pre><code class="language-html">&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-nft.js&quot;&gt;
+<pre><code class="html">&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-nft.js&quot;&gt;
 </code></pre>
+
 <hr />
-<p><strong>AR.js with Marker Tracking + Location Based AR:</strong></p>
+<p><strong>AR.js with Marker Tracking</strong></p>
 <p>Import AFRAME version:</p>
-<pre><code class="language-html">&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js&quot;&gt;
+<pre><code class="html">&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js&quot;&gt;
 </code></pre>
+
 <p>Import three.js version:</p>
-<pre><code class="language-html">&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar.js&quot;&gt;
+<pre><code class="html">&lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar.js&quot;&gt;
 </code></pre>
+
 <p>If you want to import a specific version, you can do that easily replacing <code>master</code> with the version tag, e.g.:</p>
-<pre><code class="language-html">  &lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/3.0.0/aframe/build/aframe-ar-nft.js&quot;&gt;
+<pre><code class="html">  &lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/3.0.0/aframe/build/aframe-ar-nft.js&quot;&gt;
 </code></pre>
+
+<p><strong>Location-based AR.js</strong></p>
+<p>For the <em>three.js</em> version, it's recommended to import AR.js as a module and build with a bundler such as Webpack. There is an example given in the location-based section.</p>
+<p>For the <em>A-Frame</em> version:</p>
+<pre><code class="html">&lt;!-- A-Frame itself --&gt;
+&lt;script src=&quot;https://aframe.io/releases/1.0.4/aframe.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Pure three.js code that the A-Frame components use for location-based AR --&gt;
+&lt;script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'&gt;&lt;/script&gt;
+
+&lt;!-- AR.js A-Frame components --&gt;
+&lt;script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'&gt;&lt;/script&gt;
+</code></pre>
+
 <h2 id="requirements">Requirements</h2>
-<p>Some requirements and known restrictions are listed below:</p>
-<ul>
-<li>It works on every phone with <a href="http://caniuse.com/#feat=webgl">webgl</a> and <a href="http://caniuse.com/#feat=stream">webrtc</a>.</li>
-<li>Marker based tracking is very lightweight, while Image Tracking is more CPU consuming</li>
-<li>On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.</li>
-<li>To work with Location Based feature, your phone needs to have GPS sensors</li>
-<li>Please, read carefully any suggestions that AR.js pops-up -as alerts- for Location Based on iOS, as iOS requires user actions to activate geoposition</li>
-<li>Location Based feature is only available on A-Frame</li>
-</ul>
-<h3 id="always-deploy-under-https">Always deploy under https</h3>
-<p>Access to the phone camera or to camera GPS sensors, due to major browsers restrictions, can be done only under https websites.</p>
+<h2 id="_1"></h2>
+<p>Some requirements and known restrictions are listed below:
+- It works on every phone with <a href="http://caniuse.com/#feat=webgl">webgl</a> and <a href="http://caniuse.com/#feat=stream">webrtc</a>.
+- Marker based tracking is very lightweight, while Image Tracking is more CPU consuming
+- Location-based AR will not work correctly on Firefox, due to the inability to obtain absolute device orientation (compass bearing)
+- On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.
+- To work with Location Based feature, your phone needs to have GPS sensors
+- Please, read carefully any suggestions that AR.js pops-up -as alerts- for Location Based on iOS, as iOS requires user actions to activate geoposition
+Access to the phone camera or to camera GPS sensors, due to major browsers restrictions, can be done only under https websites.</p>
 <p>All the examples you will see, and all AR.js web apps in general, have to be run on a server. You can use local server or deploy the static web app on the web.</p>
+<h3 id="always-deploy-under-https">Always deploy under https</h3>
 <p>So don't forget to always run your examples on secure connections servers or localhost. <a href="https://pages.github.com/">Github Pages</a> is a great way to have free and live websites under https.</p>
 <h2 id="getting-started">Getting started</h2>
 <p>Here we present three, basic examples, one for each AR feature. For specific documentation, on the top menu you can find every section, or you can click on the following links:</p>
@@ -233,7 +239,7 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <li>Open the website on your phone</li>
 <li>Scan <a href="https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex-image-big.jpeg">this picture</a> to see content through the camera.</li>
 </ul>
-<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js&quot;&gt;&lt;/script&gt;
+<pre><code class="html">&lt;script src=&quot;https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js&quot;&gt;&lt;/script&gt;
 
 &lt;style&gt;
@@ -296,44 +302,35 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
   &lt;/a-scene&gt;
 &lt;/body&gt;
 </code></pre>
+
 <h3 id="location-based-example">Location Based Example</h3>
-<p>Try it live with <a href="https://codepen.io/nicolocarpignoli/pen/MWwzyVP">this Codepen</a>. It retrieves your position and places a text near you.</p>
+<p>This example retrieves your position and places a red box near you.</p>
 <p>Please follow these simple steps:</p>
 <ul>
-<li>Create a new project with the following snippet, and change <code>add-your-latitude</code> and <code>add-your-longitude</code> with your latitude and longitude, without the <code>&lt;&gt;</code>.</li>
+<li>Create a new project with the following snippet, and change <code>add-your-latitude</code> and <code>add-your-longitude</code> with a point very close to your latitude and longitude (about 0.001 degrees distant for both latitude and longitude), without the <code>&lt;&gt;</code>.</li>
 <li>Run it on a server</li>
 <li>Activate GPS on your phone and navigate to the example URL</li>
-<li>Look around. You should see the text looking at you, appearing in the requested position, even if you look around and move the phone.</li>
+<li>Look around. You should see the box close to you, appearing in the requested position, even if you look around and move the phone.</li>
 </ul>
-<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+<pre><code class="html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot; /&gt;
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;
-    &lt;title&gt;GeoAR.js demo&lt;/title&gt;
-    &lt;script src=&quot;https://aframe.io/releases/1.0.4/aframe.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js&quot;&gt;&lt;/script&gt;
-  &lt;/head&gt;
-
-  &lt;body style=&quot;margin: 0; overflow: hidden;&quot;&gt;
-    &lt;a-scene
-      vr-mode-ui=&quot;enabled: false&quot;
-      embedded
-      arjs=&quot;sourceType: webcam; debugUIEnabled: false;&quot;
-    &gt;
-      &lt;a-text
-        value=&quot;This content will always face you.&quot;
-        look-at=&quot;[gps-camera]&quot;
-        scale=&quot;120 120 120&quot;
-        gps-entity-place=&quot;latitude: &lt;add-your-latitude&gt;; longitude: &lt;add-your-longitude&gt;;&quot;
-      &gt;&lt;/a-text&gt;
-      &lt;a-camera gps-camera rotation-reader&gt; &lt;/a-camera&gt;
-    &lt;/a-scene&gt;
-  &lt;/body&gt;
+&lt;head&gt;
+&lt;title&gt;AR.js A-Frame Location-based&lt;/title&gt;
+&lt;script src=&quot;https://aframe.io/releases/1.0.4/aframe.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'&gt;
+    &lt;a-camera gps-new-camera='gpsMinDistance: 5'&gt;&lt;/a-camera&gt;
+    &lt;a-entity material='color: red' geometry='primitive: box' gps-new-entity-place=&quot;latitude: &lt;add-your-latitude&gt;; longitude: &lt;add-your-longitude&gt;&quot; scale=&quot;10 10 10&quot;&gt;&lt;/a-entity&gt;
+&lt;/a-scene&gt;
+&lt;/body&gt;
 &lt;/html&gt;
+
 </code></pre>
-<p>If you want to enhance and customize your Location Based experience, take a look at the <a href="./location-based"> Location Based docs.</a></p>
+
+<p>This is just a basic example and most location-based applications will involve JavaScript coding. So, if you want to enhance and customize your Location Based experience, take a look at the <a href="./location-based"> Location Based docs.</a></p>
 <h3 id="marker-based-example">Marker Based Example</h3>
 <p>Please follow these simple steps:</p>
 <ul>
@@ -342,7 +339,7 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <li>Open the website on your phone</li>
 <li>Scan <a href="https://raw.githubusercontent.com/AR-js-org/AR.js/master/data/images/hiro.png">this picture</a> to see content through the camera.</li>
 </ul>
-<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+<pre><code class="html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;script src=&quot;https://aframe.io/releases/1.0.4/aframe.min.js&quot;&gt;&lt;/script&gt;
   &lt;!-- we import arjs version without NFT but with marker + location based support --&gt;
@@ -368,6 +365,7 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
+
 <h3 id="advanced-stuff">Advanced stuff</h3>
 <p>AR.js offers two ways, with A-Frame, to interact with the web page: to interact directly with AR content and Overlayed DOM interaction.</p>
 <p>Also, there are several Custom Events triggered during the life cycle of every AR.js web app.</p>
@@ -395,8 +393,9 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <p>There are various tutorials available for developing with AR.js. These include:</p>
 <h3 id="location-based">Location Based</h3>
 <ul>
-<li><a href="https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564">Build your Location-Based Augmented Reality Web App</a></li>
-<li><a href="location-based-tutorial/">Develop a Simple Peakfinder App</a> (<em>Provided with these docs</em>)</li>
+<li><a href="https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564">Build your Location-Based Augmented Reality Web App</a>: covers location-based AR.js with A-Frame.</li>
+<li><a href="location-based-aframe/">Develop a Simple Points Of Interest App (A-Frame version)</a> (<em>Provided with these docs</em>): a further location-based A-Frame tutorial, written with AR.js 3.4 in mind.</li>
+<li><a href="location-based-three/">Develop a Simple Points of Interest App (three.js version)</a> (<em>Provided with these docs</em>): a pure three.js version of the above, also written for AR.js 3.4. </li>
 </ul>
 <h2 id="troubleshooting-feature-requests-community">Troubleshooting, feature requests, community</h2>
 <p><strong>You can find a lot of help on the old <a href="https://github.com/jeromeetienne/AR.js/issues">AR.js repositories issues</a>. Please search on open/closed issues, you may find useful information.</strong></p>
@@ -419,7 +418,6 @@ your pull request should be accepted quickly.</p>
 <li>Follow the existing coding style</li>
 <li>Write a <a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">good commit message</a></li>
 </ul></div>
-            </div>
         </div>
 
         <footer class="col-md-12">
@@ -428,37 +426,40 @@ your pull request should be accepted quickly.</p>
         </footer>
         <script>
             var base_url = ".",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
         </script>
         <script src="js/base.js" defer></script>
         <script src="search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
-                <form>
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
                     <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+                <div id="mkdocs-search-results"></div>
             </div>
             <div class="modal-footer">
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">
@@ -498,6 +499,6 @@ your pull request should be accepted quickly.</p>
 </html>
 
 <!--
-MkDocs version : 1.3.1
-Build Date UTC : 2022-08-26 09:21:38.634796+00:00
+MkDocs version : 1.0.4
+Build Date UTC : 2022-12-06 20:26:45
 -->

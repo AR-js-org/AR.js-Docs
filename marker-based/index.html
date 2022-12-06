@@ -9,63 +9,76 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
         <title>Marker Based - AR.js Documentation</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/docco.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/docco.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
-                <a class="navbar-brand" href="..">AR.js Documentation</a>
-                <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">AR.js Documentation</a>
+                </div>
 
                 <!-- Expanded navigation -->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
+                <div class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem">
-                                <a href=".." class="nav-link">Home</a>
+                            <li >
+                                <a href="..">Home</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../image-tracking/" class="nav-link">Image Tracking</a>
+                            <li >
+                                <a href="../image-tracking/">Image Tracking</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../location-based/" class="nav-link">Location Based</a>
+                            <li >
+                                <a href="../location-based/">Location Based</a>
                             </li>
-                            <li class="navitem active">
-                                <a href="./" class="nav-link">Marker Based</a>
+                            <li class="active">
+                                <a href="./">Marker Based</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../ui-events/" class="nav-link">UI and Events</a>
+                            <li >
+                                <a href="../ui-events/">UI and Events</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../about/" class="nav-link">About</a>
+                            <li >
+                                <a href="../about/">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="../location-based/" class="nav-link">
+                            <li >
+                                <a rel="next" href="../location-based/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../ui-events/" class="nav-link">
+                            <li >
+                                <a rel="prev" href="../ui-events/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -75,34 +88,16 @@
         </div>
 
         <div class="container">
-            <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
-            <span class="fa fa-angle-down"></span>
-        </button>
-    </div>
-
-    
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
-        <ul class="nav flex-column">
-            
-            <li class="nav-item" data-level="1"><a href="#marker-based" class="nav-link">Marker Based</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#a-frame" class="nav-link">A-Frame</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#threejs" class="nav-link">three.js</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-        </ul>
-    </div>
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#marker-based">Marker Based</a></li>
+            <li><a href="#how-to-choose-good-images-for-pattern-markers">How to choose good images for Pattern Markers</a></li>
+            <li><a href="#api-reference-for-marker-based">API Reference for Marker Based</a></li>
+            <li><a href="#a-frame">A-Frame</a></li>
+            <li><a href="#threejs">three.js</a></li>
+    </ul>
 </div></div>
-                    <div class="col-md-9" role="main">
+                <div class="col-md-9" role="main">
 
 <h1 id="marker-based">Marker Based</h1>
 <p>Markers can be of three, different types:</p>
@@ -128,7 +123,7 @@
 <p>Here's an article explaining all good practice on how to choose good images to be used to generate custom markers: <a href="https://medium.com/chialab-open-source/10-tips-to-enhance-your-ar-js-app-8b44c6faffca">10 tips to enhance your AR.js app</a>.</p>
 <h3 id="api-reference-for-marker-based">API Reference for Marker Based</h3>
 <h2 id="a-frame">A-Frame</h2>
-<h3 id="a-marker"><code>&lt;a-marker/&gt;</code></h3>
+<h3 id="lta-markergt"><code>&lt;a-marker/&gt;</code></h3>
 <p>Here are the attributes for this entity</p>
 <table>
 <thead>
@@ -206,7 +201,7 @@
   It will make sure to position your content right on top of the marker.</li>
 </ul>
 <h4 id="threexarmarkercontrols">THREEx.ArMarkerControls</h4>
-<pre><code class="language-javascript">var parameters = {
+<pre><code class="javascript">var parameters = {
   // size of the marker in meter
   size: 1,
   // type of marker - ['pattern', 'barcode', 'unknown' ]
@@ -227,8 +222,9 @@
   smoothThreshold: 2
 };
 </code></pre>
+
 <h4 id="threexartoolkitcontext">THREEx.ArToolkitContext</h4>
-<pre><code class="language-javascript">var parameters = {
+<pre><code class="javascript">var parameters = {
     // debug - true if one should display artoolkit debug canvas, false otherwise
     debug: false,
     // the mode of detection - ['color', 'color_and_matrix', 'mono', 'mono_and_matrix']
@@ -255,8 +251,9 @@
     imageSmoothingEnabled : true,
 }
 </code></pre>
+
 <h4 id="threexartoolkitsource">THREEx.ArToolkitSource</h4>
-<pre><code class="language-javascript">var parameters = {
+<pre><code class="javascript">var parameters = {
   // type of source - ['webcam', 'image', 'video']
   sourceType: &quot;webcam&quot;,
   // url of the source - valid if sourceType = image|video
@@ -270,7 +267,6 @@
   displayHeight: 480
 };
 </code></pre></div>
-            </div>
         </div>
 
         <footer class="col-md-12">
@@ -279,37 +275,40 @@
         </footer>
         <script>
             var base_url = "..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
         </script>
         <script src="../js/base.js" defer></script>
         <script src="../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
-                <form>
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
                     <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+                <div id="mkdocs-search-results"></div>
             </div>
             <div class="modal-footer">
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

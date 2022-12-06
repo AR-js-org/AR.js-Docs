@@ -9,63 +9,76 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
         <title>Image Tracking - AR.js Documentation</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/docco.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/docco.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
-                <a class="navbar-brand" href="..">AR.js Documentation</a>
-                <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">AR.js Documentation</a>
+                </div>
 
                 <!-- Expanded navigation -->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
+                <div class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem">
-                                <a href=".." class="nav-link">Home</a>
+                            <li >
+                                <a href="..">Home</a>
                             </li>
-                            <li class="navitem active">
-                                <a href="./" class="nav-link">Image Tracking</a>
+                            <li class="active">
+                                <a href="./">Image Tracking</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../location-based/" class="nav-link">Location Based</a>
+                            <li >
+                                <a href="../location-based/">Location Based</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../marker-based/" class="nav-link">Marker Based</a>
+                            <li >
+                                <a href="../marker-based/">Marker Based</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../ui-events/" class="nav-link">UI and Events</a>
+                            <li >
+                                <a href="../ui-events/">UI and Events</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../about/" class="nav-link">About</a>
+                            <li >
+                                <a href="../about/">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href=".." class="nav-link">
+                            <li >
+                                <a rel="next" href="..">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../location-based/" class="nav-link">
+                            <li >
+                                <a rel="prev" href="../location-based/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -75,46 +88,17 @@
         </div>
 
         <div class="container">
-            <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
-            <span class="fa fa-angle-down"></span>
-        </button>
-    </div>
-
-    
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
-        <ul class="nav flex-column">
-            
-            <li class="nav-item" data-level="1"><a href="#image-tracking" class="nav-link">Image Tracking</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#getting-started-with-image-tracking" class="nav-link">Getting started with Image Tracking</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#choose-good-images" class="nav-link">Choose good images</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#create-image-descriptors" class="nav-link">Create Image Descriptors</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#render-the-content" class="nav-link">Render the content</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#event-listeners" class="nav-link">Event listeners</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-        </ul>
-    </div>
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#image-tracking">Image Tracking</a></li>
+            <li><a href="#getting-started-with-image-tracking">Getting started with Image Tracking</a></li>
+            <li><a href="#choose-good-images">Choose good images</a></li>
+            <li><a href="#create-image-descriptors">Create Image Descriptors</a></li>
+            <li><a href="#render-the-content">Render the content</a></li>
+            <li><a href="#event-listeners">Event listeners</a></li>
+    </ul>
 </div></div>
-                    <div class="col-md-9" role="main">
+                <div class="col-md-9" role="main">
 
 <h1 id="image-tracking">Image Tracking</h1>
 <p>Image Tracking makes possible to scan a picture, a drawing, any image, and show content over it.</p>
@@ -129,15 +113,16 @@
 <h2 id="create-image-descriptors">Create Image Descriptors</h2>
 <p>Once you have chosen your image, you can either use the NFT Marker Creator in its <a href="https://carnaux.github.io/NFT-Marker-Creator/">Web version</a> or the node version.</p>
 <p>If you're using the node version, this is the basic command to run:</p>
-<pre><code class="language-bash">node app.js -i &lt;path-to-the-img/image-name.jpg/png&gt;
+<pre><code class="bash">node app.js -i &lt;path-to-the-img/image-name.jpg/png&gt;
 </code></pre>
+
 <p>After that, you will find the Image Descriptors files on the <code>output</code> folder. In the web version, the generator will automatically download the files from your browser.</p>
 <p>In either cases, you will end up with three files as Image Descriptors, with <code>.fset</code>, <code>.fset3</code>, <code>.iset</code>.
 Each of them will have the same prefix before the file extension. That one will be the Image Descriptor name that you will use on the AR.js web app.
 For example: with files <code>trex.fset</code>, <code>trex.fset3</code> and <code>trex.iset</code>, your Image Descriptors name will be <code>trex</code>.</p>
 <h2 id="render-the-content">Render the content</h2>
 <p>Now it's time to create the actual AR web app.</p>
-<pre><code class="language-html">&lt;!-- import aframe and then ar.js with image tracking / location based features --&gt;
+<pre><code class="html">&lt;!-- import aframe and then ar.js with image tracking / location based features --&gt;
 &lt;script src=&quot;https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js&quot;&gt;&lt;/script&gt;
 
@@ -200,10 +185,11 @@ For example: with files <code>trex.fset</code>, <code>trex.fset3</code> and <cod
   &lt;/a-scene&gt;
 &lt;/body&gt;
 </code></pre>
+
 <p>See on the comments above, inline on the code, for explanations.</p>
 <p>You can refer to <a href="https://aframe.io/docs/1.0.0/introduction/">A-Frame docs</a> to know everything about content and customization. You can add geometries, 3D models, videos, images. And you can customize their position, scale, rotation and so on.</p>
 <p>The only custom component here is the <code>a-nft</code>, the Image Tracking HTML anchor.</p>
-<h3 id="a-nft"><code>&lt;a-nft\&gt;</code></h3>
+<h3 id="lta-nftgt"><code>&lt;a-nft\&gt;</code></h3>
 <p>Here are the attributes for this entity</p>
 <table>
 <thead>
@@ -261,11 +247,10 @@ For example: with files <code>trex.fset</code>, <code>trex.fset3</code> and <cod
 <p>The <code>arjs-nft-loaded</code> event is fired when all NFT Markers have finished loading. This is when you will be able to start tracking your NFT Marker with the camera.</p>
 <p>You can use this to build a UI to inform the user that things are still loading.</p>
 <h3 id="usage">Usage</h3>
-<pre><code class="language-js">window.addEventListener(&quot;arjs-nft-loaded&quot;, (event) =&gt; {
+<pre><code class="js">window.addEventListener(&quot;arjs-nft-loaded&quot;, (event) =&gt; {
   // Hide loading overlay
 });
 </code></pre></div>
-            </div>
         </div>
 
         <footer class="col-md-12">
@@ -274,37 +259,40 @@ For example: with files <code>trex.fset</code>, <code>trex.fset3</code> and <cod
         </footer>
         <script>
             var base_url = "..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
         </script>
         <script src="../js/base.js" defer></script>
         <script src="../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
-                <form>
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
                     <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+                <div id="mkdocs-search-results"></div>
             </div>
             <div class="modal-footer">
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

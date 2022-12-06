@@ -9,63 +9,76 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
         <title>Location Based - AR.js Documentation</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/docco.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/docco.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
-                <a class="navbar-brand" href="..">AR.js Documentation</a>
-                <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">AR.js Documentation</a>
+                </div>
 
                 <!-- Expanded navigation -->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
+                <div class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem">
-                                <a href=".." class="nav-link">Home</a>
+                            <li >
+                                <a href="..">Home</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../image-tracking/" class="nav-link">Image Tracking</a>
+                            <li >
+                                <a href="../image-tracking/">Image Tracking</a>
                             </li>
-                            <li class="navitem active">
-                                <a href="./" class="nav-link">Location Based</a>
+                            <li class="active">
+                                <a href="./">Location Based</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../marker-based/" class="nav-link">Marker Based</a>
+                            <li >
+                                <a href="../marker-based/">Marker Based</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../ui-events/" class="nav-link">UI and Events</a>
+                            <li >
+                                <a href="../ui-events/">UI and Events</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../about/" class="nav-link">About</a>
+                            <li >
+                                <a href="../about/">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="../image-tracking/" class="nav-link">
+                            <li >
+                                <a rel="next" href="../image-tracking/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../marker-based/" class="nav-link">
+                            <li >
+                                <a rel="prev" href="../marker-based/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -75,54 +88,78 @@
         </div>
 
         <div class="container">
-            <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
-            <span class="fa fa-angle-down"></span>
-        </button>
-    </div>
-
-    
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
-        <ul class="nav flex-column">
-            
-            <li class="nav-item" data-level="1"><a href="#location-based" class="nav-link">Location Based</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#viewing-every-distant-object" class="nav-link">Viewing every distant object</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#reducing-shaking-effects" class="nav-link">Reducing shaking effects</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#projected-camera-version" class="nav-link">Projected Camera Version</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-        </ul>
-    </div>
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#location-based">Location Based</a></li>
+            <li><a href="#a-frame">A-Frame</a></li>
+            <li><a href="#viewing-every-distant-object">Viewing every distant object</a></li>
+            <li><a href="#reducing-shaking-effects">Reducing shaking effects</a></li>
+            <li><a href="#projection-details">Projection Details</a></li>
+            <li><a href="#threejs">three.js</a></li>
+    </ul>
 </div></div>
-                    <div class="col-md-9" role="main">
+                <div class="col-md-9" role="main">
 
 <h1 id="location-based">Location Based</h1>
-<p>Location Based has been implemented only for A-Frame framework.</p>
-<p><a href="https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564">This article </a> gives you a first glance to Location Based on AR.js.
-It can be used for indoor (but with low precision) and outdoor geopositioning of AR content.</p>
+<p><a href="https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564">This article</a> gives you a first glance to Location Based on AR.js.</p>
+<p>It can be used for indoor (but with low precision) and outdoor geopositioning of AR content.</p>
 <p>You can load places statically, from HTML or from Javascript, or you can load your data from local/remote json, or even through API calls. Choice is yours. On the article above there are all the options explained, as tutorials.</p>
-<p>Following there's the API Reference.</p>
-<h3 id="gps-camera"><code>gps-camera</code></h3>
+<p>Location Based has been implemented for both three.js and A-Frame. Each of these is documented below.</p>
+<p>This document is intended as reference documentation. There are also two <em>tutorials</em> available, with full example code:</p>
+<ul>
+<li><a href="../location-based-aframe/">A-Frame location based</a></li>
+<li><a href="../location-based-three/">three.js location based</a></li>
+</ul>
+<h2 id="a-frame">A-Frame</h2>
+<p>AR.js offers A-Frame components to implement location-based AR. There are three variants of the components, detailed as below:</p>
+<ul>
+<li>
+<p>The <code>new-location-based</code> components. These have been available since AR.js 3.4.0, incorporate various bug fixes, use simpler code, and provide a thin wrapper round the three.js API shown below. These are recommended for most uses, though are missing a few more specialist features from the older variants described below. However, these are the components likely to see further development - the older variants are unlikely to see further work besides bug fixes.</p>
+</li>
+<li>
+<p>The <code>projected</code> components. These have been available since AR.js 3.3.1. These are recommended if you are having problems with "shaking" effects,  as these include functionality to mitigate such "shaking" and this functionality has not been incorporated into the <code>new-location-based</code> components yet.</p>
+</li>
+<li>
+<p>The classic components, available before AR.js 3.3.1. These are similar to the <code>projected</code> components but do not offer the facility to convert between latitude/longitude and the projected coordinates used for augmented reality, which can cause problems for more specialist uses such as showing roads and paths in augmented reality.</p>
+</li>
+</ul>
+<h3 id="the-components">The components</h3>
+<p>Each variant above includes two components, a <code>camera</code> component which enables the location-based AR, and an <code>entity-place</code> component which enables setting components' latitude and longitude. The exact component names for each variant are shown below.</p>
+<table>
+<thead>
+<tr>
+<th>Component variant</th>
+<th>Camera component</th>
+<th>Entity-place component</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>new-location-based</td>
+<td>gps-new-camera</td>
+<td>gps-new-entity-place</td>
+</tr>
+<tr>
+<td>projected</td>
+<td>gps-projected-camera</td>
+<td>gps-projected-entity-place</td>
+</tr>
+<tr>
+<td>classic</td>
+<td>gps-camera</td>
+<td>gps-entity-place</td>
+</tr>
+</tbody>
+</table>
+<h3 id="camera-component-gps-new-camera-gps-projected-camera-or-gps-camera">Camera component (<code>gps-new-camera</code>, <code>gps-projected-camera</code> or <code>gps-camera</code>)</h3>
 <p><strong>Required</strong>: yes</p>
 <p><strong>Max allowed per scene</strong>: 1</p>
 <p>This component enables the Location AR. It has to be added to the <code>camera</code> entity.
 It makes possible to handle both position and rotation of the camera and it's used to determine where the user is pointing their device.</p>
 <p>For example:</p>
-<pre><code class="language-HTML">&lt;a-camera gps-camera rotation-reader&gt;&lt;/a-camera&gt;
+<pre><code class="HTML">&lt;a-camera gps-new-camera&gt;&lt;/a-camera&gt;
 </code></pre>
-<p>In addition to that, as you can see on the example above, we also have to add <code>rotation-reader</code> to handle rotation events. See <a href="https://aframe.io/docs/0.9.0/components/camera.html#reading-position-or-rotation-of-the-camera">here</a> for more details.</p>
+
 <h3 id="properties">Properties</h3>
 <table>
 <thead>
@@ -130,160 +167,229 @@ It makes possible to handle both position and rotation of the camera and it's us
 <th>Property</th>
 <th>Description</th>
 <th>Default Value</th>
+<th>Availability</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>alert</td>
-<td>Whether to show a message when GPS signal is under the <code>positionMinAccuracy</code></td>
-<td>false</td>
-</tr>
-<tr>
 <td>positionMinAccuracy</td>
 <td>Minimum accuracy allowed for position signal</td>
 <td>100</td>
-</tr>
-<tr>
-<td>minDistance</td>
-<td>If set, places with a distance from the user lower than this value, are not showed. Only a positive value is allowed. Value is in meters.</td>
-<td>0 (disabled)</td>
-</tr>
-<tr>
-<td>maxDistance</td>
-<td>If set, places with a distance from the user higher than this value, are not showed. Only a positive value is allowed. Value is in meters.</td>
-<td>0 (disabled)</td>
-</tr>
-<tr>
-<td>simulateLatitude</td>
-<td>Setting this allows you to simulate the latitude of the camera, to aid in testing.</td>
-<td>0 (disabled)</td>
-</tr>
-<tr>
-<td>simulateLongitude</td>
-<td>Setting this allows you to simulate the longitude of the camera, to aid in testing.</td>
-<td>0 (disabled)</td>
-</tr>
-<tr>
-<td>simulateAltitude</td>
-<td>Setting this allows you to simulate the altitude of the camera in meters above sea level, to aid in testing.</td>
-<td>0 (disabled)</td>
+<td>all</td>
 </tr>
 <tr>
 <td>gpsMinDistance</td>
 <td>Setting this allows you to control how far the camera must move, in meters, to generate a GPS update event. Useful to prevent 'jumping' of augmented content due to frequent small changes in position.</td>
 <td>5</td>
+<td>all</td>
+</tr>
+<tr>
+<td>simulateLatitude</td>
+<td>Setting this allows you to simulate the latitude of the camera, to aid in testing.</td>
+<td>0 (disabled)</td>
+<td>all (but only triggers GPS update event in new-location-based)</td>
+</tr>
+<tr>
+<td>simulateLongitude</td>
+<td>Setting this allows you to simulate the longitude of the camera, to aid in testing.</td>
+<td>0 (disabled)</td>
+<td>all (but only triggers GPS update event in new-location-based)</td>
+</tr>
+<tr>
+<td>simulateAltitude</td>
+<td>Setting this allows you to simulate the altitude of the camera in meters above sea level, to aid in testing.</td>
+<td>0 (disabled)</td>
+<td>all</td>
+</tr>
+<tr>
+<td>alert</td>
+<td>Whether to show a message when GPS signal is under the <code>positionMinAccuracy</code></td>
+<td>false</td>
+<td>projected, classic</td>
+</tr>
+<tr>
+<td>minDistance</td>
+<td>If set, places with a distance from the user lower than this value, are not showed. Only a positive value is allowed. Value is in meters.</td>
+<td>0 (disabled)</td>
+<td>projected, classic</td>
+</tr>
+<tr>
+<td>maxDistance</td>
+<td>If set, places with a distance from the user higher than this value, are not showed. Only a positive value is allowed. Value is in meters.</td>
+<td>0 (disabled)</td>
+<td>projected, classic</td>
 </tr>
 <tr>
 <td>gpsTimeInterval</td>
 <td>Setting this allows you to control how frequently to obtain a new GPS position. If a previous GPS location is cached, the cached position will be used rather than a new position if its 'age' is less than this value, in milliseconds. This parameter is passed directly to the Geolocation API's <code>watchPosition()</code> method.</td>
 <td>0 (always use new position, not cached)</td>
+<td>projected, classic</td>
 </tr>
 </tbody>
 </table>
-<h3 id="gps-entity-place"><code>gps-entity-place</code></h3>
+<h3 id="entity-place-component-gps-new-entity-place-gps-projected-entity-place-or-gps-entity-place">Entity-place component (<code>gps-new-entity-place</code>, <code>gps-projected-entity-place</code> or <code>gps-entity-place</code>)</h3>
 <p><strong>Required</strong>: yes</p>
 <p><strong>Max allowed per scene</strong>: no limit</p>
 <p>This component makes each entity GPS-trackable. This assigns a specific world position to an entity, so that the user can see it when their device is pointing to its position in the real world. If the user is far from the entity, it will seem smaller. If it's too far away, it won't be seen at all.</p>
 <p>It requires latitude and longitude as a single string parameter (example with <code>a-box</code> aframe primitive):</p>
-<pre><code class="language-HTML">&lt;a-box material=&quot;color: yellow&quot; gps-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot;/&gt;
+<pre><code class="HTML">&lt;a-box material=&quot;color: yellow&quot; gps-new-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot;/&gt;
 </code></pre>
+
 <p>⚡️ In addition, you can use the a-frame "position" parameter to assign a y-value to change the height of the content.
-This value should be entered as meters above or below (if negative) the current camera height. For example, this would assign a height of 30 meters, and will be displayed relative to the gps-camera's current height:</p>
-<pre><code class="language-HTML">&lt;a-box material=&quot;color: yellow&quot; gps-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot; position=&quot;0 30 0&quot;/&gt;
+This value should be entered as meters above or below (if negative) the current camera height. For example, this would assign a height of 30 meters, and will be displayed relative to the gps-new-camera's current height:</p>
+<pre><code class="HTML">&lt;a-box material=&quot;color: yellow&quot; gps-new-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot; position=&quot;0 30 0&quot;/&gt;
 </code></pre>
+
 <h3 id="properties_1">Properties</h3>
 <p>No real property apart from the string that defined latitude and longitude together, as shown above.</p>
-<h3 id="custom-attributes">Custom Attributes</h3>
-<p>The following are Custom Attributes that can be retrieved from <code>gps-entity-place</code> entities, for example:</p>
-<pre><code class="language-js">const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('distanceMsg');
-console.log(distanceMsg);   // &quot;890 meters&quot;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>Custom Attribute</th>
-<th>Description</th>
-<th>Default Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>distance</td>
-<td>Distance from user, updated at every user position update. Value in meters.</td>
-<td>0</td>
-</tr>
-<tr>
-<td>distanceMsg</td>
-<td>Distance from user as string, with unit, updated at every user position update. Value as <code>&lt;distance&gt; meters/kilometers</code>.</td>
-<td>''</td>
-</tr>
-</tbody>
-</table>
 <hr />
 <h3 id="events">Events</h3>
 <p>Take a look at the <a href="../ui-events/">UI and Events</a> page for Location Based Custom Events.</p>
 <hr />
 <p>⚡️ Usually, in Location Based, it's nice to have the augmented content that will always face the user, so when you rotate the camera, 3D models or most of all, text, are well visible.</p>
-<p>Look at <a href="https://github.com/AR-js-org/AR.js/tree/master/aframe/examples/location-based/always-face-user">this example</a> in order to create <code>gps-entity-place</code> entities that will always face the user (camera).</p>
+<p>Look at <a href="https://github.com/AR-js-org/AR.js/tree/master/aframe/examples/location-based/always-face-user">this example</a> in order to create <code>gps-new-entity-place</code> entities that will always face the user (camera).</p>
 <hr />
 <h2 id="viewing-every-distant-object">Viewing every distant object</h2>
 <p>If your location-based AR content is distant from the user (around 1km or
-more), it is recommended to use the new <code>arjs-webcam-texture</code> component (introduced in AR.js 3.2.0), which uses a THREE.js texture to stream the camera feed and allows distant content to be viewed. This component is automatically injected if the <code>videoTexture</code> parameter of the <code>arjs</code> system is set to <code>true</code> <em>and</em> the <code>sourceType</code> is <code>webcam</code>. For example (code snippet only):</p>
-<pre><code class="language-html">    &lt;a-scene
+more), it is recommended to use the new <code>arjs-webcam-texture</code> component (introduced in AR.js 3.2.0), which uses a three.js texture to stream the camera feed and allows distant content to be viewed. This component is automatically injected if the <code>videoTexture</code> parameter of the <code>arjs</code> system is set to <code>true</code> <em>and</em> the <code>sourceType</code> is <code>webcam</code>. For example (code snippet only):</p>
+<pre><code class="html">    &lt;a-scene
       vr-mode-ui=&quot;enabled: false&quot;
-      embedded
       arjs=&quot;sourceType: webcam; videoTexture: true; debugUIEnabled: false;&quot;
     &gt;
 </code></pre>
+
 <h2 id="reducing-shaking-effects">Reducing shaking effects</h2>
-<p>In location-based mode, 'shaking' effects can occur due to frequent small
+<p>In location-based mode, 
+'shaking' effects can occur due to frequent small
 changes in the device's orientation, due to the high sensitivity of the device
-sensors such as the accelerometer. If using AR.js 3.3.1 or greater this can optionally be reduced using an exponential smoothing technique. <em>Note that there are currently some occasional display artefacts with this if moving the device quickly or suddenly so please test before you enable it in a finished application; work to resolve these is on-going.</em></p>
+sensors such as the accelerometer. </p>
+<p>If using AR.js 3.3.1 or greater, but only currently with the older <code>gps-projected-camera</code> and <code>gps-projected-entity-place</code> components (not the newer <code>gps-new-camera</code> and <code>gps-new-entity-place</code> components), this can optionally be reduced using an exponential smoothing technique. <em>Note that there are currently some occasional display artefacts with this if moving the device quickly or suddenly so please test before you enable it in a finished application; work to resolve these is on-going.</em></p>
 <p>This is enabled by adding the <code>arjs-look-controls</code> component to your <code>a-camera</code> with a <code>smoothingFactor</code> property. You must also disable A-Frame's default <code>look-controls</code>, as <code>arjs-look-controls</code> will replace it. For example:</p>
-<pre><code class="language-html">&lt;a-camera id='camera1' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera='gpsMinDistance: 5' rotation-reader&gt; &lt;/a-camera&gt;
+<pre><code class="html">&lt;a-camera id='camera1' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-projected-camera='gpsMinDistance: 5' rotation-reader&gt; &lt;/a-camera&gt;
 </code></pre>
+
 <p>Exponential smoothing works by applying a smoothing factor to each newly-read device rotation angle (obtained from sensor readings) such that the previous smoothed value counts more than the current value, thus reducing 'noise' and 'jitter'. If <code>k</code> is the smoothing factor:</p>
 <pre><code>smoothedAngle = k * newValue + (1 - k) * previousSmoothedAngle
 </code></pre>
+
 <p>It can be seen from this that the <strong>smaller</strong> the value of <code>k</code> (the <code>smoothingFactor</code> property), the <strong>greater</strong> the smoothing effect. In tests, 0.1 appears to give the best result.</p>
-<p>Also you can reduce 'jumping' of augmented content when near a place - a
-bad-looking effect due to GPS sensors' low precision. To do so you can use the <code>gpsMinDistance</code> and <code>gpsTimeInterval</code> properties. See the <a href="./location-based.md">Location Based specific docs</a> to learn how to use them.</p>
+<p>Also for <em>all</em> variants of the components you can reduce 'jumping' of augmented content when near a place - a bad-looking effect due to GPS sensors' low precision. To do so you can use the <code>gpsMinDistance</code> property.</p>
 <hr />
-<h2 id="projected-camera-version">Projected Camera Version</h2>
-<p>The experimental 'projected camera' version of the location-based components for AR.js uses <a href="https://www.maptiler.com/google-maps-coordinates-tile-bounds-projection">Spherical Mercator</a> (aka EPSG:3857) to store both the camera position and the position of added points of interest and other geographical data.</p>
-<p>The rationale for this version is to allow easy addition of more complex geographic data such as roads and paths. Such data can be projected and added to an AR.js scene, and then, because Spherical Mercator units approximate to metres (away from the poles), the coordinates can be used directly as WebGL/A-Frame world coordinates.</p>
-<p>The two components for the projected camera version are <code>gps-projected-camera</code> and <code>gps-projected-entity-place</code>. Their interface is almost identical to <code>gps-camera</code> and <code>gps-entity-place</code> but they work differently internally.</p>
-<p>For example:</p>
-<pre><code class="language-HTML">&lt;a-camera gps-projected-camera rotation-reader&gt;&lt;/a-camera&gt;
-</code></pre>
-<p>and:</p>
-<pre><code class="language-HTML">&lt;a-box color=&quot;yellow&quot; gps-projected-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot;/&gt;
-</code></pre>
-<p>Note that internally, the latitude and longitude are converted to Spherical Mercator coordinates.</p>
-<p>As for <code>gps-entity-place</code>, you can specify an altitude using the <em>y</em> component of the <code>position</code> attribute:</p>
-<pre><code class="language-HTML">&lt;a-box color=&quot;yellow&quot; gps-projected-entity-place=&quot;latitude: &lt;your-latitude&gt;; longitude: &lt;your-longitude&gt;&quot; position=&quot;0 30 0&quot;/&gt;
-</code></pre>
+<h2 id="projection-details">Projection Details</h2>
+<p>The <code>new-location-based</code> and <code>projected</code> location-based components for AR.js uses <a href="https://www.maptiler.com/google-maps-coordinates-tile-bounds-projection">Spherical Mercator</a> (aka EPSG:3857) to store both the camera position and the position of added points of interest and other geographical data.</p>
+<p>Spherical Mercator is the same projection used by Google Maps and projects the earth onto a flat surface. It works reasonably at most latitudes but is highly distorted near the poles. Latitude and longitude is projected into Spherical Mercator <em>eastings</em> and <em>northings</em>, which are approximately (but not exactly) equivalent to metres. </p>
+<p>The rationale for this is to allow easy addition of more complex geographic data such as roads and paths. Such data can be projected and added to an AR.js scene, and then, because Spherical Mercator units approximate to metres (away from the poles), the coordinates can be used directly as WebGL/A-Frame world coordinates.</p>
 <h3 id="calculating-world-coordinates-of-arbitrary-augmented-content">Calculating world coordinates of arbitrary augmented content</h3>
-<p><code>gps-projected-camera</code> has some useful properties and methods which can be used to easily work with arbitrary augmented content (for example, polylines or polygons sourced from geodata APIs such as <a href="https://openstreetmap.org">OpenStreetMap</a>). Before introducing these, it needs to be made clear that, in <code>gps-projected-camera</code>, the <strong>original GPS position</strong> is set as the world origin. So, if arbitrary content is to be added to the scene, and the source coordinates for this content is in unprojected (WGS84) latitude and longitude, it needs to be:</p>
+<p>The <code>new-location-based</code> and <code>projected</code> components have some useful properties and methods which can be used to easily work with more specialist augmented content (for example, you might want to overlay AR polylines or polygons representing roads and paths, downloaded from geodata APIs such as <a href="https://openstreetmap.org">OpenStreetMap</a>).  Such data can be downloaded from the API as lat/lon based coordinates, projected using AR.js API methods into Spherical Mercator (approximating to metres, and therefore suitable to use as world coordinates), and then added to the scene as a three.js object.</p>
+<p>This is done differently in the <code>new-location-based</code> and <code>projected</code> components.</p>
+<p><code>gps-new-camera</code> provides access to the underlying AR.js three.js <code>LocationBased</code> object (see three.js documentation, below) via the <code>threeLoc</code> property of the component. The three.js <code>LocationBased</code> object has a <code>lonLatToWorldCoords(lon, lat)</code> method which converts a longitude and latitude to an array containing the equivalent <em>world coordinates</em> in the current projection (by default Spherical Mercator). Note that the sign of the Spherical Mercator northing is reversed to align with the OpenGL coordinate system (eastings are equivalent to <code>x</code> coordinates and northings to <code>z</code> coordinates).</p>
+<p><code>gps-projected-camera</code> provided similar functionality but via a different method and with some implementation differences. <code>gps-projected-camera</code>, the <strong>original GPS position</strong> is set as the world origin. So, if arbitrary content is to be added to the scene, and the source coordinates for this content is in unprojected (WGS84) latitude and longitude, it needs to be:</p>
 <ul>
 <li>projected to Spherical Mercator;</li>
 <li>and then converted to world coordinates relative to the original GPS position.</li>
 </ul>
-<p>On the other hand, only the second step is needed if the source coordinates are already projected. We'll look at each scenario now.</p>
-<h4 id="source-data-in-wgs84-latitudelongitude">Source data in WGS84 latitude/longitude</h4>
-<p>This is probably the most common scenario.
-The <code>latLonToWorld(lat, lon)</code> method of the <code>gps-projected-camera</code> component converts latitude and longitude directly to world coordinates, performing the projection as the first step and then calculating the world coordinates from the projected coordinates. It will return a 2-member array containing the <em>x</em> and <em>z</em> world coordinates, allowing the developer to calculate or specify the <em>y</em> coordinate (altitude) independently.</p>
-<h4 id="source-data-in-spherical-mercator">Source data in Spherical Mercator</h4>
-<p>An alternative scenario is when the augmented content has already been projected into Spherical Mercator and therefore does not need the initial projection step when added to an AR.js scene. This may occur when an API serves data in Spherical Mercator, for instance. In this case, we still need to convert the Spherical Mercator coordinates to world coordinates relative to the original GPS position. <code>gps-projected-camera</code> has an <code>originCoordsProjected</code> property, which represents the original GPS position in Spherical Mercator coordinates. This is a two-member array, containing the Spherical Mercator easting and northing, respectively, of the origin point. From this, we can therefore work out the world coordinates from Spherical Mercator coordinates:</p>
+<p>The <code>latLonToWorld(lat, lon)</code> method of the <code>gps-projected-camera</code> component converts latitude and longitude directly to world coordinates, performing the projection as the first step and then calculating the world coordinates from the projected coordinates. It will return a 2-member array containing the <em>x</em> and <em>z</em> world coordinates, allowing the developer to calculate or specify the <em>y</em> coordinate (altitude) independently.</p>
+<h2 id="threejs">three.js</h2>
+<p>The three.js API keeps track of your current GPS location (or allows you to set a fake location) and allows you to add three.js objects at a given latitude and longitude. It includes these classes:</p>
 <ul>
-<li><code>xWorld = featureEasting - originCoordsProjected[0]</code></li>
+<li><code>THREEx.LocationBased</code> - general manager class for the three.js location-based API.</li>
+<li><code>THREEx.WebcamRenderer</code> - renders the feed from the webcam as a WebGL texture.</li>
+<li><code>THREEx.DeviceOrientationControls</code> - for detecting changes in the orientation of the device.</li>
 </ul>
-<p>and</p>
+<p>These classes include the following methods:</p>
+<h3 id="locationbased">LocationBased</h3>
 <ul>
-<li><code>zWorld = -(featureNorthing - originCoordsProjected[1])</code></li>
+<li>
+<p><code>constructor(scene, camera, options={})</code> : Initialises a new <code>LocationBased</code> object. Takes a <code>THREE.Scene</code> and a <code>THREE.Camera</code> object as parameters, as well as an object of GPS options (see <code>setGpsOptions()</code>, below)</p>
+</li>
+<li>
+<p><code>setProjection(proj)</code> : allows the projection to be defined. By default Spherical Mercator is used. The projection object must provide a <code>project()</code> method which takes longitude and latitude as parameters and returns a 2-member array of projected coordinates (easting, northing).</p>
+</li>
+<li>
+<p><code>setGpsOptions(options={})</code> : sets the GPS options. These include <code>gpsMinDistance</code> and <code>gpsMinAccuracy</code>, described in the A-Frame documentation above.</p>
+</li>
+<li>
+<p><code>startGps()</code> : starts the GPS. Takes an optional <code>maximumAge</code>, as used by the native Geolocation API.</p>
+</li>
+<li>
+<p><code>stopGps()</code> : stops the GPS.</p>
+</li>
+<li>
+<p><code>fakeGps(lon, lat, elev=null, acc=0)</code> : fakes a GPS position being received. Elevation and accuracy can optionally be provided.</p>
+</li>
+<li>
+<p><code>lonLatToWorldCoords(lon, lat)</code> : projects a given longitude and latitude into world coordinates using the current projection. The sign of the northing is reversed to align it with the OpenGL coordinate system.</p>
+</li>
+<li>
+<p><code>add(object, lon, lat, elev)</code> : adds a given three.js object to the world at the given longitude and latitude and at the given elevation.</p>
+</li>
+<li>
+<p><code>setWorldPosition(object, lon, lat, elev)</code> : changes the world position of a given object to the given longitude and latitude, without adding it to the scene.</p>
+</li>
+<li>
+<p><code>setElevation(elev)</code> : sets the current elevation in metres. This will set the camera's <code>y</code> coordinate to that elevation.</p>
+</li>
+<li>
+<p><code>on(eventname, eventhandler)</code> : allows event handlers to be specified. Currently <code>gpsupdate</code> and <code>gpserror</code> handlers are supported, for receiving a new GPS position and GPS errors (as in the Geolocation API) respectively.</p>
+</li>
 </ul>
-<p>where <code>xWorld</code> and <code>zWorld</code> are the world <em>x</em> and <em>z</em> coordinates of the augmented content, and <code>featureEasting</code> and <code>featureNorthing</code> are the content's Spherical Mercator coordinates. Note how we have to reverse the sign of <em>z</em> as increasing Spherical Mercator easting corresponds to increasing <em>x</em> in OpenGL coordinates, and increasing altitude corresponds to increasing <em>y</em>, but increasing Spherical Mercator northing corresponds to <strong>decreasing</strong> <em>z</em>.</p></div>
-            </div>
+<h3 id="webcamrenderer">WebcamRenderer</h3>
+<p>Renders the webcam feed.</p>
+<ul>
+<li>
+<p><code>constructor(renderer, videoElementSelector)</code> : creates a <code>WebcamRenderer</code>. Takes a <code>THREE.WebGLRenderer</code> plus a selector for an HTML <code>video</code> element to stream the feed to.</p>
+</li>
+<li>
+<p><code>update()</code> : updates the camera feed. Should be done each time the scene is rendered.</p>
+</li>
+</ul>
+<h3 id="deviceorientationcontrols">DeviceOrientationControls</h3>
+<p>Represents the device orientation controls, i.e. accelerometer and magnetic field sensors, for determining the orientation of the device. Based on the sample included in the three.js distribution.</p>
+<ul>
+<li>
+<p><code>constructor(cameraObject)</code> : creates a <code>DeviceOrientationControls</code> object. Takes a three.js camera.</p>
+</li>
+<li>
+<p><code>update()</code> : updates the device orientation controls. Should be done each time the scene is rendered.</p>
+</li>
+</ul>
+<h3 id="using-threejs-location-based-in-an-application">Using three.js location-based in an application</h3>
+<p>You are recommended to use <code>npm</code> to install AR.js, <code>import</code> it into your application, and use a bundler such as Webpack to build.</p>
+<p>Here is a sample <code>package.json</code>:</p>
+<pre><code>{
+    &quot;dependencies&quot;: {
+        &quot;@ar-js-org/ar.js&quot;: &quot;3.4.2&quot;,
+    },
+    &quot;devDependencies&quot;: {
+        &quot;webpack&quot;: &quot;^5.75.0&quot;,
+        &quot;webpack-cli&quot;: &quot;^5.0.0&quot;
+    },
+    &quot;scripts&quot;: {
+        &quot;build&quot;: &quot;npx webpack&quot;
+    }
+}
+</code></pre>
+
+<p>and a sample <code>webpack.config.js</code>:</p>
+<pre><code class="javascript">const path = require('path');
+
+module.exports = {
+    mode: 'development',
+    entry: './index.js',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js'
+    },
+    optimization: {
+        minimize: false
+    }
+};
+</code></pre>
+
+<p>This will build a bundle named <code>bundle.js</code> in the <code>dist</code> subdirectory from a source file <code>index.js</code>. </p>
+<p>Here is an example of importing the components into an application:</p>
+<pre><code class="javascript">import * as THREEx from './node_modules/@ar-js-org/ar.js/three.js/build/ar-threex-location-only.js'
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
@@ -292,37 +398,40 @@ The <code>latLonToWorld(lat, lon)</code> method of the <code>gps-projected-camer
         </footer>
         <script>
             var base_url = "..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
         </script>
         <script src="../js/base.js" defer></script>
         <script src="../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
-                <form>
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
                     <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+                <div id="mkdocs-search-results"></div>
             </div>
             <div class="modal-footer">
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">
