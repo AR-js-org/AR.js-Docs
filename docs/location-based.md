@@ -19,7 +19,7 @@ AR.js offers A-Frame components to implement location-based AR. There are three 
 
 - The `new-location-based` components. These have been available since AR.js 3.4.0, incorporate various bug fixes, use simpler code, and provide a thin wrapper round the three.js API shown below. These are recommended for most uses, though do not support all the [events](./ui-events.md) of the older components due to a different internal implementation. Nonetheless they the components likely to see further development - the older variants are unlikely to see further work besides bug fixes.
 
-- The `projected` components. These have been available since AR.js 3.3.1. These are recommended if you are having problems with "shaking" effects,  as these include functionality to mitigate such "shaking" and this functionality has not been incorporated into the `new-location-based` components yet.
+- The `projected` components. These have been available since AR.js 3.3.1, use largely the same internal implementation as the classic components, and were the first to offer projection of latitude/longitude into Spherical Mercator, discussed below.
 
 - The classic components, available before AR.js 3.3.1. These are similar to the `projected` components but do not offer the facility to convert between latitude/longitude and the projected coordinates used for augmented reality, which can cause problems for more specialist uses such as showing roads and paths in augmented reality.
 
