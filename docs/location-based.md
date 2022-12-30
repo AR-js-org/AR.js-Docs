@@ -164,7 +164,7 @@ The rationale for this is to allow easy addition of more complex geographic data
 
 ### Calculating world coordinates of arbitrary augmented content
 
-The `new-location-based` and `projected` components have some useful properties and methods which can be used to easily work with more specialist augmented content (for example, you might want to overlay AR polylines or polygons representing roads and paths, downloaded from geodata APIs such as [OpenStreetMap](https://openstreetmap.org)).  Such data can be downloaded from the API as lat/lon based coordinates, projected using AR.js API methods into Spherical Mercator (approximating to metres, and therefore suitable to use as world coordinates), and then added to the scene as a three.js object.
+The `new-location-based` and `projected` components have some useful properties and methods which can be used to easily work with more specialist augmented content (for example, you might want to overlay AR polylines or polygons representing roads and paths, downloaded from geodata APIs such as [OpenStreetMap](https://openstreetmap.org)).  Such data can be downloaded from the API as lat/lon based coordinates, projected using AR.js API methods into Spherical Mercator (approximating to, but not exactly metres, but in tests good enough to use as world coordinates), and then added to the scene as a three.js object.
 
 This is implemented differently in the `new-location-based` and `projected` components, but the external API is (as of 3.4.3) the same.
 
