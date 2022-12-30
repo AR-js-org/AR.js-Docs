@@ -122,8 +122,6 @@ If you want to import a specific version, you can do that easily replacing `mast
 
 **Location-based AR.js**
 
-For the *three.js* version, it's recommended to import AR.js as a module and build with a bundler such as Webpack. There is an example given in the location-based section.
-
 For the *A-Frame* version:
 
 ```html
@@ -137,11 +135,12 @@ For the *A-Frame* version:
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
 ```
 
+For the *three.js* version, it's recommended to import AR.js as a module and build with a bundler such as Webpack. There is an example given in the location-based section.
+
 ## Requirements
 
-## 
-
 Some requirements and known restrictions are listed below:
+
 - It works on every phone with [webgl](http://caniuse.com/#feat=webgl) and [webrtc](http://caniuse.com/#feat=stream).
 - Marker based tracking is very lightweight, while Image Tracking is more CPU consuming
 - Location-based AR will not work correctly on Firefox, due to the inability to obtain absolute device orientation (compass bearing)

@@ -8,7 +8,7 @@ Docs are based on https://www.mkdocs.org/.
 
 To modify the Docs, you need to push to the `master` branch.
 
-To publish them (they are currently hosted on Github Pages), you need to run
+To publish them (they are currently hosted on Github Pages), you need to perform the steps below.
 
 ### Installation
 
