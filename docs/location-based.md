@@ -17,7 +17,7 @@ This document is intended as reference documentation. There are also two *tutori
 
 AR.js offers A-Frame components to implement location-based AR. There are three variants of the components, detailed as below:
 
-- The `new-location-based` components. These have been available since AR.js 3.4.0, incorporate various bug fixes, use simpler code, and provide a thin wrapper round the three.js API shown below. These are recommended for most uses, though are missing a few more specialist features from the older variants described below. However, these are the components likely to see further development - the older variants are unlikely to see further work besides bug fixes.
+- The `new-location-based` components. These have been available since AR.js 3.4.0, incorporate various bug fixes, use simpler code, and provide a thin wrapper round the three.js API shown below. These are recommended for most uses, though do not support all the [events](./ui-events.md) of the older components due to a different internal implementation. Nonetheless they the components likely to see further development - the older variants are unlikely to see further work besides bug fixes.
 
 - The `projected` components. These have been available since AR.js 3.3.1. These are recommended if you are having problems with "shaking" effects,  as these include functionality to mitigate such "shaking" and this functionality has not been incorporated into the `new-location-based` components yet.
 
@@ -133,7 +133,7 @@ The name of the custom `look-controls` component varies, depending on which vers
 For example, in the `new-location-based` components:
 
 ```html
-<a-camera id='camera1' look-controls-enabled='false' arjs-device-orientation-controls='smoothingFactor: 0.1' gps-projected-camera='gpsMinDistance: 5'> </a-camera>
+<a-camera id='camera1' look-controls-enabled='false' arjs-device-orientation-controls='smoothingFactor: 0.1' gps-new-camera='gpsMinDistance: 5'> </a-camera>
 ```
 
 or, otherwise:
