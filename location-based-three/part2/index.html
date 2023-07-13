@@ -9,66 +9,53 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>Location-based AR.js with three.js - AR.js Documentation</title>
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/docco.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../..">AR.js Documentation</a>
-                </div>
+                <a class="navbar-brand" href="../..">AR.js Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../..">Home</a>
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
-                            <li >
-                                <a href="../../image-tracking/">Image Tracking</a>
+                            <li class="navitem">
+                                <a href="../../image-tracking/" class="nav-link">Image Tracking</a>
                             </li>
-                            <li >
-                                <a href="../../location-based/">Location Based</a>
+                            <li class="navitem">
+                                <a href="../../location-based/" class="nav-link">Location Based</a>
                             </li>
-                            <li >
-                                <a href="../../marker-based/">Marker Based</a>
+                            <li class="navitem">
+                                <a href="../../marker-based/" class="nav-link">Marker Based</a>
                             </li>
-                            <li >
-                                <a href="../../ui-events/">UI and Events</a>
+                            <li class="navitem">
+                                <a href="../../ui-events/" class="nav-link">UI and Events</a>
                             </li>
-                            <li >
-                                <a href="../../about/">About</a>
+                            <li class="navitem">
+                                <a href="../../about/" class="nav-link">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
@@ -78,13 +65,30 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#location-based-arjs-with-threejs">Location-based AR.js with three.js</a></li>
-            <li><a href="#part-2-using-the-gps-and-device-orientation">Part 2 - Using the GPS and Device Orientation</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#location-based-arjs-with-threejs" class="nav-link">Location-based AR.js with three.js</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#part-2-using-the-gps-and-device-orientation" class="nav-link">Part 2 - Using the GPS and Device Orientation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <h1 id="location-based-arjs-with-threejs">Location-based AR.js with three.js</h1>
 <h2 id="part-2-using-the-gps-and-device-orientation">Part 2 - Using the GPS and Device Orientation</h2>
@@ -92,7 +96,7 @@
 <p>We will also look at how we can use the device's orientation controls, so that the orientation sensors are tracked and objects will appear in their real-world position when the device is rotated. For example, an object directly north of the user will only appear when the device is facing north. </p>
 <h3 id="gps-tracking">GPS tracking</h3>
 <p>Here is a revised version of the previous example which obtains your real GPS location:</p>
-<pre><code class="javascript">import * as THREE from 'three';
+<pre><code class="language-javascript">import * as THREE from 'three';
 import * as THREEx from './node_modules/@ar-js-org/ar.js/three.js/build/ar-threex-location-only.js';
 
 function main() {
@@ -133,17 +137,15 @@ function main() {
 main();
 
 </code></pre>
-
 <p>Note that we only needed to make one change, we replace the <code>fakeGps()</code> call with:</p>
 <pre><code>arjs.startGps();
 </code></pre>
-
 <p>Using the Geolocation API this will make the application start listening for GPS updates. <em>The nice thing is we do not need to do anything else. The <code>LocationBased</code> object automatically updates the camera x and z coordinates to reflect our current GPS location.</em> Specifically, the GPS latitude and longitude are converted to Spherical Mercator, the sign of <code>z</code> reversed (to match the OpenGL coordinate system), and the resulting coordinates used for the camera coordinates.</p>
 <h3 id="using-the-device-orientation-controls">Using the device orientation controls</h3>
 <p>Having looked at obtaining our real GPS position, we will now look at how we can use the orientation controls to ensure our AR scene matches the real world as we rotate the device around. This is, in principle, quite easy: we just need to create a <code>THREEx.DeviceOrientationControls</code> object and update it in our rendering function. This object is based on the original <code>DeviceOrientationControls</code> from three.js. </p>
 <p>However, there is a slight problem. Unfortunately this will only work in Chrome on Android (it may also work in Chrome on iOS, this needs testing). This is due to the difficulty in obtaining absolute orientation (i.e. our orientation relative to north) using the device orientation API. This can be done on Chrome/Android using the <code>deviceorientationabsolute</code> event (and in fact, the <code>THREEx.DeviceOrientationControls</code> has been modified from the original to handle this event); it can also be done on Safari with <code>webkitCompassHeading</code> (but, due to the lack of an iDevice for testing, has not been implemented yet) but sadly it appears that support on Firefox is completely missing for now. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/ondeviceorientationabsolute">this table of compatibility for absolute device orientation</a>.</p>
 <p>So it's recommended you use Chrome on Android for the moment. The example below shows the use of orientation tracking:</p>
-<pre><code class="javascript">const canvas = document.getElementById('canvas1');
+<pre><code class="language-javascript">const canvas = document.getElementById('canvas1');
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, 1.33, 0.1, 10000);
@@ -182,18 +184,16 @@ function render() {
     requestAnimationFrame(render);
 }
 </code></pre>
-
 <p>Note how we create a device orientation tracker with:</p>
-<pre><code class="javascript">const deviceOrientationControls = new THREEx.DeviceOrientationControls(camera);
+<pre><code class="language-javascript">const deviceOrientationControls = new THREEx.DeviceOrientationControls(camera);
 </code></pre>
-
 <p>The device orientation tracker updates the camera, so we need to pass it in as an argument.</p>
 <p>Also note how we update the device orientation tracker in our rendering function, so that new readings from the sensors are accounted for:</p>
-<pre><code class="javascript">deviceOrientationControls.update();
+<pre><code class="language-javascript">deviceOrientationControls.update();
 </code></pre>
-
 <h3 id="try-it">Try it!</h3>
 <p>Try it out. As real GPS location and device orientation is used, you will need a mobile device. You should find that the red box appears in its real world position (ensure it's not too far from you, e.g. 0.001 degrees of longitude to the north) and, due to the use of orientation tracking, only appears in the field of view when you are facing its location.</p></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -202,26 +202,26 @@ function render() {
         </footer>
         <script>
             var base_url = "../..",
-                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -230,12 +230,12 @@ function render() {
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

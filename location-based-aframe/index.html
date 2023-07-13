@@ -4,71 +4,58 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="AR.js Documentation Website">
+        
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>AR.js Documentation</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <title>AR.js A-Frame Location-Based Tutorial - Develop a Simple Points of Interest App - AR.js Documentation</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/docco.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
-    <body class="homepage">
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="..">AR.js Documentation</a>
-                </div>
+                <a class="navbar-brand" href="..">AR.js Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="..">Home</a>
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
                             </li>
-                            <li >
-                                <a href="../image-tracking/">Image Tracking</a>
+                            <li class="navitem">
+                                <a href="../image-tracking/" class="nav-link">Image Tracking</a>
                             </li>
-                            <li >
-                                <a href="../location-based/">Location Based</a>
+                            <li class="navitem">
+                                <a href="../location-based/" class="nav-link">Location Based</a>
                             </li>
-                            <li >
-                                <a href="../marker-based/">Marker Based</a>
+                            <li class="navitem">
+                                <a href="../marker-based/" class="nav-link">Marker Based</a>
                             </li>
-                            <li >
-                                <a href="../ui-events/">UI and Events</a>
+                            <li class="navitem">
+                                <a href="../ui-events/" class="nav-link">UI and Events</a>
                             </li>
-                            <li >
-                                <a href="../about/">About</a>
+                            <li class="navitem">
+                                <a href="../about/" class="nav-link">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
@@ -78,17 +65,46 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#arjs-a-frame-location-based-tutorial-develop-a-simple-points-of-interest-app">AR.js A-Frame Location-Based Tutorial - Develop a Simple Points of Interest App</a></li>
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#basic-example">Basic example</a></li>
-            <li><a href="#introducing-javascript-with-arjs">Introducing JavaScript with AR.js</a></li>
-            <li><a href="#connecting-to-a-web-server">Connecting to a web server</a></li>
-            <li><a href="#adding-text-labels">Adding text labels</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#arjs-a-frame-location-based-tutorial-develop-a-simple-points-of-interest-app" class="nav-link">AR.js A-Frame Location-Based Tutorial - Develop a Simple Points of Interest App</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#introduction" class="nav-link">Introduction</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#basic-example" class="nav-link">Basic example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#introducing-javascript-with-arjs" class="nav-link">Introducing JavaScript with AR.js</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#connecting-to-a-web-server" class="nav-link">Connecting to a web server</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#adding-text-labels" class="nav-link">Adding text labels</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <h1 id="arjs-a-frame-location-based-tutorial-develop-a-simple-points-of-interest-app">AR.js A-Frame Location-Based Tutorial - Develop a Simple Points of Interest App</h1>
 <h2 id="introduction">Introduction</h2>
@@ -99,11 +115,11 @@
 <p>We will start with a basic example, using pure HTML, to display a box close
 to your location. This example is identical to the location-based example on the
 <a href="..">index page</a>.</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;title&gt;AR.js A-Frame Location-based&lt;/title&gt;
-&lt;script src=&quot;https://aframe.io/releases/1.0.4/aframe.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://aframe.io/releases/1.3.0/aframe.min.js&quot;&gt;&lt;/script&gt;
 &lt;script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'&gt;&lt;/script&gt;
 &lt;script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'&gt;&lt;/script&gt;
 &lt;/head&gt;
@@ -115,7 +131,6 @@ to your location. This example is identical to the location-based example on the
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-
 <p>Upload this to a server with HTTPS, or run locally on <code>localhost</code>. Make
 sure you replace <code>your-lat</code> and <code>your-lon</code> with values close to your
 actual position (to see the box clearly, I would recommend an offset of 
@@ -179,7 +194,7 @@ faces the camera.</p>
 <p>Much of the power of A-Frame, and AR.js, comes from adding scripting to your
 basic applications. It is assumed that you already know the basics of how
 to create components in A-Frame. We will start with a very basic example, which simply retrieves your current GPS location and adds a red box immediately to the north. Create this JavaScript, <code>basic.js</code>, and link it to the HTML example shown above. (Remove the hard-coded red box from the HTML first).</p>
-<pre><code class="javascript">window.onload = () =&gt; {
+<pre><code class="language-javascript">window.onload = () =&gt; {
     let testEntityAdded = false;
 
     const el = document.querySelector(&quot;[gps-new-camera]&quot;);
@@ -205,7 +220,6 @@ to create components in A-Frame. We will start with a very basic example, which 
     });
 };
 </code></pre>
-
 <p>How is this working?</p>
 <ul>
 <li>we set up an <code>onload</code> function to run when the page loads. With A-Frame, we can only use entities once they have been loaded into the DOM, so we must delay the execution of the code until the page loads.</li>
@@ -226,9 +240,8 @@ to create components in A-Frame. We will start with a very basic example, which 
 <p>We will now enhance the example to <em>download data from a web server</em>. The server used will be the Hikar server, used by the <a href="https://hikar.org">Hikar</a> project:</p>
 <pre><code>https://hikar.org/webapp/map?bbox=west,south,east,north&amp;layers=poi&amp;outProj=4326
 </code></pre>
-
 <p>This provides <a href="https://openstreetmap.org">OpenStreetMap</a> data for Europe and Turkey (apologies, other parts of the world are not covered due to server constraints). Note how we specify the bounding box with the <code>bbox</code> parameter.</p>
-<pre><code class="javascript">window.onload = () =&gt; {
+<pre><code class="language-javascript">window.onload = () =&gt; {
     let downloaded = false;
 
     const el = document.querySelector(&quot;[gps-new-camera]&quot;);
@@ -260,14 +273,13 @@ to create components in A-Frame. We will start with a very basic example, which 
     });
 };
 </code></pre>
-
 <p>Much of the logic is similar to the previous example, but note that we now send a request to the web server via the <code>fetch</code> API, sending a bounding box surrounding the current position. The server sends back <a href="https://geojson.org">GeoJSON</a>. GeoJSON contains a <code>features</code> array containing each point of interest, and each feature includes a <code>geometry</code> object containing the latitude and longitude witthin a two-member <code>coordinates</code> array. So we loop through each feature, dynamically create an entity (as in the previous example) from the current feature, use the latitude and longitude from the GeoJSON to create the <code>gps-new-entity-place</code> component, and add it to the scene.</p>
 <h3 id="things-to-try_2">Things to try</h3>
 <p>Try requesting the Hikar URL directly in your browser, supplying a bounding box representing an area you are familiar with, and explore the format used for points of interest of different types. Each GeoJSON feature object has a <code>properties</code> object containing properties describing the point of interest. The <code>amenity</code> property is commonly used: this describes the type of amenity (such as restaurant, cafe, pub, etc).</p>
 <p>Try colouring the boxes differently depending on point of interest type (e.g. restaurants, cafes, pubs, etc).</p>
 <h2 id="adding-text-labels">Adding text labels</h2>
 <p>The next example shows how you can add text labels to your POIs.</p>
-<pre><code class="javascript">window.onload = () =&gt; {
+<pre><code class="language-javascript">window.onload = () =&gt; {
     let downloaded = false;
 
     const el = document.querySelector(&quot;[gps-new-camera]&quot;);
@@ -318,16 +330,14 @@ to create components in A-Frame. We will start with a very basic example, which 
     });
 };
 </code></pre>
-
 <p>How is this working?</p>
 <ul>
 <li>We now create a <em>compound entity</em>. In A-Frame, a compound entity is an entity which has other entities as children. Here, we will create a compound entity, position it at the POI's latitude and longitude, and add the box, and a new text entity containing the POI name, to it.</li>
 <li>We create the box as before, and set its <code>y</code> coordinate to 20. This is relative to its parent, i.e. the compound entity. The compound entity is already positioned at the correct latitude and longitude, so we will position the box 20 metres above that position.</li>
 <li>We then create a text entity, scale it appropriately, and set its <code>value</code> attribute to the name of the feature from the GeoJSON. Note the use of the <code>look-at</code> component. This makes a given A-Frame entity look at another. Here we want the text to look at the camera (i.e. the entity with a <code>gps-new-camera</code> property), so we always see it. The <code>look-at</code> component is a third-party component and must be added to your HTML as follows:</li>
 </ul>
-<pre><code class="html">&lt;script src=&quot;https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js&quot;&gt;&lt;/script&gt;
+<pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
-
 <ul>
 <li>We then append the box and text to the compound entity, and append our compound entity to the scene.</li>
 </ul>
@@ -337,6 +347,7 @@ to create components in A-Frame. We will start with a very basic example, which 
 <li>Try implementing logic to re-download POIs if the user moves 0.05 degrees of either latitude or longitude from the previous download position.</li>
 <li>Each POI in the GeoJSON includes an <code>osm_id</code> property which is a unique OpenStreetMap ID for that POI. Using the <code>osm_id</code>, implement logic so that a POI is not re-added to the scene if it is already present. (This may happen if you move 0.05 degrees but return to an area you have already visited).</li>
 </ul></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -345,26 +356,26 @@ to create components in A-Frame. We will start with a very basic example, which 
         </footer>
         <script>
             var base_url = "..",
-                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../js/base.js" defer></script>
         <script src="../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -373,12 +384,12 @@ to create components in A-Frame. We will start with a very basic example, which 
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">
@@ -416,8 +427,3 @@ to create components in A-Frame. We will start with a very basic example, which 
 
     </body>
 </html>
-
-<!--
-MkDocs version : 1.0.4
-Build Date UTC : 2022-12-30 12:51:41
--->
