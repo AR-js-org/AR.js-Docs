@@ -137,15 +137,18 @@ For the *A-Frame* version:
 
 For the *three.js* version, it's recommended to import AR.js as a module and build with a bundler such as Webpack. There is an example given in the location-based section.
 
-## Requirements
+## Requirements and Known Issues
 
-Some requirements and known restrictions are listed below:
+Some requirements and known issues are listed below:
 
 - It works on every phone with [webgl](http://caniuse.com/#feat=webgl) and [webrtc](http://caniuse.com/#feat=stream).
 - Marker based tracking is very lightweight, while Image Tracking is more CPU consuming
 - Location-based AR will not work correctly on Firefox, due to the inability to obtain absolute device orientation (compass bearing)
+- On Android/Chrome, you may **encounter issues with location-based AR due to inaccuracies in compass calibration** (incorrect north). This is likely to be a hardware limitation of the device.
+- Please ensure you **enable high accuracy** location for your selected browser on Android. Sometimes high accuracy location is turned off by default, and this will lead to an inaccurate GPS location.
+- There is currently a bug in location-based AR where the camera feed is stretched away from the centre of the screen, meaning that there is reduced accuracy in placement of objects further away from the centre. Work is ongoing to investigate this.
 - On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.
-- To work with Location Based feature, your phone needs to have GPS sensors
+- To work with Location Based feature, your device needs to have GPS, accelerometer and magnetometer sensors. It will not work if any of these sensors are absent.
 - Please, read carefully any suggestions that AR.js pops-up -as alerts- for Location Based on iOS, as iOS requires user actions to activate geoposition
 Access to the phone camera or to camera GPS sensors, due to major browsers restrictions, can be done only under https websites.
 
