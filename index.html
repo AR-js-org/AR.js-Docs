@@ -101,7 +101,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#requirements" class="nav-link">Requirements</a>
+            <li class="nav-item" data-level="2"><a href="#requirements-and-known-issues" class="nav-link">Requirements and Known Issues</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -216,14 +216,17 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 &lt;script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'&gt;&lt;/script&gt;
 </code></pre>
 <p>For the <em>three.js</em> version, it's recommended to import AR.js as a module and build with a bundler such as Webpack. There is an example given in the location-based section.</p>
-<h2 id="requirements">Requirements</h2>
-<p>Some requirements and known restrictions are listed below:</p>
+<h2 id="requirements-and-known-issues">Requirements and Known Issues</h2>
+<p>Some requirements and known issues are listed below:</p>
 <ul>
 <li>It works on every phone with <a href="http://caniuse.com/#feat=webgl">webgl</a> and <a href="http://caniuse.com/#feat=stream">webrtc</a>.</li>
 <li>Marker based tracking is very lightweight, while Image Tracking is more CPU consuming</li>
 <li>Location-based AR will not work correctly on Firefox, due to the inability to obtain absolute device orientation (compass bearing)</li>
+<li>On Android/Chrome, you may <strong>encounter issues with location-based AR due to inaccuracies in compass calibration</strong> (incorrect north). This is likely to be a hardware limitation of the device.</li>
+<li>Please ensure you <strong>enable high accuracy</strong> location for your selected browser on Android. Sometimes high accuracy location is turned off by default, and this will lead to an inaccurate GPS location.</li>
+<li>There is currently a bug in location-based AR where the camera feed is stretched away from the centre of the screen, meaning that there is reduced accuracy in placement of objects further away from the centre. Work is ongoing to investigate this.</li>
 <li>On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.</li>
-<li>To work with Location Based feature, your phone needs to have GPS sensors</li>
+<li>To work with Location Based feature, your device needs to have GPS, accelerometer and magnetometer sensors. It will not work if any of these sensors are absent.</li>
 <li>Please, read carefully any suggestions that AR.js pops-up -as alerts- for Location Based on iOS, as iOS requires user actions to activate geoposition
 Access to the phone camera or to camera GPS sensors, due to major browsers restrictions, can be done only under https websites.</li>
 </ul>
@@ -505,5 +508,5 @@ your pull request should be accepted quickly.</p>
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2023-07-13 12:55:32.671896+00:00
+Build Date UTC : 2023-08-22 10:55:40.446942+00:00
 -->
