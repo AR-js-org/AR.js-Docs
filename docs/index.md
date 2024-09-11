@@ -82,6 +82,8 @@ AR.js uses [jsartoolkit5](https://github.com/artoolkitx/jsartoolkit5) for tracki
 
 You can import AR.js in one version of your choice, using the `<script>` tag on your HTML.
 
+The examples below assume the latest version of AR.js from the `master` branch, but you can replace `master` with a specific version, e.g. `3.4.5` for the latest version.
+
 ---
 
 **AR.js with Image Tracking**
@@ -143,6 +145,7 @@ Some requirements and known issues are listed below:
 
 - It works on every phone with [webgl](http://caniuse.com/#feat=webgl) and [webrtc](http://caniuse.com/#feat=stream).
 - Marker based tracking is very lightweight, while Image Tracking is more CPU consuming
+- You must ensure that you have matching versions of AR.js and A-Frame. AR.js 3.4.5 (the latest version) requires A-Frame 1.3.0 while AR.js 3.4.4 and below requires 1.4.0.
 - Location-based AR will not work correctly on Firefox, due to the inability to obtain absolute device orientation (compass bearing)
 - On Android/Chrome, you may **encounter issues with location-based AR due to inaccuracies in compass calibration** (incorrect north). This is likely to be a hardware limitation of the device.
 - Please ensure you **enable high accuracy** location for your selected browser on Android. Sometimes high accuracy location is turned off by default, and this will lead to an inaccurate GPS location.
