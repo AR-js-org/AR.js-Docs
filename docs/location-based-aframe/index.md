@@ -26,7 +26,7 @@ to your location. This example is identical to the location-based example on the
 <body>
 <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
     <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-    <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: <your-lat>; longitude: <your-loon>" scale="10 10 10"></a-entity>
+    <a-box color="red" gps-new-entity-place="latitude: <your-lat>; longitude: <your-loon>" depth="10" height="10" width="10"></a-box>
 </a-scene>
 </body>
 </html>
