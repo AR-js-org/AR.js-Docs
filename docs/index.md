@@ -148,6 +148,7 @@ Some requirements and known issues are listed below:
 - You must ensure that you have matching versions of AR.js and A-Frame. AR.js 3.4.5 (the latest version) requires A-Frame 1.3.0 while AR.js 3.4.4 and below requires 1.0.4.
 - Location-based AR will not work correctly on Firefox, due to the inability to obtain absolute device orientation (compass bearing)
 - On Android/Chrome, you may **encounter issues with location-based AR due to inaccuracies in compass calibration** (incorrect north). This is likely to be a hardware limitation of the device.
+- On some phones you may encounter problems with locating North due to inherent miscalibrations of the device sensors. This is a known problem recognised by the three.js developers: see [here](https://github.com/mrdoob/three.js/issues/22654)
 - Please ensure you **enable high accuracy** location for your selected browser on Android. Sometimes high accuracy location is turned off by default, and this will lead to an inaccurate GPS location.
 - There is currently a bug in location-based AR where the camera feed is stretched away from the centre of the screen, meaning that there is reduced accuracy in placement of objects further away from the centre. Work is ongoing to investigate this.
 - On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.
