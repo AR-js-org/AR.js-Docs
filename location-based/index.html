@@ -326,7 +326,8 @@ sensors such as the accelerometer. </p>
 <p><code>gps-new-camera</code> implements projection via the underlying AR.js three.js <code>LocationBased</code> object (see three.js documentation, below) which is responsible for the actual projection. </p>
 <p><code>gps-projected-camera</code> provides similar functionality but via a different method and with some implementation differences. In <code>gps-projected-camera</code>, unlike <code>gps-new-camera</code>, the <strong>original GPS position</strong> is set as the world origin.</p>
 <h2 id="threejs">three.js</h2>
-<p>For pure three.js (no A-Frame) it is recommended to use <a href="https://github.com/AR-js-org/locar.js">LocAR</a>. The notes below, however, refer to the three.js version in the main AR.js repository.</p>
+<p>For pure three.js (no A-Frame) it is recommended to use <a href="https://github.com/AR-js-org/locar.js">LocAR</a> for more frequent updates and a nicer development experience, using <a href="https://vitejs.dev">Vite</a>. The notes below, however, refer to the three.js version in the main AR.js repository. At present, the LocAR API is almost identical to what is described below, though may diverge in the future.</p>
+<h3 id="threejs-location-based-in-main-repository">three.js location-based in main repository</h3>
 <p>The three.js API keeps track of your current GPS location (or allows you to set a fake location) and allows you to add three.js objects at a given latitude and longitude. It includes these classes:</p>
 <ul>
 <li><code>THREEx.LocationBased</code> - general manager class for the three.js location-based API.</li>
