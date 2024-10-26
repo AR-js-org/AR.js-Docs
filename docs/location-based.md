@@ -193,7 +193,9 @@ Note that the sign of the Spherical Mercator northing is reversed to align with 
 
 ## three.js 
 
-For pure three.js (no A-Frame) it is recommended to use [LocAR](https://github.com/AR-js-org/locar.js). The notes below, however, refer to the three.js version in the main AR.js repository.
+For pure three.js (no A-Frame) it is recommended to use [LocAR](https://github.com/AR-js-org/locar.js) for more frequent updates and a nicer development experience, using [Vite](https://vitejs.dev). The notes below, however, refer to the three.js version in the main AR.js repository. At present, the LocAR API is almost identical to what is described below, though may diverge in the future.
+
+### three.js location-based in main repository
 
 The three.js API keeps track of your current GPS location (or allows you to set a fake location) and allows you to add three.js objects at a given latitude and longitude. It includes these classes:
 

@@ -137,7 +137,7 @@ For the *A-Frame* version, it's recommended to use version 3.4.5, rather than ma
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
 ```
 
-For the *three.js* version, it's recommended to import AR.js as a module and build with a bundler such as Webpack. There is an example given in the location-based section.
+For the *three.js* version, it's recommended to use the new AR.js project [LocAR](https://github.com/AR-js-org/locar.js) instead of the main repository.
 
 ## Requirements and Known Issues
 
