@@ -1,5 +1,11 @@
 # Location Based
 
+**Important!** You might want to check out the new AR.js [LocAR](https://github.com/AR-js-org/locar.js) project if you are interested in location-based AR. This aims to provide a cleaner API, with just a single version, and more frequent updates. 
+
+In the future, updates on the location-based side will be focused on LocAR.
+
+## Intro to location-based 
+
 [This article](https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564) gives you a first glance to Location Based on AR.js.
 
 It can be used for indoor (but with low precision) and outdoor geopositioning of AR content.
@@ -13,15 +19,23 @@ This document is intended as reference documentation. There are also two *tutori
 - [A-Frame location based](location-based-aframe/index.md)
 - [three.js location based](location-based-three/index.md)
 
+## Limitations
+
+Location-based AR with AR.js is subject to certain limitations.
+
+- Your device must have a GPS chip, accelerometer and magnetometer.
+- On some devices, the sensors may be miscalibrated, resulting in an incorrect North. See, for example, [this three.js issue](https://github.com/mrdoob/three.js/pull/22654). This is unfortunately a limitation of the device. This will be investigated further in [LocAR](https://github.com/AR-js-org/locar.js), for example, as to whether certain devices are consistently "out" by a certain bearing.
+- The camera feed may appear "stretched". Again the focus on fixing this will be in LocAR.
+
 ## A-Frame
 
 AR.js offers A-Frame components to implement location-based AR. There are three variants of the components, detailed as below:
 
-- The `new-location-based` components. These have been available since AR.js 3.4.0, incorporate various bug fixes, use simpler code, and provide a thin wrapper round the three.js API shown below. These are recommended for most uses, though do not support all the [events](./ui-events.md) of the older components due to a different internal implementation. Nonetheless they the components likely to see further development - the older variants are unlikely to see further work besides bug fixes.
+- The `new-location-based` components. **In most cases, these are recommended**. These have been available since AR.js 3.4.0, incorporate various bug fixes, use simpler code, and provide a thin wrapper round the three.js API shown below. These are recommended for most uses, though do not support all the [events](./ui-events.md) of the older components due to a different internal implementation. Nonetheless they the components likely to see further development - the older variants are unlikely to see further work besides bug fixes.
 
-- The `projected` components. These have been available since AR.js 3.3.1, use largely the same internal implementation as the classic components, and were the first to offer projection of latitude/longitude into Spherical Mercator, discussed below.
+- The `projected` components. These have been available since AR.js 3.3.1, use largely the same internal implementation as the classic components, and were the first to offer projection of latitude/longitude into Spherical Mercator, discussed below. They are generally **not recommended** unless you have problems with `new-location-based`.
 
-- The classic components, available before AR.js 3.3.1. These are similar to the `projected` components but do not offer the facility to convert between latitude/longitude and the projected coordinates used for augmented reality, which can cause problems for more specialist uses such as showing roads and paths in augmented reality.
+- The classic components, available before AR.js 3.3.1. These are similar to the `projected` components but do not offer the facility to convert between latitude/longitude and the projected coordinates used for augmented reality, which can cause problems for more specialist uses such as showing roads and paths in augmented reality. For most use cases it is preferred to use `new-location-based` but some uses, such as embedded AR scenes, only work with the classic components.
 
 ### The components
 
@@ -178,6 +192,8 @@ Note that the sign of the Spherical Mercator northing is reversed to align with 
 
 
 ## three.js 
+
+For pure three.js (no A-Frame) it is recommended to use [LocAR](https://github.com/AR-js-org/locar.js). The notes below, however, refer to the three.js version in the main AR.js repository.
 
 The three.js API keeps track of your current GPS location (or allows you to set a fake location) and allows you to add three.js objects at a given latitude and longitude. It includes these classes:
 
