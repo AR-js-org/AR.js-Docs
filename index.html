@@ -206,15 +206,15 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <pre><code class="language-html">  &lt;script src=&quot;https://raw.githack.com/AR-js-org/AR.js/3.0.0/aframe/build/aframe-ar-nft.js&quot;&gt;
 </code></pre>
 <p><strong>Location-based AR.js</strong></p>
-<p>For the <em>A-Frame</em> version:</p>
+<p>For the <em>A-Frame</em> version, it's recommended to use version 3.4.5, rather than master:</p>
 <pre><code class="language-html">&lt;!-- A-Frame itself --&gt;
 &lt;script src=&quot;https://aframe.io/releases/1.3.0/aframe.min.js&quot;&gt;&lt;/script&gt;
 
 &lt;!-- Pure three.js code that the A-Frame components use for location-based AR --&gt;
-&lt;script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'&gt;&lt;/script&gt;
 
 &lt;!-- AR.js A-Frame components --&gt;
-&lt;script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'&gt;&lt;/script&gt;
 </code></pre>
 <p>For the <em>three.js</em> version, it's recommended to import AR.js as a module and build with a bundler such as Webpack. There is an example given in the location-based section.</p>
 <h2 id="requirements-and-known-issues">Requirements and Known Issues</h2>
@@ -225,6 +225,7 @@ If you want to visit the old AR.js repository, here it is: <a href="https://gith
 <li>You must ensure that you have matching versions of AR.js and A-Frame. AR.js 3.4.5 (the latest version) requires A-Frame 1.3.0 while AR.js 3.4.4 and below requires 1.0.4.</li>
 <li>Location-based AR will not work correctly on Firefox, due to the inability to obtain absolute device orientation (compass bearing)</li>
 <li>On Android/Chrome, you may <strong>encounter issues with location-based AR due to inaccuracies in compass calibration</strong> (incorrect north). This is likely to be a hardware limitation of the device.</li>
+<li>On some phones you may encounter problems with locating North due to inherent miscalibrations of the device sensors. This is a known problem recognised by the three.js developers: see <a href="https://github.com/mrdoob/three.js/issues/22654">here</a></li>
 <li>Please ensure you <strong>enable high accuracy</strong> location for your selected browser on Android. Sometimes high accuracy location is turned off by default, and this will lead to an inaccurate GPS location.</li>
 <li>There is currently a bug in location-based AR where the camera feed is stretched away from the centre of the screen, meaning that there is reduced accuracy in placement of objects further away from the centre. Work is ongoing to investigate this.</li>
 <li>On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.</li>
@@ -328,8 +329,8 @@ Access to the phone camera or to camera GPS sensors, due to major browsers restr
 &lt;head&gt;
 &lt;title&gt;AR.js A-Frame Location-based&lt;/title&gt;
 &lt;script src=&quot;https://aframe.io/releases/1.3.0/aframe.min.js&quot;&gt;&lt;/script&gt;
-&lt;script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'&gt;&lt;/script&gt;
-&lt;script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'&gt;&lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'&gt;
@@ -510,5 +511,5 @@ your pull request should be accepted quickly.</p>
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2024-10-25 11:27:00.687174+00:00
+Build Date UTC : 2024-10-26 11:28:56.100280+00:00
 -->

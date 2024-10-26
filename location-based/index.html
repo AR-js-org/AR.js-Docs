@@ -89,6 +89,14 @@
             
             <li class="nav-item" data-level="1"><a href="#location-based" class="nav-link">Location Based</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#intro-to-location-based" class="nav-link">Intro to location-based</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#limitations" class="nav-link">Limitations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#a-frame" class="nav-link">A-Frame</a>
               <ul class="nav flex-column">
               </ul>
@@ -117,6 +125,9 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="location-based">Location Based</h1>
+<p><strong>Important!</strong> You might want to check out the new AR.js <a href="https://github.com/AR-js-org/locar.js">LocAR</a> project if you are interested in location-based AR. This aims to provide a cleaner API, with just a single version, and more frequent updates. </p>
+<p>In the future, updates on the location-based side will be focused on LocAR.</p>
+<h2 id="intro-to-location-based">Intro to location-based</h2>
 <p><a href="https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564">This article</a> gives you a first glance to Location Based on AR.js.</p>
 <p>It can be used for indoor (but with low precision) and outdoor geopositioning of AR content.</p>
 <p>You can load places statically, from HTML or from Javascript, or you can load your data from local/remote json, or even through API calls. Choice is yours. On the article above there are all the options explained, as tutorials.</p>
@@ -126,17 +137,24 @@
 <li><a href="../location-based-aframe/">A-Frame location based</a></li>
 <li><a href="../location-based-three/">three.js location based</a></li>
 </ul>
+<h2 id="limitations">Limitations</h2>
+<p>Location-based AR with AR.js is subject to certain limitations.</p>
+<ul>
+<li>Your device must have a GPS chip, accelerometer and magnetometer.</li>
+<li>On some devices, the sensors may be miscalibrated, resulting in an incorrect North. See, for example, <a href="https://github.com/mrdoob/three.js/pull/22654">this three.js issue</a>. This is unfortunately a limitation of the device. This will be investigated further in <a href="https://github.com/AR-js-org/locar.js">LocAR</a>, for example, as to whether certain devices are consistently "out" by a certain bearing.</li>
+<li>The camera feed may appear "stretched". Again the focus on fixing this will be in LocAR.</li>
+</ul>
 <h2 id="a-frame">A-Frame</h2>
 <p>AR.js offers A-Frame components to implement location-based AR. There are three variants of the components, detailed as below:</p>
 <ul>
 <li>
-<p>The <code>new-location-based</code> components. These have been available since AR.js 3.4.0, incorporate various bug fixes, use simpler code, and provide a thin wrapper round the three.js API shown below. These are recommended for most uses, though do not support all the <a href="../ui-events/">events</a> of the older components due to a different internal implementation. Nonetheless they the components likely to see further development - the older variants are unlikely to see further work besides bug fixes.</p>
+<p>The <code>new-location-based</code> components. <strong>In most cases, these are recommended</strong>. These have been available since AR.js 3.4.0, incorporate various bug fixes, use simpler code, and provide a thin wrapper round the three.js API shown below. These are recommended for most uses, though do not support all the <a href="../ui-events/">events</a> of the older components due to a different internal implementation. Nonetheless they the components likely to see further development - the older variants are unlikely to see further work besides bug fixes.</p>
 </li>
 <li>
-<p>The <code>projected</code> components. These have been available since AR.js 3.3.1, use largely the same internal implementation as the classic components, and were the first to offer projection of latitude/longitude into Spherical Mercator, discussed below.</p>
+<p>The <code>projected</code> components. These have been available since AR.js 3.3.1, use largely the same internal implementation as the classic components, and were the first to offer projection of latitude/longitude into Spherical Mercator, discussed below. They are generally <strong>not recommended</strong> unless you have problems with <code>new-location-based</code>.</p>
 </li>
 <li>
-<p>The classic components, available before AR.js 3.3.1. These are similar to the <code>projected</code> components but do not offer the facility to convert between latitude/longitude and the projected coordinates used for augmented reality, which can cause problems for more specialist uses such as showing roads and paths in augmented reality.</p>
+<p>The classic components, available before AR.js 3.3.1. These are similar to the <code>projected</code> components but do not offer the facility to convert between latitude/longitude and the projected coordinates used for augmented reality, which can cause problems for more specialist uses such as showing roads and paths in augmented reality. For most use cases it is preferred to use <code>new-location-based</code> but some uses, such as embedded AR scenes, only work with the classic components.</p>
 </li>
 </ul>
 <h3 id="the-components">The components</h3>
@@ -308,6 +326,7 @@ sensors such as the accelerometer. </p>
 <p><code>gps-new-camera</code> implements projection via the underlying AR.js three.js <code>LocationBased</code> object (see three.js documentation, below) which is responsible for the actual projection. </p>
 <p><code>gps-projected-camera</code> provides similar functionality but via a different method and with some implementation differences. In <code>gps-projected-camera</code>, unlike <code>gps-new-camera</code>, the <strong>original GPS position</strong> is set as the world origin.</p>
 <h2 id="threejs">three.js</h2>
+<p>For pure three.js (no A-Frame) it is recommended to use <a href="https://github.com/AR-js-org/locar.js">LocAR</a>. The notes below, however, refer to the three.js version in the main AR.js repository.</p>
 <p>The three.js API keeps track of your current GPS location (or allows you to set a fake location) and allows you to add three.js objects at a given latitude and longitude. It includes these classes:</p>
 <ul>
 <li><code>THREEx.LocationBased</code> - general manager class for the three.js location-based API.</li>
