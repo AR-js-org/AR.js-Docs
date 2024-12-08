@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Location-based AR.js with three.js - Develop a simple Points of Interest app - AR.js Documentation</title>
+        <title>LocAR.js - Develop a simple Points of Interest app - AR.js Documentation</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -77,9 +77,9 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#location-based-arjs-with-threejs-develop-a-simple-points-of-interest-app" class="nav-link">Location-based AR.js with three.js - Develop a simple Points of Interest app</a>
+            <li class="nav-item" data-level="1"><a href="#locarjs-develop-a-simple-points-of-interest-app" class="nav-link">LocAR.js - Develop a simple Points of Interest app</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#installing" class="nav-link">Installing</a>
+            <li class="nav-item" data-level="2"><a href="#installing-and-developing" class="nav-link">Installing and developing</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -90,43 +90,31 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="location-based-arjs-with-threejs-develop-a-simple-points-of-interest-app">Location-based AR.js with three.js - Develop a simple Points of Interest app</h1>
-<p>AR.js 3.4 features a pure three.js API for location-baed AR. Here is a series of tutorials taking you through how to use it, from the basics to a more advanced example: a simple but working Points of Interest app using a live web API.</p>
-<p>It is expected that you have some basic <a href="https://threejs.org">three.js</a> experience.</p>
-<p><strong>Do note that this code will not work on Firefox on a mobile device due to limitations of the device orientation API; absolute orientation cannot be obtained. Chrome on Android is recommended.</strong></p>
-<h2 id="installing">Installing</h2>
-<p>It is recommended to install via <code>npm</code> and build with a bundler such as Webpack.
-and <code>import</code> it into your application.</p>
-<p>Here is a sample <code>package.json</code>:</p>
+<h1 id="locarjs-develop-a-simple-points-of-interest-app">LocAR.js - Develop a simple Points of Interest app</h1>
+<p><a href="https://github.com/AR-js-org/locar.js">LocAR.js</a> is the new - still in early development - standalone location-based API for AR.js.</p>
+<p>Here is a series of tutorials taking you through how to use LocAR.js, from the basics to a more advanced example: a simple but working Points of Interest app using a live web API.</p>
+<p>It is expected that you have some understanding of the absolute basics of <a href="https://threejs.org">three.js</a>. You might want to read the introductory "Creating a Scene" section of the <a href="https://three.js.org/docs/index.html#manual/en">three.js manual</a>. (Note that there is currently a formatting issue on Firefox with the source code samples, so you should use another browser such as Chrome. There is a fix imminent on Firefox, however).</p>
+<p>You should also have very basic knowledge of <a href="https://vitejs.dev">Vite</a> and the concept of JavaScript build tools and bundling. Vite is a build and development tool which, as well as bundling your code for production, provides a development server allowing you to develop client-side web apps "live" so that when you make a change to your code or its dependencies, your code is reloaded and changes appear instantly. See the Vite docs for more.</p>
+<p><strong>Do note that it is not recommended to use Firefox on a mobile device due to limitations of the device orientation API. Chrome on Android is recommended.</strong></p>
+<h2 id="installing-and-developing">Installing and developing</h2>
+<p>Here is a sample <code>package.json</code> containing three.js and LocAR.js as dependencies, and Vite as a dev dependency.</p>
 <pre><code>{
-    &quot;dependencies&quot;: {
-        &quot;@ar-js-org/ar.js&quot;: &quot;3.4.5&quot;
-    },
-    &quot;devDependencies&quot;: {
-        &quot;webpack&quot;: &quot;^5.75.0&quot;,
-        &quot;webpack-cli&quot;: &quot;^5.0.0&quot;
-    },
-    &quot;scripts&quot;: {
-        &quot;build&quot;: &quot;npx webpack&quot;
-    }
+  &quot;dependencies&quot;: {
+    &quot;three&quot;: &quot;^0.169.0&quot;,
+    &quot;locar&quot;: &quot;^0.0.2&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;vite&quot;: &quot;^5.4.8&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;dev&quot; : &quot;vite dev&quot;,
+    &quot;build&quot;: &quot;vite build&quot;
+  }
 }
 </code></pre>
-<p>and a sample <code>webpack.config.js</code>:</p>
-<pre><code class="language-javascript">const path = require('path');
-
-module.exports = {
-    mode: 'development',
-    entry: './index.js',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
-    },
-    optimization: {
-        minimize: false
-    }
-};
-</code></pre>
-<p>This will build a bundle named <code>bundle.js</code> in the <code>dist</code> subdirectory from a source file <code>index.js</code>. This will be assumed in the examples.</p>
+<p>As is standard in Vite, you should place your <code>index.html</code> inside your project's main directory and the JavaScript source, e.g. <code>main.js</code>, inside the <code>src</code> directory. You can then, as is normal with Vite, run in dev mode with <code>npm run dev</code>, which will start up a dev server on port 5173 and allow you to make live changes to your code which will be updated instantly.</p>
+<p>You can also build a bundle with <code>npm run build</code>, which will create a production app (a JavaScript bundle plus a version of <code>index.html</code> linking to the bundle) in the <code>dist</code> directory.</p>
+<h3 id="contents">Contents</h3>
 <ul>
 <li><a href="part1/">Part 1: Hello World</a></li>
 <li><a href="part2/">Part 2: Using the GPS and Device Orientation</a></li>

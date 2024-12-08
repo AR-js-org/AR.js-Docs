@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Location-based AR.js with three.js - AR.js Documentation</title>
+        <title>Location-based AR.js with LocAR.js - AR.js Documentation</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -77,7 +77,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#location-based-arjs-with-threejs" class="nav-link">Location-based AR.js with three.js</a>
+            <li class="nav-item" data-level="1"><a href="#location-based-arjs-with-locarjs" class="nav-link">Location-based AR.js with LocAR.js</a>
               <ul class="nav flex-column">
             <li class="nav-item" data-level="2"><a href="#part-1-hello-world" class="nav-link">Part 1 - Hello World!</a>
               <ul class="nav flex-column">
@@ -90,79 +90,73 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="location-based-arjs-with-threejs">Location-based AR.js with three.js</h1>
+<h1 id="location-based-arjs-with-locarjs">Location-based AR.js with LocAR.js</h1>
 <h2 id="part-1-hello-world">Part 1 - Hello World!</h2>
-<p>The first part of this tutorial will show you how to create a "hello world" application using the pure three.js API for location-based ar.js. It is assumed you are aware of basic three.js concepts, such as the scene, renderer and camera as well as geometries, materials and meshes. This example will set your location to a "fake" GPS location and add a box a short distance away.</p>
-<p>Let's start with the HTML:</p>
+<p>The first part of this tutorial will show you how to create a "hello world" application using LocAR.js. It is assumed you are aware of basic three.js concepts, such as the scene, renderer and camera as well as geometries, materials and meshes. This example will set your location to a "fake" GPS location and add a box a short distance away.</p>
+<p>Let's start with the HTML, which is very simple:</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-&lt;title&gt;Location-based AR.js with three.js&lt;/title&gt;
-&lt;script type='module' src='dist/bundle.js'&gt;&lt;/script&gt;
+&lt;title&gt;LocAR.js - Hello World&lt;/title&gt;
+&lt;script type='module' src='src/main.js'&gt;&lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;canvas id='canvas1' style='background-color: black; width: 100%; height: 100%'&gt;&lt;/canvas&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>This example assumes that you have installed AR.js via <code>npm</code> and used Webpack to build the application, as described on the <a href="../">index page for the tutorial</a>. We link in the built bundle of our own code plus the three.js and AR.js dependencies. Here is our own code: save this as <code>index.js</code>.</p>
-<pre><code class="language-javascript">
-import * as THREE from 'three';
-import * as THREEx from './node_modules/@ar-js-org/ar.js/three.js/build/ar-threex-location-only.js';
+<p>This example assumes that you have installed LocAR.js via <code>npm</code> and are using Vite in dev mode to run the application, as described on the <a href="../">index page for the tutorial</a>. We link in our JavaScript source as an ES6 module from <code>src/main.js</code>, so this is where you should save your code, as <code>main.js</code> inside the <code>src</code> directory. Here is the <code>main.js</code> code:</p>
+<pre><code class="language-javascript">import * as THREE from 'three';
+import * as LocAR from 'locar';
 
-function main() {
-    const canvas = document.getElementById('canvas1');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.001, 100);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, 1.33, 0.1, 10000);
-    const renderer = new THREE.WebGLRenderer({canvas: canvas});
+window.addEventListener(&quot;resize&quot;, e =&gt; {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;    
+    camera.updateProjectionMatrix();
+});
+const box = new THREE.BoxGeometry(2,2,2);
+const cube = new THREE.Mesh(box, new THREE.MeshBasicMaterial({ color: 0xff0000 }));
 
-    const arjs = new THREEx.LocationBased(scene, camera);
-    const cam = new THREEx.WebcamRenderer(renderer);
-
-    const geom = new THREE.BoxGeometry(20, 20, 20);
-    const mtl = new THREE.MeshBasicMaterial({color: 0xff0000});
-    const box = new THREE.Mesh(geom, mtl);
-    arjs.add(box, -0.72, 51.051); 
+const locar = new LocAR.LocationBased(scene, camera);
+const cam = new LocAR.WebcamRenderer(renderer);
 
 
-    arjs.fakeGps(-0.72, 51.05);
+locar.fakeGps(-0.72, 51.05);
+locar.add(cube, -0.72, 51.0501);
 
-    requestAnimationFrame(render);
+renderer.setAnimationLoop(animate);
 
-    function render() {
-        if(canvas.width != canvas.clientWidth || canvas.height != canvas.clientHeight) {
-            renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
-            const aspect = canvas.clientWidth/canvas.clientHeight;
-            camera.aspect = aspect;
-            camera.updateProjectionMatrix();
-        }
-        cam.update();
-        renderer.render(scene, camera);
-        requestAnimationFrame(render);
-    }
+
+function animate() {
+    cam.update();
+    renderer.render(scene, camera);
 }
 
-main();
 </code></pre>
-<p>Much of this should be familiar to you from basic three.js examples, and is written in the same style as the <a href="https://threejs.org/manual">manual</a>. As normal, we create a <code>THREE.Scene</code>, a <code>THREE.PerspectiveCamera</code> and a <code>THREE.WebGLRenderer</code> using our canvas. </p>
+<p>Much of this is using standard three.js setup code as described in the <a href="https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene">manual</a>; if you do not understand basic three.js concepts such as the scene, camera, and renderer, as well as geometries and meshes, you should read the three.js manual first. </p>
+<p>As normal, we create a <code>THREE.Scene</code>, a <code>THREE.PerspectiveCamera</code> and a <code>THREE.WebGLRenderer</code> using our canvas. We also handle resizing the window and handle window resize. We then create a box geometry and a mesh using that box geometry.</p>
 <p>What comes next though is new, and specific to AR.js:</p>
-<pre><code class="language-javascript">const arjs = new THREEx.LocationBased(scene, camera);
-const cam = new THREEx.WebcamRenderer(renderer);
+<pre><code class="language-javascript">const locar = new LocAR.LocationBased(scene, camera);
+const cam = new LocAR.WebcamRenderer(renderer);
 </code></pre>
-<p>We use two new objects, both part of the AR.js API. Firstly <code>THREEx.LocationBased</code> is the overall AR.js "manager" object and secondly <code>THREEx.WebcamRenderer</code> is responsible for rendering the camera feed. We need to supply our scene and camera as arguments to <code>THREEx.LocationBased</code> and our renderer as an argument to <code>THREEx.WebcamRenderer</code>.</p>
-<p>The <code>THREEx.WebcamRenderer</code> will create a <code>video</code> element to capture the webcam. Alternatively, if you have a <code>video</code> element already set up in your HTML, you can pass its CSS selector into the <code>WebcamRenderer</code> as an optional argument. For example:</p>
-<pre><code class="language-javascript">const cam = new THREEx.WebcamRenderer(renderer, '#video1');
+<p>We use two new objects, both part of the LocAR.js API. Firstly <code>LocAR.LocationBased</code> is the overall AR.js "manager" object and secondly <code>LocAR.WebcamRenderer</code> is responsible for rendering the live camera feed. We need to supply our scene and camera as arguments to <code>LocAR.LocationBased</code> and our renderer as an argument to <code>LocAR.WebcamRenderer</code>.</p>
+<p>The <code>LocAR.WebcamRenderer</code> will, internally, create a <code>video</code> element to capture the webcam. Alternatively, if you have a <code>video</code> element already set up in your HTML, you can pass its CSS selector into the <code>WebcamRenderer</code> as an optional argument. For example:</p>
+<pre><code class="language-javascript">const cam = new LocAR.WebcamRenderer(renderer, '#video1');
 </code></pre>
-<p>Next, using standard three.js code, we set up a mesh using a box geometry and red material (i.e. a red box). However, this is where it then gets interesting:</p>
-<pre><code class="language-javascript">arjs.add(box, -0.72, 51.051); 
+<p>Next we add our box mesh to LocAR. This next line is interesting: </p>
+<pre><code class="language-javascript">locar.add(box, -0.72, 51.051); 
 </code></pre>
-<p>Rather than setting the box's <code>position</code> as we would normally do in standard three.js, we add it to a specific <strong>real-world location</strong> defined by longitude and latitude. The <code>add()</code> method of <code>THREEx.LocationBased</code> allows us to do that.</p>
-<p>Having positioned our box in a specific real-world location, we now need to place <strong>ourselves</strong> (i.e. the camera) at a given real-world location We can do this with <code>THREEx.LocationBased</code>s <code>fakeGps()</code> method, which takes longitude and latitude as parameters:</p>
+<p>Rather than setting the box's <code>position</code> as we would normally do in standard three.js, we add it to a specific <strong>real-world location</strong> defined by longitude and latitude. The <code>add()</code> method of <code>LocAR.LocationBased</code> allows us to do that.</p>
+<p>Having positioned our box in a specific real-world location, we now need to place <strong>ourselves</strong> (i.e. the camera) at a given real-world location We can do this with <code>LocAR.LocationBased</code>s <code>fakeGps()</code> method, which takes longitude and latitude as parameters:</p>
 <pre><code class="language-javascript">arjs.fakeGps(-0.72, 51.05);
 </code></pre>
-<p>This plaves us just to the south of the red box. By default, we face north, so the red box will appear in front of us.</p>
-<p>The remaining code is the standard three.js code for rendering each frame, and dealing with potential screen resizes. However note this code within the rendering function:</p>
+<p>This places us just to the south of the red box. By default, we face north, so the red box will appear in front of us.</p>
+<p>The remaining code is the standard three.js code for defining a rendering function and setting it as the animation loop. However note this code within the rendering function:</p>
 <pre><code class="language-javascript">cam.update();
 </code></pre>
 <p>This API call will render the latest camera frame.</p>
