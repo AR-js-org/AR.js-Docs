@@ -16,8 +16,8 @@ Location Based has been implemented for both three.js and A-Frame. Each of these
 
 This document is intended as reference documentation. There are also two *tutorials* available, with full example code:
 
+- [LocAR.js](locar.js/index.md)
 - [A-Frame location based](location-based-aframe/index.md)
-- [three.js location based](location-based-three/index.md)
 
 ## Limitations
 
