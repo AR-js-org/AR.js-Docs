@@ -4,7 +4,7 @@
 
 Here is a series of tutorials taking you through how to use LocAR.js, from the basics to a more advanced example: a simple but working Points of Interest app using a live web API.
 
-It is expected that you have some understanding of the absolute basics of [three.js](https://threejs.org). You might want to read the introductory "Creating a Scene" section of the [three.js manual](https://three.js.org/docs/index.html#manual/en). (Note that there is currently a formatting issue on Firefox with the source code samples, so you should use another browser such as Chrome. There is a fix imminent on Firefox, however).
+It is expected that you have some understanding of the absolute basics of [three.js](https://threejs.org). You might want to read the introductory "Creating a Scene" section of the [three.js manual](https://threejs.org/docs/index.html#manual/en). (Note that there is currently a formatting issue on Firefox with the source code samples, so you should use another browser such as Chrome. There is a fix imminent on Firefox, however).
 
 You should also have very basic knowledge of [Vite](https://vitejs.dev) and the concept of JavaScript build tools and bundling. Vite is a build and development tool which, as well as bundling your code for production, provides a development server allowing you to develop client-side web apps "live" so that when you make a change to your code or its dependencies, your code is reloaded and changes appear instantly. See the Vite docs for more.
 
