@@ -1,5 +1,15 @@
 # AR.js A-Frame Location-Based Tutorial - Develop a Simple Points of Interest App 
 
+
+## LocAR.js
+
+Firstly **please note that A-Frame support is now available for [LocAR.js](https://github.com/AR-js-org/locar.js)**. As a result it is recommended to use LocAR.js if using A-Frame for two reasons:
+
+- It will be more actively developed and thus will be the first to receive bugfixes and new features;
+- It incorporates a number of fixes and improvements for iOS.
+
+If using the location-based API from the main repository, please read on.
+
 ## Introduction
 
 This tutorial (**updated for AR.js 3.4**) aims to take you from a basic location-based AR.js example all the way to a working, simple points of interest app. We will start with an HTML-only example and gradually add JavaScript to make our app more sophisticated.

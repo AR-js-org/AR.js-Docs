@@ -82,7 +82,7 @@ AR.js uses [jsartoolkit5](https://github.com/artoolkitx/jsartoolkit5) for tracki
 
 You can import AR.js in one version of your choice, using the `<script>` tag on your HTML.
 
-The examples below assume the latest version of AR.js from the `master` branch, but you can replace `master` with a specific version, e.g. `3.4.5` for the latest version.
+The examples below assume the latest version of AR.js from the `master` branch, but you can replace `master` with a specific version, e.g. `3.4.7` for the latest version.
 
 ---
 
@@ -124,20 +124,21 @@ If you want to import a specific version, you can do that easily replacing `mast
 
 **Location-based AR.js**
 
-For the *A-Frame* version, it's recommended to use version 3.4.5, rather than master:
+It's recommended to use the new AR.js project [LocAR.js](https://github.com/AR-js-org/locar.js) instead of the main repository, as this will be maintained more frequently and will take priority when it comes to bugfixes and new features. In particular, LocAR.js incorporates a number of fixes and improvements for iOS (Chrome and Safari).
+
+If using the main repository, it's recommended to use version 3.4.7, rather than master:
 
 ```html
 <!-- A-Frame itself -->
-<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+<script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
 
 <!-- Pure three.js code that the A-Frame components use for location-based AR -->
-<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.7/three.js/build/ar-threex-location-only.js'></script>
 
 <!-- AR.js A-Frame components -->
-<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.7/aframe/build/aframe-ar.js'></script>
 ```
 
-For the *three.js* version, it's recommended to use the new AR.js project [LocAR](https://github.com/AR-js-org/locar.js) instead of the main repository.
 
 ## Requirements and Known Issues
 
@@ -145,15 +146,15 @@ Some requirements and known issues are listed below:
 
 - It works on every phone with [webgl](http://caniuse.com/#feat=webgl) and [webrtc](http://caniuse.com/#feat=stream).
 - Marker based tracking is very lightweight, while Image Tracking is more CPU consuming
-- You must ensure that you have matching versions of AR.js and A-Frame. AR.js 3.4.5 (the latest version) requires A-Frame 1.3.0 while AR.js 3.4.4 and below requires 1.0.4.
-- Location-based AR will not work correctly on Firefox, due to the inability to obtain absolute device orientation (compass bearing)
+- You must ensure that you have matching versions of AR.js and A-Frame. AR.js 3.4.7 (the latest version) requires A-Frame 1.6.0 while AR.js 3.4.4 and below require 1.0.4.
+- Location-based AR will not work correctly on Firefox, due to the inability to obtain absolute device orientation (compass bearing).
 - On Android/Chrome, you may **encounter issues with location-based AR due to inaccuracies in compass calibration** (incorrect north). This is likely to be a hardware limitation of the device.
 - On some phones you may encounter problems with locating North due to inherent miscalibrations of the device sensors. This is a known problem recognised by the three.js developers: see [here](https://github.com/mrdoob/three.js/issues/22654)
 - Please ensure you **enable high accuracy** location for your selected browser on Android. Sometimes high accuracy location is turned off by default, and this will lead to an inaccurate GPS location.
 - There is currently a bug in location-based AR where the camera feed is stretched away from the centre of the screen, meaning that there is reduced accuracy in placement of objects further away from the centre. Work is ongoing to investigate this.
 - On device with multi-cameras, Chrome may have problems on detecting the right one. Please use Firefox if you find that AR.js opens on the wrong camera. There is an open issue for this.
 - To work with Location Based feature, your device needs to have GPS, accelerometer and magnetometer sensors. It will not work if any of these sensors are absent.
-- Please, read carefully any suggestions that AR.js pops-up -as alerts- for Location Based on iOS, as iOS requires user actions to activate geoposition
+- Please, read carefully any suggestions that AR.js pops-up -as alerts- for Location Based on iOS, as iOS requires user actions to activate geoposition.
 Access to the phone camera or to camera GPS sensors, due to major browsers restrictions, can be done only under https websites.
 
 All the examples you will see, and all AR.js web apps in general, have to be run on a server. You can use local server or deploy the static web app on the web.
