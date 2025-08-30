@@ -355,7 +355,7 @@ There are various tutorials available for developing with AR.js. These include:
 
 - [Build your Location-Based Augmented Reality Web App](https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564): covers location-based AR.js with A-Frame.
 - [Develop a Simple Points Of Interest App (A-Frame version)](location-based-aframe/index.md) (*Provided with these docs*): a further location-based A-Frame tutorial, written with AR.js 3.4 in mind.
-- [Develop a Simple Points of Interest App (LocAR.js version)](locar.js/index.md) (*Provided with these docs*): develop a points of interest app with the new LocAR.js API.
+- [Develop a Simple Points of Interest App (LocAR.js version)](https://github.com/AR-js-org/locar.js/blob/master/docs/tutorial/index.md) : develop a points of interest app with the new LocAR.js API.
 
 ## Troubleshooting, feature requests, community
 

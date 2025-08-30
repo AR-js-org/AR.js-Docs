@@ -14,10 +14,7 @@ You can load places statically, from HTML or from Javascript, or you can load yo
 
 Location Based has been implemented for both three.js and A-Frame. Each of these is documented below.
 
-This document is intended as reference documentation. There are also two *tutorials* available, with full example code:
-
-- [LocAR.js](locar.js/index.md)
-- [A-Frame location based](location-based-aframe/index.md)
+This document is intended as reference documentation. There is also a tutorial available for [A-Frame location based](location-based-aframe/index.md).
 
 ## Limitations
 
