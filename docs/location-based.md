@@ -251,7 +251,7 @@ Here is a sample `package.json`:
 ```
 {
     "dependencies": {
-        "@ar-js-org/ar.js": "3.4.5",
+        "@ar-js-org/ar.js": "3.4.7",
     },
     "devDependencies": {
         "webpack": "^5.75.0",
